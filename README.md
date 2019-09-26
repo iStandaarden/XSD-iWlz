@@ -9,8 +9,8 @@ XSD's voor de iWlz
 * Servicedesk iStandaarden - [@serviceDesk](info@istandaarden.nl)
 
 ## Laatste versie
-![Laatste release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iStandaarden/iWlz-indicatie?include_prereleases&style=flat-square)
-![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/iWlz-indicatie?style=flat-square)
+![Laatste release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iStandaarden/XSD-iWlz?include_prereleases&style=flat-square)
+![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/XSD-iWlz?style=flat-square)
 
 ## Versionering - mutaties
 2016-06-01 Initiele Versie - iWlz Release 1.0
