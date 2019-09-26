@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.zorgregistratie.nl/iwlz/1_0/aw33/schema/1_0" xmlns:aw33="http://www.zorgregistratie.nl/iwlz/1_0/aw33/schema/1_0" xmlns:iwlz="http://www.zorgregistratie.nl/iwlz/1_0/basisschema/schema/1_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.zorgregistratie.nl/iwlz/1_0/basisschema/schema/1_0" schemaLocation="basisschema.xsd"/>
+    <xs:element name="AW33Bericht" type="aw33:AW33Bericht"/>
+    <xs:complexType name="AW33Bericht">
+        <xs:annotation>
+            <xs:documentation>Bericht voor zorgtoewijzingsgegevens Wlz-zorg.</xs:documentation>
+            <xs:documentation>Het bericht is onderdeel van de iWlz-standaard.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Clienten" type="aw33:Clienten"/>
+        </xs:sequence>
+        <xs:attribute name="BerichtCode" type="iwlz:BerichtCode" use="required">
+            <xs:annotation>
+                <xs:documentation>Code ter identificatie van een soort bericht.</xs:documentation>
+                <xs:documentation>EI-rubrieknummer: 0102</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BerichtVersie" type="iwlz:BerichtVersie" use="required">
+            <xs:annotation>
+                <xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie)berichtstandaard.</xs:documentation>
+                <xs:documentation>EI-rubrieknummer: 0103</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="BerichtSubversie" type="iwlz:BerichtSubversie">
+            <xs:annotation>
+                <xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard. Volgnummer van de formele uitgifte van een subversie van een (Externe Integratie) berichtstandaard.</xs:documentation>
+                <xs:documentation>EI-rubrieknummer: 0104</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Zorgkantoor" type="iwlz:Uzovi" use="required">
+            <xs:annotation>
+                <xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
+                <xs:documentation>EI-rubrieknummer: 0105</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Instelling" type="iwlz:AzrAgbCode" use="required">
+            <xs:annotation>
+                <xs:documentation>Identificerende code van een instelling.</xs:documentation>
+                <xs:documentation>EI-rubrieknummer: 0106</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="IdentificatieHeenbericht" type="iwlz:IdentificatieBericht" use="required">
+            <xs:annotation>
+                <xs:documentation>Naam of nummer, die ter identificatie aan een totale aanlevering kan worden meegegeven.</xs:documentation>
+                <xs:documentation>EI-rubrieknummer: 0107</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="DagtekeningHeenbericht" type="iwlz:Datum" use="required">
+            <xs:annotation>
+                <xs:documentation>De datum van verzending van het bericht.</xs:documentation>
+                <xs:documentation>EI-rubrieknummer: 0108</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Client">
+        <xs:sequence>
+            <xs:element name="Bsn" type="iwlz:BurgerServicenummer">
+                <xs:annotation>
+                    <xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0203</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="GeheimeClient" type="iwlz:GeheimeClient">
+                <xs:annotation>
+                    <xs:documentation>EI-rubrieknummer: 0204</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="CizCode" type="iwlz:CizCode">
+                <xs:annotation>
+                    <xs:documentation>Identificatie van het indicatieorgaan dat de indicatiestelling heeft verricht.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0205</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Clientnummer" type="iwlz:Persoonsid">
+                <xs:annotation>
+                    <xs:documentation>Identificerend nummer van een client bij een indicatieorgaan.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0206</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Geboortedatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>Datum waarop een persoon geboren is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0207</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="DatumGebruik" type="iwlz:DatumGebruik">
+                <xs:annotation>
+                    <xs:documentation>Indicator die aangeeft welk deel van de voorafgaande datum gebruikt mag worden.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0208</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Geslacht" type="iwlz:Geslacht">
+                <xs:annotation>
+                    <xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0209</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="BurgerlijkeStaat" type="iwlz:BurgerlijkeStaat">
+                <xs:annotation>
+                    <xs:documentation>Unieke aanduiding die de rechtspositie van een client al dan niet in relatie tot een of meer personen beschrijft.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0210</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Naam01" type="iwlz:Naam">
+                <xs:annotation>
+                    <xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0211</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Voorvoegsel01" type="iwlz:Voorvoegsel">
+                <xs:annotation>
+                    <xs:documentation>Verzameling van een of meer voorzetsels/lidwoorden, die aan het significante deel van de achternaam van een persoon vooraf gaat en daar een onderdeel van is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0212</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="NaamCode01" type="iwlz:NaamCode">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding naamgebruik (gecodeerd).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0213</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Naam02" type="iwlz:Naam">
+                <xs:annotation>
+                    <xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0214</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Voorvoegsel02" type="iwlz:Voorvoegsel">
+                <xs:annotation>
+                    <xs:documentation>Verzameling van een of meer voorzetsels/lidwoorden, die aan het significante deel van de achternaam van een persoon vooraf gaat en daar een onderdeel van is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0215</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="NaamCode02" type="iwlz:NaamCode">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding naamgebruik (gecodeerd).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0216</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Voorletters" type="iwlz:Voorletters">
+                <xs:annotation>
+                    <xs:documentation>De verzameling van letters die wordt gevormd door de eerste letter van alle in volgorde voorkomende voornamen van een persoon.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0217</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="NaamCode03" type="iwlz:NaamCode">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding naamgebruik (gecodeerd).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0218</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Leefeenheid" type="iwlz:Leefeenheid">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de leefsituatie van een client.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0219</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Huisarts" type="iwlz:AgbCode">
+                <xs:annotation>
+                    <xs:documentation>Bestaat uit ZORGVERLENERSSOORT (COD008) en ZORGVERLENERSNUMMER (NUM005).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0220</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="CommunicatieVorm" type="iwlz:CommunicatieVorm">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de bijzondere vorm van communicatie die gebruikt dient te worden.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0221</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Taal" type="iwlz:Taal">
+                <xs:annotation>
+                    <xs:documentation>De taal van de client waarin met de client wordt gecommuniceerd.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0222</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="JuridischeStatus" type="iwlz:JuridischeStatus">
+                <xs:annotation>
+                    <xs:documentation>Juridische situatie die voor de client van toepassing is op het moment van indicatiestelling.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0223</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Bopz" type="iwlz:Bopz">
+                <xs:annotation>
+                    <xs:documentation>Een artikel 60-verklaring geeft aan of de gevraagde opneming noodzakelijk is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0224</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="DatumBopz" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>EI-rubrieknummer: 0225</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Relaties" type="aw33:Relaties"/>
+            <xs:element name="Adressen" type="aw33:Adressen"/>
+            <xs:element name="Indicatie" type="aw33:Indicatie"/>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Clienten">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Client" type="aw33:Client"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Relatie">
+        <xs:sequence>
+            <xs:element name="Nummer" type="iwlz:Persoonsid">
+                <xs:annotation>
+                    <xs:documentation>Identificerend nummer van de relatie van een client.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0305</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Volgorde" type="iwlz:RelatieVolgorde">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding van de prioriteit van de contactpersoon.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0306</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Soort" type="iwlz:SoortRelatie">
+                <xs:annotation>
+                    <xs:documentation>De soort relatie die een persoon ten opzichte van de client heeft.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0307</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Geboortedatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>Datum waarop een persoon geboren is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0308</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="DatumGebruik" type="iwlz:DatumGebruik">
+                <xs:annotation>
+                    <xs:documentation>Indicator die aangeeft welk deel van de voorafgaande datum gebruikt mag worden.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0309</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Geslacht" type="iwlz:Geslacht">
+                <xs:annotation>
+                    <xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0310</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Naam01" type="iwlz:Naam">
+                <xs:annotation>
+                    <xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0311</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Voorvoegsel01" type="iwlz:Voorvoegsel">
+                <xs:annotation>
+                    <xs:documentation>Verzameling van een of meer voorzetsels/lidwoorden, die aan het significante deel van de achternaam van een persoon vooraf gaat en daar een onderdeel van is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0312</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="NaamCode01" type="iwlz:NaamCode">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding naamgebruik (gecodeerd).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0313</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Naam02" type="iwlz:Naam">
+                <xs:annotation>
+                    <xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0314</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Voorvoegsel02" type="iwlz:Voorvoegsel">
+                <xs:annotation>
+                    <xs:documentation>Verzameling van een of meer voorzetsels/lidwoorden, die aan het significante deel van de achternaam van een persoon vooraf gaat en daar een onderdeel van is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0315</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="NaamCode02" type="iwlz:NaamCode">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding naamgebruik (gecodeerd).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0316</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Voorletters" type="iwlz:Voorletters">
+                <xs:annotation>
+                    <xs:documentation>De verzameling van letters die wordt gevormd door de eerste letter van alle in volgorde voorkomende voornamen van een persoon.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0317</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="NaamCode03" type="iwlz:NaamCode">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding naamgebruik (gecodeerd).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0318</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Adres" type="aw33:Adres"/>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Relaties">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Relatie" type="aw33:Relatie"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Adres">
+        <xs:sequence>
+            <xs:element name="Soort" type="iwlz:AdresSoort">
+                <xs:annotation>
+                    <xs:documentation>Nadere typering van het adres.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0406</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Huisnummer" type="iwlz:Huisnummer">
+                <xs:annotation>
+                    <xs:documentation>De numerieke aanduiding zoals de gemeente die aan het object heeft toegekend.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0407</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Huisletter" type="iwlz:Huisletter">
+                <xs:annotation>
+                    <xs:documentation>Een alfabetisch teken achter het huisnummer zoals dit door het gemeentebestuur is toegekend.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0408</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="HuisnummerToevoeging" type="iwlz:HuisnummerToevoeging">
+                <xs:annotation>
+                    <xs:documentation>Die letters of tekens die noodzakelijk zijn om, naast huisnummer en -letter, de brievenbus te vinden.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0409</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="AanduidingWoonadres" type="iwlz:AanduidingWoonadres">
+                <xs:annotation>
+                    <xs:documentation>De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien van de gebruikelijke straatnaam en huisnummeraanduidingen.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0410</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Postcode" type="iwlz:Postcode">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding van de (inter)nationale postcode. Dit veld is geschikt voor zowel de Nederlandse als niet-Nederlandse postcodes.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0411</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Straatnaam" type="iwlz:Straatnaam">
+                <xs:annotation>
+                    <xs:documentation>De officiele door de gemeente vastgestelde naam van een straat.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0412</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Plaatsnaam" type="iwlz:Plaatsnaam">
+                <xs:annotation>
+                    <xs:documentation>De door de gemeente vastgestelde naam van een woonplaats.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0413</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="LandCode" type="iwlz:LandCode">
+                <xs:annotation>
+                    <xs:documentation>Identificatie van een (historisch/actueel) land of gebiedsdeel.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0414</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Organisatie" type="iwlz:Organisatie">
+                <xs:annotation>
+                    <xs:documentation>De naam van een organisatie waar de client of relatie client verblijft.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0415</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Telefoon01" type="iwlz:TelefoonNummer">
+                <xs:annotation>
+                    <xs:documentation>Het telefoonnummer waarop de client of relatie van de client te bereiken is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0416</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="LandNummer01" type="iwlz:LandNummer">
+                <xs:annotation>
+                    <xs:documentation>Het telefoonnummer van een land, vanuit Nederland benaderd.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0417</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Telefoon02" type="iwlz:TelefoonNummer">
+                <xs:annotation>
+                    <xs:documentation>Het telefoonnummer waarop de client of relatie van de client te bereiken is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0418</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="LandNummer02" type="iwlz:LandNummer">
+                <xs:annotation>
+                    <xs:documentation>Het telefoonnummer van een land, vanuit Nederland benaderd.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0419</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Emailadres" type="iwlz:Emailadres">
+                <xs:annotation>
+                    <xs:documentation>Het adres waaronder de client/relatie client via het internet per elektronische post te bereiken is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0420</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Begindatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De begindatum van het verblijf van de client of relatie client op een tijdelijk adres.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0421</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Einddatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De einddatum van het verblijf van de client/relatie client op een tijdelijk adres.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0422</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Adressen">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Adres" type="aw33:Adres"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Stoornis">
+        <xs:sequence>
+            <xs:element name="Grondslag" type="iwlz:Grondslag">
+                <xs:annotation>
+                    <xs:documentation>Codering die aangeeft wat ten grondslag ligt aan de zorg.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0607</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DiagnoseCodelijst" type="iwlz:DiagnoseCodelijst">
+                <xs:annotation>
+                    <xs:documentation>Code die aangeeft welke diagnosecodelijst gebruikt is, met aanduiding van de oorsprong van de codes en/of de beheerder ervan.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0608</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="DiagnoseSubcodelijst" type="iwlz:DiagnoseSubcodelijst">
+                <xs:annotation>
+                    <xs:documentation>Code die aangeeft welke subcode van een diagnosecodelijst gebruikt is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0609</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Code" type="iwlz:StoornisCode">
+                <xs:annotation>
+                    <xs:documentation>Code die het ziektebeeld of de stoornis van een client identificeert.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0610</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Prognose" type="iwlz:Prognose">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding welke prognose er is inzake het ziektebeeld of de stoornis.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0611</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Stoornissen">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Stoornis" type="aw33:Stoornis"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Beperking">
+        <xs:sequence>
+            <xs:element name="Code" type="iwlz:BeperkingCategorie">
+                <xs:annotation>
+                    <xs:documentation>Aanduiding over de categorie van de beperking.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0707</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Duur" type="iwlz:Duur">
+                <xs:annotation>
+                    <xs:documentation>Code die aangeeft wat de verwachte duur is van de categorie beperking.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0708</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="BeperkingScores" type="aw33:BeperkingScores"/>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Beperkingen">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Beperking" type="aw33:Beperking"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Indicatie">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Aanvraagnummer" type="iwlz:Nummer">
+                <xs:annotation>
+                    <xs:documentation>Identificerend nummer van een indicatie-aanvraag van een client bij een indicatieorgaan.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0805</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Besluitnummer" type="iwlz:Nummer">
+                <xs:annotation>
+                    <xs:documentation>Identificerend nummer van een indicatiebesluit bij een indicatie-aanvraag van een client bij een indicatieorgaan.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0806</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Soort" type="iwlz:SoortIndicatie">
+                <xs:annotation>
+                    <xs:documentation>Code voor de soort indicatie.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0807</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Grondslag01" type="iwlz:Grondslag">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding wat als eerste ten grondslag ligt aan het indicatiebesluit met betrekking tot de zorg voor een client.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0808</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Grondslag02" type="iwlz:Grondslag">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding wat als tweede ten grondslag ligt aan het indicatiebesluit met betrekking tot de zorg voor een client.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0809</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Afgiftedatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum waarop het indicatiebesluit genomen is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0810</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Ingangsdatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum die aangeeft vanaf welke datum het indicatiebesluit rechtsgeldig is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0811</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Einddatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>Datum die aangeeft tot en met welke datum het indicatiebesluit rechtsgeldig is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0812</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Stoornissen" type="aw33:Stoornissen"/>
+            <xs:element minOccurs="0" name="Beperkingen" type="aw33:Beperkingen"/>
+            <xs:element minOccurs="0" name="GeindiceerdeFuncties" type="aw33:GeindiceerdeFuncties"/>
+            <xs:element minOccurs="0" name="StoornisScores" type="aw33:StoornisScores"/>
+            <xs:element minOccurs="0" name="ToegewezenFuncties" type="aw33:ToegewezenFuncties"/>
+            <xs:element minOccurs="0" name="GeindiceerdZorgzwaartepakketten" type="aw33:GeindiceerdZorgzwaartepakketten"/>
+            <xs:element minOccurs="0" name="ToegewezenZorgzwaartepakketten" type="aw33:ToegewezenZorgzwaartepakketten"/>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeindiceerdeFunctie">
+        <xs:sequence>
+            <xs:element name="FunctieCode" type="iwlz:FunctieCode">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van een (reeks van) activiteit(en) in functionele termen die losgekoppeld is van een bepaalde leverancier, waarbij wordt beschreven wat de inhoud en aard van die activiteit is in termen van hulpverlening (wonen, zorg en welzijn).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0907</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Ingangsdatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum die aangeeft vanaf welke datum de geindiceerde zorgeenheid rechtsgeldig is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0908</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Einddatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum die aangeeft tot en met welke datum de geindiceerde zorgeenheid rechtsgeldig is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0909</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Klasse" type="iwlz:Klasse">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een functie, uitgedrukt in een klasse.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0910</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Opslag" type="iwlz:Opslag">
+                <xs:annotation>
+                    <xs:documentation>De omvang van de opslag op de klasse van de functie.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0911</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Leveringsvoorwaarde" type="iwlz:Leveringsvoorwaarde">
+                <xs:annotation>
+                    <xs:documentation>Codering die aangeeft welke leveringsvoorwaarde van toepassing is voor de zorg.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0912</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Vervoer" type="iwlz:Vervoer">
+                <xs:annotation>
+                    <xs:documentation>Indicatie over het van toepassing zijn van vervoer.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0913</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Leveringsvorm" type="iwlz:Leveringsvorm">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de vorm waarin de client de zorg wenst te ontvangen/ontvangt.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 0914</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeindiceerdeFuncties">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="GeindiceerdeFunctie" type="aw33:GeindiceerdeFunctie"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StoornisScore">
+        <xs:sequence>
+            <xs:element name="StoornisVraagCode" type="iwlz:StoornisVraag">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de vraag over stoornissen.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1107</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StoornisVraagScore" type="iwlz:StoornisScore">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de score op een vraag over een stoornis.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1108</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StoornisScores">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="StoornisScore" type="aw33:StoornisScore"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BeperkingScore">
+        <xs:sequence>
+            <xs:element name="Vraag" type="iwlz:BeperkingVraag">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de vraag over een beperking.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1208</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Score" type="iwlz:BeperkingScore">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de score op een vraag over een beperking.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1209</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BeperkingScores">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="BeperkingScore" type="aw33:BeperkingScore"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ToegewezenFunctie">
+        <xs:sequence>
+            <xs:element name="FunctieCode" type="iwlz:FunctieCode">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van een (reeks van) activiteit(en) in functionele termen die losgekoppeld is van een bepaalde leverancier, waarbij wordt beschreven wat de inhoud en aard van die activiteit is in termen van hulpverlening (wonen, zorg en welzijn).</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1507</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Instelling" type="iwlz:AzrAgbCode">
+                <xs:annotation>
+                    <xs:documentation>Identificerende code van een instelling.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1508</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Zorgkantoor" type="iwlz:Uzovi">
+                <xs:annotation>
+                    <xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1509</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Soort" type="iwlz:SoortToewijzing">
+                <xs:annotation>
+                    <xs:documentation>Indicatie van het soort toewijzing.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1510</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ToewijzingDatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum waarop het zorgkantoor de Wlz-zorg aan client toewijst.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1511</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ToewijzingTijd" type="iwlz:Tijd">
+                <xs:annotation>
+                    <xs:documentation>Het tijdstip waarop het zorgkantoor de Wlz-zorg aan client toewijst.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1512</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Ingangsdatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum waarop de toegewezen functie voor de eerste keer geleverd dient te worden.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1513</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Einddatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum waarop de toegewezen zorgeenheid voor de laatste keer geleverd dient te worden.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1514</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="RedenIntrekking" type="iwlz:RedenIntrekking">
+                <xs:annotation>
+                    <xs:documentation>De reden waarom een toewijzing wordt ingetrokken.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1515</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Klasse" type="iwlz:Klasse">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een functie, uitgedrukt in een klasse.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1516</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Opslag" type="iwlz:Opslag">
+                <xs:annotation>
+                    <xs:documentation>De omvang van de opslag op de klasse van de functie.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1517</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Vervoer" type="iwlz:Vervoer">
+                <xs:annotation>
+                    <xs:documentation>Indicatie over het van toepassing zijn van vervoer.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1518</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="InstellingBestemming" type="iwlz:AzrAgbCode">
+                <xs:annotation>
+                    <xs:documentation>Identificerende code van de instelling waar de client zorg zal gaan ontvangen.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 1519</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ToegewezenFuncties">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="ToegewezenFunctie" type="aw33:ToegewezenFunctie"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeindiceerdZorgzwaartepakket">
+        <xs:sequence>
+            <xs:element name="ZzpCode" type="iwlz:ZzpCode">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van een zorgzwaartepakket.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2207</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Ingangsdatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum die aangeeft vanaf welke datum de geindiceerde zorgeenheid rechtsgeldig is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2208</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Einddatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum die aangeeft tot en met welke datum de geindiceerde zorgeenheid rechtsgeldig is.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2209</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Klasse" type="iwlz:Klasse">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een functie, uitgedrukt in een klasse.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2210</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Leveringsvorm" type="iwlz:Leveringsvorm">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de vorm waarin de client de zorg wenst te ontvangen/ontvangt.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2211</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeindiceerdZorgzwaartepakketten">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="GeindiceerdZorgzwaartepakket" type="aw33:GeindiceerdZorgzwaartepakket"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ToegewezenZorgzwaartepakket">
+        <xs:sequence>
+            <xs:element name="ZzpCode" type="iwlz:ZzpCode">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van een zorgzwaartepakket.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2507</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Instelling" type="iwlz:AzrAgbCode">
+                <xs:annotation>
+                    <xs:documentation>Identificerende code van een instelling.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2508</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Zorgkantoor" type="iwlz:Uzovi">
+                <xs:annotation>
+                    <xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2509</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Soort" type="iwlz:SoortToewijzing">
+                <xs:annotation>
+                    <xs:documentation>Indicatie van het soort toewijzing.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2510</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ToewijzingDatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum waarop het zorgkantoor de Wlz-zorg aan client toewijst.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2511</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ToewijzingTijd" type="iwlz:Tijd">
+                <xs:annotation>
+                    <xs:documentation>Het tijdstip waarop het zorgkantoor de Wlz-zorg aan client toewijst.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2512</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Ingangsdatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum waarop de toegewezen functie voor de eerste keer geleverd dient te worden.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2513</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Einddatum" type="iwlz:Datum">
+                <xs:annotation>
+                    <xs:documentation>De datum waarop de toegewezen zorgeenheid voor de laatste keer geleverd dient te worden.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2514</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="RedenIntrekking" type="iwlz:RedenIntrekking">
+                <xs:annotation>
+                    <xs:documentation>De reden waarom een toewijzing wordt ingetrokken.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2515</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Klasse" type="iwlz:Klasse">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een functie, uitgedrukt in een klasse.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2516</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="InstellingBestemming" type="iwlz:AzrAgbCode">
+                <xs:annotation>
+                    <xs:documentation>Identificerende code van de instelling waar de client zorg zal gaan ontvangen.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2517</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Leveringsvorm" type="iwlz:Leveringsvorm">
+                <xs:annotation>
+                    <xs:documentation>Gecodeerde aanduiding van de vorm waarin de client de zorg wenst te ontvangen/ontvangt.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 2518</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Commentaarregels" type="aw33:Commentaarregels"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ToegewezenZorgzwaartepakketten">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="ToegewezenZorgzwaartepakket" type="aw33:ToegewezenZorgzwaartepakket"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Commentaarregel">
+        <xs:sequence>
+            <xs:element name="Regelnummer" type="iwlz:Regelnummer">
+                <xs:annotation>
+                    <xs:documentation>Uniek aanduiding van een regel vrije tekst.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 9803</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Regel" type="iwlz:Regel">
+                <xs:annotation>
+                    <xs:documentation>Vrije tekst (bijvoorbeeld een toelichting) in een bericht.</xs:documentation>
+                    <xs:documentation>EI-rubrieknummer: 9804</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Commentaarregels">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Commentaarregel" type="aw33:Commentaarregel"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
