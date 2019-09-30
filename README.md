@@ -1,5 +1,5 @@
 # XSD-iWlz
-XSD's voor de iWlz
+In deze repository zijn de berichtschema's te vinden die in gebruik
 
 ## Documentatie
 * Informatiemodel iStandaarden iWlz: [Informatiemodellen](https://informatiemodellen.istandaarden.nl)
@@ -13,8 +13,8 @@ XSD's voor de iWlz
 ![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/XSD-iWlz?style=flat-square)
 
 ## Versionering - mutaties
-* iWlz Release 1.0 versie 1.0 [iWlz10_v1.0] - 2016-06-01
-  * Initiele versie
+* [iWlz1.0_v1.0] - iWlz Release 1.0 versie 1.0 - 2015-07-09
+  * Initiele versie xsd's voor iWlz Release 1.0. Datum in productie: 1 januari 2016
 
 ## Licentie
 Copyright &copy; iStandaarden 2019
