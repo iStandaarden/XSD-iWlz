@@ -13,7 +13,8 @@ XSD's voor de iWlz
 ![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/XSD-iWlz?style=flat-square)
 
 ## Versionering - mutaties
-2016-06-01 Initiele Versie - iWlz Release 1.0
+* iWlz Release 1.0 versie 1.0 [iWlz10_v1.0] - 2016-06-01
+  * Initiele versie
 
 ## Licentie
 Copyright &copy; iStandaarden 2019
