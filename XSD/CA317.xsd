@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- iWlz CA317 1.1 - 26-8-2015 -->
-<xs:schema targetNamespace="http://www.istandaarden.nl/iwlz/1_1/ca317/schema/1_1" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ca317="http://www.istandaarden.nl/iwlz/1_1/ca317/schema/1_1" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_1/basisschema/schema/1_1">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/1_1/basisschema/schema/1_1" schemaLocation="basisschema.xsd"></xs:import>
-	<xs:element name="Bericht" type="ca317:Root"></xs:element>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ca317="http://www.istandaarden.nl/iwlz/1_2/ca317/schema/1_2" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2" targetNamespace="http://www.istandaarden.nl/iwlz/1_2/ca317/schema/1_2" elementFormDefault="qualified">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2" schemaLocation="basisschema.xsd"/>
+	<xs:element name="Bericht" type="ca317:Root"/>
 	<xs:complexType name="Root">
 		<xs:sequence>
-			<xs:element name="Header" type="ca317:Header"></xs:element>
-			<xs:element name="Clienten" type="ca317:Clienten"></xs:element>
+			<xs:element name="Header" type="ca317:Header"/>
+			<xs:element name="Clienten" type="ca317:Clienten"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
 		<xs:sequence>
-			<xs:element name="Berichtspecificatie" type="iwlz:CDT_Berichtspecificatie">
+			<xs:element name="BerichtCode">
 				<xs:annotation>
-					<xs:documentation>Aanduiding van het soort bericht, uitgedrukt in een berichtcode, versienummer en subversienummer.</xs:documentation>
+					<xs:documentation>Code ter identificatie van een soort bericht.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="iwlz:LDT_BerichtCode">
+						<xs:pattern value="406"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BerichtVersie" type="iwlz:LDT_BerichtVersie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie) berichtstandaard.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Afzender" type="iwlz:LDT_ZorgkantoorCode">
+			<xs:element name="BerichtSubversie" type="iwlz:LDT_BerichtSubversie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard.</xs:documentation>
+				</xs:annotation>
 			</xs:element>
-			<xs:element name="Berichtidentificatie" type="iwlz:CDT_Berichtidentificatie">
-			</xs:element>
+			<xs:element name="Afzender" type="iwlz:LDT_ZorgkantoorCode"/>
+			<xs:element name="BerichtIdentificatie" type="iwlz:CDT_BerichtIdentificatie"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Clienten">
 		<xs:sequence>
-			<xs:element name="Client" type="ca317:Client" maxOccurs="unbounded"></xs:element>
+			<xs:element name="Client" type="ca317:Client" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -40,38 +52,42 @@
 			<xs:element name="CizCode" type="iwlz:LDT_CizCode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Identificatie van het indicatieorgaan dat de indicatiestelling heeft verricht.</xs:documentation>
+					<xs:documentation>Vanaf 1-1-2016 is Bsn de unieke sleutel voor identificatie van de client, in plaats van de combinatie CizCode + Clientnummer.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Clientnummer" type="iwlz:LDT_Persoonsid">
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van een client bij een indicatieorgaan.</xs:documentation>
+					<xs:documentation>Vanaf 1-1-2016 is Bsn de unieke sleutel voor identificatie van de client, in plaats van de combinatie CizCode + Clientnummer.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum">
-			</xs:element>
+			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum"/>
 			<xs:element name="Geslacht" type="iwlz:LDT_Geslacht">
 				<xs:annotation>
 					<xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Naam" type="iwlz:CDT_VolledigeNaam">
+				<xs:annotation>
+					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
+				</xs:annotation>
 			</xs:element>
 			<xs:element name="StatusAanlevering" type="iwlz:LDT_StatusAanlevering">
 				<xs:annotation>
-					<xs:documentation>Indicatie over de status van de informatie in het record.</xs:documentation>
+					<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Adres" type="ca317:Adres"></xs:element>
-			<xs:element name="GeleverdeFuncties" type="ca317:GeleverdeFuncties" minOccurs="0"></xs:element>
-			<xs:element name="GeleverdeZorgzwaartepakketten" type="ca317:GeleverdeZorgzwaartepakketten" minOccurs="0"></xs:element>
+			<xs:element name="Contact" type="ca317:Contact"/>
+			<xs:element name="GeleverdeFuncties" type="ca317:GeleverdeFuncties" minOccurs="0"/>
+			<xs:element name="GeleverdeZorgzwaartepakketten" type="ca317:GeleverdeZorgzwaartepakketten" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Adressen">
+	<xs:complexType name="Contactgegevens">
 		<xs:sequence>
-			<xs:element name="Adres" type="ca317:Adres" maxOccurs="unbounded"></xs:element>
+			<xs:element name="Contact" type="ca317:Contact" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Adres">
+	<xs:complexType name="Contact">
 		<xs:annotation>
 			<xs:documentation>Het adresrecord bevat adresgegevens van de client of een relatie.</xs:documentation>
 		</xs:annotation>
@@ -81,20 +97,18 @@
 					<xs:documentation>Nadere typering van het adres.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Adres" type="iwlz:CDT_Adres">
-			</xs:element>
-			<xs:element name="Telefoon" type="iwlz:CDT_Telefoonnummers" minOccurs="0">
-			</xs:element>
+			<xs:element name="Adres" type="iwlz:CDT_Adres"/>
+			<xs:element name="Telefoon" type="iwlz:CDT_Telefoonnummers" minOccurs="0"/>
 			<xs:element name="StatusAanlevering" type="iwlz:LDT_StatusAanlevering">
 				<xs:annotation>
-					<xs:documentation>Indicatie over de status van de informatie in het record.</xs:documentation>
+					<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeleverdeFuncties">
 		<xs:sequence>
-			<xs:element name="GeleverdeFunctie" type="ca317:GeleverdeFunctie" maxOccurs="unbounded"></xs:element>
+			<xs:element name="GeleverdeFunctie" type="ca317:GeleverdeFunctie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeleverdeFunctie">
@@ -105,6 +119,7 @@
 			<xs:element name="Aanvraagnummer" type="iwlz:LDT_Nummer" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van een indicatie-aanvraag van een client bij een indicatieorgaan.</xs:documentation>
+					<xs:documentation>Vanaf 1-8-2011 is Besluitnummer de unieke sleutel voor identificatie van een indicatiebesluit, in plaats van de combinatie Aanvraagnummer + Besluitnummer.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Besluitnummer" type="iwlz:LDT_Nummer">
@@ -127,7 +142,7 @@
 					<xs:documentation>Indicatie van het soort toewijzing.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
+			<xs:element name="ToewijzingIngangsdatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
 					<xs:documentation>De datum waarop de toegewezen functie voor de eerste keer geleverd dient te worden.</xs:documentation>
 				</xs:annotation>
@@ -149,14 +164,14 @@
 			</xs:element>
 			<xs:element name="StatusAanlevering" type="iwlz:LDT_StatusAanlevering">
 				<xs:annotation>
-					<xs:documentation>Indicatie over de status van de informatie in het record.</xs:documentation>
+					<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeleverdeZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="GeleverdZorgzwaartepakket" type="ca317:GeleverdZorgzwaartepakket" maxOccurs="unbounded"></xs:element>
+			<xs:element name="GeleverdZorgzwaartepakket" type="ca317:GeleverdZorgzwaartepakket" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeleverdZorgzwaartepakket">
@@ -167,6 +182,7 @@
 			<xs:element name="Aanvraagnummer" type="iwlz:LDT_Nummer" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van een indicatie-aanvraag van een client bij een indicatieorgaan.</xs:documentation>
+					<xs:documentation>Vanaf 1-8-2011 is Besluitnummer de unieke sleutel voor identificatie van een indicatiebesluit, in plaats van de combinatie Aanvraagnummer + Besluitnummer.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Besluitnummer" type="iwlz:LDT_Nummer">
@@ -189,7 +205,7 @@
 					<xs:documentation>Indicatie van het soort toewijzing.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
+			<xs:element name="ToewijzingIngangsdatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
 					<xs:documentation>De datum waarop de toegewezen functie voor de eerste keer geleverd dient te worden.</xs:documentation>
 				</xs:annotation>
@@ -226,9 +242,10 @@
 			</xs:element>
 			<xs:element name="StatusAanlevering" type="iwlz:LDT_StatusAanlevering">
 				<xs:annotation>
-					<xs:documentation>Indicatie over de status van de informatie in het record.</xs:documentation>
+					<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
+<!-- generated on 30-06-2016 -->

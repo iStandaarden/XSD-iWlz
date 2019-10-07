@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- iWlz AW318 1.1 - 21-9-2015 -->
-<xs:schema targetNamespace="http://www.istandaarden.nl/iwlz/1_1/aw318/schema/1_1" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aw318="http://www.istandaarden.nl/iwlz/1_1/aw318/schema/1_1" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_1/basisschema/schema/1_1">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/1_1/basisschema/schema/1_1" schemaLocation="basisschema.xsd"></xs:import>
+<xs:schema targetNamespace="http://www.istandaarden.nl/iwlz/1_2/aw318/schema/1_2" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aw318="http://www.istandaarden.nl/iwlz/1_2/aw318/schema/1_2" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2" schemaLocation="basisschema.xsd"></xs:import>
 	<xs:element name="Bericht" type="aw318:Root"></xs:element>
 	<xs:complexType name="Root">
 
@@ -13,37 +12,68 @@
 	<xs:complexType name="Header">
 
 		<xs:sequence>
-			<xs:element name="Berichtspecificatie" type="iwlz:CDT_Berichtspecificatie">
+			<xs:element name="BerichtCode">
 				<xs:annotation>
-					<xs:documentation>Aanduiding van het soort bericht, uitgedrukt in een berichtcode, versienummer en subversienummer.</xs:documentation>
+					<xs:documentation>Code ter identificatie van een soort bericht.</xs:documentation>
 				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base ="iwlz:LDT_BerichtCode">
+						<xs:pattern value ="405"/>
+					</xs:restriction>
+				</xs:simpleType>
+
+			</xs:element>
+			<xs:element name="BerichtVersie" type="iwlz:LDT_BerichtVersie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie) berichtstandaard.</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="BerichtSubversie" type="iwlz:LDT_BerichtSubversie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard.</xs:documentation>
+				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Afzender" type="iwlz:LDT_ZorgkantoorCode">
 				<xs:annotation>
 					<xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Periode" type="iwlz:CDT_GeslotenPeriode">
 
+
 			</xs:element>
-			<xs:element name="Berichtidentificatie" type="iwlz:CDT_Berichtidentificatie">
+			<xs:element name="BerichtIdentificatie" type="iwlz:CDT_BerichtIdentificatie">
 				<xs:annotation>
 					<xs:documentation>Naam of nummer en dagtekening ter identificatie van een totale aanlevering.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="IdentificatieRetour" type="iwlz:LDT_IdentificatieBericht">
 
-			</xs:element>
-			<xs:element name="Dagtekening" type="iwlz:LDT_Datum">
 
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode" minOccurs="0">
+			<xs:element name="DagtekeningRetour" type="iwlz:LDT_Datum">
+
 
 			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
+			<xs:element name="RetourCodes" type="aw318:RetourCodes" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Retour">
+		<xs:sequence>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RetourCodes">
 
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
+		<xs:sequence>
+			<xs:element name="RetourCode" type="iwlz:LDT_RetourCode" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Gecodeerde aanduiding in een retourbericht van het resultaat van de beoordeling van een (deel van het) ontvangen bericht.</xs:documentation>
+				</xs:annotation>
 
 			</xs:element>
 		</xs:sequence>
@@ -58,29 +88,26 @@
 		<xs:sequence>
 			<xs:element name="VolgnummerClient" type="iwlz:LDT_Nummer">
 
+
 			</xs:element>
 			<xs:element name="Geslacht" type="iwlz:LDT_Geslacht">
+
 
 			</xs:element>
 			<xs:element name="Geboortejaar" type="iwlz:LDT_Jaar">
 
+
 			</xs:element>
 			<xs:element name="Postcode" type="iwlz:LDT_Postcode" minOccurs="0">
+
 
 			</xs:element>
 			<xs:element name="LandCode" type="iwlz:LDT_LandCode">
 
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
-
-			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
 
 			</xs:element>
 			<xs:element name="Indicaties" type="aw318:Indicaties"></xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicaties">
@@ -93,29 +120,26 @@
 		<xs:sequence>
 			<xs:element name="VolgnummerIndicatie" type="iwlz:LDT_Nummer">
 
+
 			</xs:element>
 			<xs:element name="Soort" type="iwlz:LDT_SoortIndicatie">
+
 
 			</xs:element>
 			<xs:element name="Grondslagen" type="iwlz:CDT_Grondslagen" minOccurs="0">
 
+
 			</xs:element>
 			<xs:element name="Afgiftedatum" type="iwlz:LDT_Datum">
+
 
 			</xs:element>
 			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
 
+
 			</xs:element>
 			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
 
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
-
-			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
 
 			</xs:element>
 			<xs:element name="Stoornissen" type="aw318:Stoornissen" minOccurs="0"></xs:element>
@@ -124,6 +148,7 @@
 			<xs:element name="WachtlijstFuncties" type="aw318:WachtlijstFuncties" minOccurs="0"></xs:element>
 			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="aw318:GeindiceerdeZorgzwaartepakketten" minOccurs="0"></xs:element>
 			<xs:element name="WachtlijstZorgzwaartepakketten" type="aw318:WachtlijstZorgzwaartepakketten" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornissen">
@@ -136,25 +161,21 @@
 		<xs:sequence>
 			<xs:element name="Grondslag" type="iwlz:LDT_Grondslag">
 
+
 			</xs:element>
 			<xs:element name="DiagnoseCodelijst" type="iwlz:LDT_DiagnoseCodelijst">
+
 
 			</xs:element>
 			<xs:element name="DiagnoseSubcodelijst" type="iwlz:LDT_DiagnoseSubcodelijst" minOccurs="0">
 
+
 			</xs:element>
 			<xs:element name="ZiektebeeldStoornis" type="iwlz:LDT_StoornisCode">
 
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
 
 			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperkingen">
@@ -167,16 +188,9 @@
 		<xs:sequence>
 			<xs:element name="Beperking" type="iwlz:LDT_BeperkingCategorie">
 
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
 
 			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFuncties">
@@ -189,40 +203,39 @@
 		<xs:sequence>
 			<xs:element name="FunctieCode" type="iwlz:LDT_FunctieCode">
 
+
 			</xs:element>
 			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
+
 
 			</xs:element>
 			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
 
+
 			</xs:element>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse">
+
 
 			</xs:element>
 			<xs:element name="VoorkeurClient" type="iwlz:LDT_VoorkeurClient" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de voorkeur van de client ten aanzien van de zorglevering.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Financiering" type="iwlz:LDT_Financiering">
 				<xs:annotation>
 					<xs:documentation>Aanduiding van de wijze waarop de zorg gefinancierd wordt.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="ZietAfVanZorg" type="iwlz:LDT_JaNee">
 				<xs:annotation>
 					<xs:documentation>Aanduiding of de client heeft aangegeven dat hij de geindiceerde zorg (nog) niet wil ontvangen.</xs:documentation>
 				</xs:annotation>
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
 
 			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="WachtlijstFuncties">
@@ -235,38 +248,38 @@
 		<xs:sequence>
 			<xs:element name="FunctieCode" type="iwlz:LDT_FunctieCode">
 
+
 			</xs:element>
 			<xs:element name="Soort" type="iwlz:LDT_SoortToewijzing">
+
 
 			</xs:element>
 			<xs:element name="Instelling" type="iwlz:LDT_iWlzAgbCode" minOccurs="0">
 
+
 			</xs:element>
 			<xs:element name="Toewijzingsdatum" type="iwlz:LDT_Datum">
+
 
 			</xs:element>
 			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
 
+
 			</xs:element>
 			<xs:element name="Begindatum" type="iwlz:LDT_Datum" minOccurs="0">
+
 
 			</xs:element>
 			<xs:element name="Mutatiedatum" type="iwlz:LDT_Datum" minOccurs="0">
 
+
 			</xs:element>
 			<xs:element name="Leveringsvorm" type="iwlz:LDT_Leveringsvorm">
 
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
-
-			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
 
 			</xs:element>
 			<xs:element name="Leveringsstatussen" type="aw318:Leveringsstatussen" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Leveringsstatussen">
@@ -279,19 +292,13 @@
 		<xs:sequence>
 			<xs:element name="IngangsdatumStatus" type="iwlz:LDT_Datum">
 
+
 			</xs:element>
 			<xs:element name="Leveringsstatus" type="iwlz:LDT_Leveringsstatus">
 
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
 
 			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeZorgzwaartepakketten">
@@ -304,40 +311,39 @@
 		<xs:sequence>
 			<xs:element name="ZzpCode" type="iwlz:LDT_ZzpCode">
 
+
 			</xs:element>
 			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
+
 
 			</xs:element>
 			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
 
+
 			</xs:element>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse">
+
 
 			</xs:element>
 			<xs:element name="VoorkeurClient" type="iwlz:LDT_VoorkeurClient" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de voorkeur van de client ten aanzien van plaats en vorm van zorglevering.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Financiering" type="iwlz:LDT_Financiering">
 				<xs:annotation>
 					<xs:documentation>Aanduiding van de wijze waarop de zorg gefinancierd wordt.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="ZietAfVanZorg" type="iwlz:LDT_JaNee">
 				<xs:annotation>
 					<xs:documentation>Aanduiding of de client heeft aangegeven dat hij de geindiceerde zorg (nog) niet wil ontvangen.</xs:documentation>
 				</xs:annotation>
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
 
 			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="WachtlijstZorgzwaartepakketten">
@@ -350,39 +356,39 @@
 		<xs:sequence>
 			<xs:element name="ZzpCode" type="iwlz:LDT_ZzpCode">
 
+
 			</xs:element>
 			<xs:element name="Soort" type="iwlz:LDT_SoortToewijzing">
+
 
 			</xs:element>
 			<xs:element name="Instelling" type="iwlz:LDT_iWlzAgbCode" minOccurs="0">
 
+
 			</xs:element>
 			<xs:element name="Toewijzingsdatum" type="iwlz:LDT_Datum">
+
 
 			</xs:element>
 			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
 
+
 			</xs:element>
 			<xs:element name="Begindatum" type="iwlz:LDT_Datum" minOccurs="0">
+
 
 			</xs:element>
 			<xs:element name="Mutatiedatum" type="iwlz:LDT_Datum" minOccurs="0">
 
+
 			</xs:element>
 			<xs:element name="Leveringsvorm" type="iwlz:LDT_Leveringsvorm">
 
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode">
-
-			</xs:element>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0">
-
-			</xs:element>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0">
 
 			</xs:element>
 			<xs:element name="Leveringsstatussen" type="aw318:Leveringsstatussen" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="aw318:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
-
+<!-- generated on 28-06-2016 -->

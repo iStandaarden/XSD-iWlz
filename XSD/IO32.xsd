@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- iWlz IO32 1.1 - 26-8-2015 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:io32="http://www.istandaarden.nl/iwlz/1_1/io32/schema/1_1" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_1/basisschema/schema/1_1" targetNamespace="http://www.istandaarden.nl/iwlz/1_1/io32/schema/1_1" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/1_1/basisschema/schema/1_1" schemaLocation="basisschema.xsd"/>
-	<xs:element name="Bericht" type="io32:Root"/>
+<xs:schema targetNamespace="http://www.istandaarden.nl/iwlz/1_2/io32/schema/1_2" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:io32="http://www.istandaarden.nl/iwlz/1_2/io32/schema/1_2" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2" schemaLocation="basisschema.xsd"></xs:import>
+	<xs:element name="Bericht" type="io32:Root"></xs:element>
 	<xs:complexType name="Root">
+
 		<xs:sequence>
-			<xs:element name="Header" type="io32:Header"/>
-			<xs:element name="Clienten" type="io32:Clienten" minOccurs="0"/>
+			<xs:element name="Header" type="io32:Header"></xs:element>
+			<xs:element name="Clienten" type="io32:Clienten" minOccurs="0"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -14,31 +14,71 @@
 			<xs:documentation>De header bevat de identificerende gegevens van het bestand.  </xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Berichtspecificatie" type="iwlz:CDT_Berichtspecificatie">
+			<xs:element name="BerichtCode">
 				<xs:annotation>
-					<xs:documentation>Aanduiding van het soort bericht, uitgedrukt in een berichtcode, versienummer en subversienummer.</xs:documentation>
+					<xs:documentation>Code ter identificatie van een soort bericht.</xs:documentation>
 				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base ="iwlz:LDT_BerichtCode">
+						<xs:pattern value ="389"/>
+					</xs:restriction>
+				</xs:simpleType>
+
+			</xs:element>
+			<xs:element name="BerichtVersie" type="iwlz:LDT_BerichtVersie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie) berichtstandaard.</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
+			<xs:element name="BerichtSubversie" type="iwlz:LDT_BerichtSubversie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard.</xs:documentation>
+				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Ontvanger" type="iwlz:LDT_ZorgkantoorCode">
 				<xs:annotation>
 					<xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="Berichtidentificatie" type="iwlz:CDT_Berichtidentificatie">
+			<xs:element name="BerichtIdentificatie" type="iwlz:CDT_BerichtIdentificatie">
 				<xs:annotation>
 					<xs:documentation>Aanduiding ter identificatie van het bericht, bevat de datum dagtekening en een nummer.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="IdentificatieRetour" type="iwlz:LDT_IdentificatieBericht"/>
-			<xs:element name="Dagtekening" type="iwlz:LDT_Datum"/>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
+			<xs:element name="IdentificatieRetour" type="iwlz:LDT_IdentificatieBericht">
+
+
+			</xs:element>
+			<xs:element name="DagtekeningRetour" type="iwlz:LDT_Datum">
+
+
+			</xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Retour">
+		<xs:sequence>
+			<xs:element name="RetourCodes" type="io32:RetourCodes" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RetourCodes">
+
+		<xs:sequence>
+			<xs:element name="RetourCode" type="iwlz:LDT_RetourCode" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Gecodeerde aanduiding in een retourbericht van het resultaat van de beoordeling van een (deel van het) ontvangen bericht.</xs:documentation>
+				</xs:annotation>
+
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Clienten">
 		<xs:sequence>
-			<xs:element name="Client" type="io32:Client" maxOccurs="unbounded"/>
+			<xs:element name="Client" type="io32:Client" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -50,83 +90,97 @@
 				<xs:annotation>
 					<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="GeheimeClient" type="iwlz:LDT_JaNee">
 				<xs:annotation>
 					<xs:documentation>Indicatie of er vanwege veiligheidsoverwegingen extra zorgvuldig omgegaan moet worden met de gegevens van een client.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="CizCode" type="iwlz:LDT_CizCode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Identificatie van het indicatieorgaan dat de indicatiestelling heeft verricht.</xs:documentation>
+					<xs:documentation>Vanaf 1-1-2016 is Bsn de unieke sleutel voor identificatie van de client, in plaats van de combinatie CizCode + Clientnummer.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Clientnummer" type="iwlz:LDT_Persoonsid">
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van een client bij een indicatieorgaan.</xs:documentation>
+					<xs:documentation>Vanaf 1-1-2016 is Bsn de unieke sleutel voor identificatie van de client, in plaats van de combinatie CizCode + Clientnummer.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum">
 				<xs:annotation>
 					<xs:documentation>Geboortedatum van de client of relatie.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Geslacht" type="iwlz:LDT_Geslacht">
 				<xs:annotation>
 					<xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="BurgerlijkeStaat" type="iwlz:LDT_BurgerlijkeStaat" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Unieke aanduiding die de rechtspositie van een client al dan niet in relatie tot een of meer personen beschrijft.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Naam" type="iwlz:CDT_VolledigeNaam">
 				<xs:annotation>
-					<xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Leefeenheid" type="iwlz:LDT_Leefeenheid">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de leefsituatie van een client.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Huisarts" type="iwlz:LDT_AgbCode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de huisarts van de client, opgebouwd uit zorgverlenerssoort gevolgd door een uniek zorgverlenersnummer.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Communicatie" type="iwlz:CDT_Communicatie" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de bijzondere vorm van communicatie die gebruikt dient te worden.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="JuridischeStatus" type="iwlz:LDT_JuridischeStatus" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Juridische situatie die voor de client van toepassing is op het moment van indicatiestelling.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Bopz" type="iwlz:CDT_BOPZ" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Aanduiding of Bopz van toepassing is en vanaf welke datum.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="Relaties" type="io32:Relaties" minOccurs="0"/>
-			<xs:element name="Adressen" type="io32:Adressen"/>
-			<xs:element name="Indicatie" type="io32:Indicatie"/>
-			<xs:element name="Commentaarregels" type="io32:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
+			<xs:element name="Relaties" type="io32:Relaties" minOccurs="0"></xs:element>
+			<xs:element name="Contactgegevens" type="io32:Contactgegevens"></xs:element>
+			<xs:element name="Indicatie" type="io32:Indicatie"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relaties">
 		<xs:sequence>
-			<xs:element name="Relatie" type="io32:Relatie" maxOccurs="unbounded"/>
+			<xs:element name="Relatie" type="io32:Relatie" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relatie">
@@ -138,44 +192,48 @@
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van de relatie van een client.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Volgorde" type="iwlz:LDT_RelatieVolgorde" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Aanduiding van de prioriteit van de contactpersoon.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Soort" type="iwlz:LDT_SoortRelatie">
 				<xs:annotation>
 					<xs:documentation>De soort relatie die een persoon ten opzichte van de client heeft.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Geboortedatum van de client of relatie.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Geslacht" type="iwlz:LDT_Geslacht" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Naam" type="iwlz:CDT_VolledigeNaam">
 				<xs:annotation>
-					<xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="Adres" type="io32:Adres"/>
+			<xs:element name="Contact" type="io32:Contact"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Adressen">
+	<xs:complexType name="Contactgegevens">
 		<xs:sequence>
-			<xs:element name="Adres" type="io32:Adres" maxOccurs="unbounded"/>
+			<xs:element name="Contact" type="io32:Contact" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Adres">
+	<xs:complexType name="Contact">
 		<xs:annotation>
 			<xs:documentation>Gegevens voor de aanduiding van het adres van de client of relatie.</xs:documentation>
 		</xs:annotation>
@@ -184,45 +242,44 @@
 				<xs:annotation>
 					<xs:documentation>Nadere typering van het adres.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Adres" type="iwlz:CDT_Adres" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Adres van de client of relatie.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="Organisatie" type="iwlz:LDT_OrganisatieNaam" minOccurs="0">
+			<xs:element name="Organisatie" type="iwlz:LDT_Organisatienaam" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De naam van een organisatie waar de client of relatie verblijft.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Telefoon" type="iwlz:CDT_Telefoonnummers" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Het telefoonnummer van de client of relatie.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Emailadres" type="iwlz:LDT_Emailadres" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Het e-mailadres van de client of relatie.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="Begindatum" type="iwlz:LDT_Datum" minOccurs="0">
+			<xs:element name="Periode" type="iwlz:CDT_OpenPeriode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De begindatum van het verblijf van de client of relatie op een tijdelijk adres.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>De einddatum van het verblijf van de client of relatie op een tijdelijk adres.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicaties">
 		<xs:sequence>
-			<xs:element name="Indicatie" type="io32:Indicatie" maxOccurs="unbounded"/>
+			<xs:element name="Indicatie" type="io32:Indicatie" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicatie">
@@ -234,55 +291,61 @@
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van een indicatiebesluit.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Soort" type="iwlz:LDT_SoortIndicatie">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de soort indicatie.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Grondslagen" type="iwlz:CDT_Grondslagen" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De verzameling van gecodeerde aanduidingen die aangeven wat ten grondslag ligt aan het indicatiebesluit.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Afgiftedatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
 					<xs:documentation>De datum waarop het indicatiebesluit is afgegeven.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
 					<xs:documentation>De datum die aangeeft vanaf welke datum het indicatiebesluit rechtsgeldig is.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Datum die aangeeft tot en met welke datum het indicatiebesluit rechtsgeldig is.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Meerzorg" type="iwlz:LDT_JaNee" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding waarmee het CIZ aangeeft of meerzorg van toepassing zou kunnen zijn.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="Stoornissen" type="io32:Stoornissen" minOccurs="0"/>
-			<xs:element name="Beperkingen" type="io32:Beperkingen" minOccurs="0"/>
-			<xs:element name="GeindiceerdeFuncties" type="io32:GeindiceerdeFuncties" minOccurs="0"/>
-			<xs:element name="StoornisScores" type="io32:StoornisScores" minOccurs="0"/>
-			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="io32:GeindiceerdeZorgzwaartepakketten" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io32:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
+			<xs:element name="Stoornissen" type="io32:Stoornissen" minOccurs="0"></xs:element>
+			<xs:element name="Beperkingen" type="io32:Beperkingen" minOccurs="0"></xs:element>
+			<xs:element name="GeindiceerdeFuncties" type="io32:GeindiceerdeFuncties" minOccurs="0"></xs:element>
+			<xs:element name="StoornisScores" type="io32:StoornisScores" minOccurs="0"></xs:element>
+			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="io32:GeindiceerdeZorgzwaartepakketten" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornissen">
 		<xs:sequence>
-			<xs:element name="Stoornis" type="io32:Stoornis" maxOccurs="unbounded"/>
+			<xs:element name="Stoornis" type="io32:Stoornis" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornis">
@@ -294,40 +357,44 @@
 				<xs:annotation>
 					<xs:documentation>Codering die aangeeft wat ten grondslag ligt aan de zorg.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="DiagnoseCodelijst" type="iwlz:LDT_DiagnoseCodelijst">
 				<xs:annotation>
 					<xs:documentation>Code die aangeeft welke diagnosecodelijst gebruikt is, met aanduiding van de oorsprong van de codes en/of de beheerder ervan.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="DiagnoseSubcodelijst" type="iwlz:LDT_DiagnoseSubcodelijst" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Code die aangeeft welke subcode van een diagnosecodelijst gebruikt is.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="ZiektebeeldStoornis" type="iwlz:LDT_StoornisCode">
 				<xs:annotation>
 					<xs:documentation>Code die het ziektebeeld of de stoornis van een client identificeert.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Prognose" type="iwlz:LDT_Prognose" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Aanduiding welke prognose er is inzake het ziektebeeld of de stoornis.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io32:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperkingen">
 		<xs:sequence>
-			<xs:element name="Beperking" type="io32:Beperking" maxOccurs="unbounded"/>
+			<xs:element name="Beperking" type="io32:Beperking" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperking">
@@ -339,26 +406,27 @@
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de categorie van de beperking.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Duur" type="iwlz:LDT_Duur" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Code die aangeeft wat de verwachte duur is van de categorie beperking.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="BeperkingScores" type="io32:BeperkingScores" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io32:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
+			<xs:element name="BeperkingScores" type="io32:BeperkingScores" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScores">
 		<xs:sequence>
-			<xs:element name="BeperkingScore" type="io32:BeperkingScore" maxOccurs="unbounded"/>
+			<xs:element name="BeperkingScore" type="io32:BeperkingScore" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScore">
@@ -370,25 +438,26 @@
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de vraag over een beperking.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Score" type="iwlz:LDT_BeperkingScore">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de score op een vraag over een beperking.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io32:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFuncties">
 		<xs:sequence>
-			<xs:element name="GeindiceerdeFunctie" type="io32:GeindiceerdeFunctie" maxOccurs="unbounded"/>
+			<xs:element name="GeindiceerdeFunctie" type="io32:GeindiceerdeFunctie" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFunctie">
@@ -400,65 +469,74 @@
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van een zorgfunctie.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
 					<xs:documentation>De datum die aangeeft vanaf welke datum de geindiceerde zorgeenheid rechtsgeldig is.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De datum die aangeeft tot en met welke datum de geindiceerde zorgeenheid rechtsgeldig is.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een zorgeenheid, uitgedrukt in een klasse.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Opslag" type="iwlz:LDT_Opslag" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De omvang van de opslag op de klasse van de functie.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Leveringsvoorwaarde" type="iwlz:LDT_Leveringsvoorwaarde">
 				<xs:annotation>
 					<xs:documentation>Codering die aangeeft welke leveringsvoorwaarde van toepassing is op de zorg.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Vervoer" type="iwlz:LDT_Vervoer" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding die aangeeft of vervoer van toepassing is.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="VoorkeurClient" type="iwlz:LDT_VoorkeurClient" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de voorkeur van de client ten aanzien van plaats en vorm van zorglevering.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="InstellingVoorkeur" type="iwlz:LDT_iWlzAgbCode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Identificerende code van de instelling die de voorkeur heeft van de client.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Financiering" type="iwlz:LDT_Financiering">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de regeling op basis waarvan de zorg gefinancierd wordt.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io32:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StoornisScores">
 		<xs:sequence>
-			<xs:element name="StoornisScore" type="io32:StoornisScore" maxOccurs="unbounded"/>
+			<xs:element name="StoornisScore" type="io32:StoornisScore" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StoornisScore">
@@ -470,25 +548,26 @@
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de vraag over een stoornis.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Score" type="iwlz:LDT_StoornisScore">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de score op een vraag over stoornissen.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io32:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="GeindiceerdZorgzwaartepakket" type="io32:GeindiceerdZorgzwaartepakket" maxOccurs="unbounded"/>
+			<xs:element name="GeindiceerdZorgzwaartepakket" type="io32:GeindiceerdZorgzwaartepakket" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdZorgzwaartepakket">
@@ -500,53 +579,52 @@
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van een zorgzwaartepakket.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Ingangsdatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
 					<xs:documentation>De datum die aangeeft vanaf welke datum de geindiceerde zorgeenheid rechtsgeldig is.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De datum die aangeeft tot en met welke datum de geindiceerde zorgeenheid rechtsgeldig is.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een zorgeenheid, uitgedrukt in een klasse.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="VoorkeurClient" type="iwlz:LDT_VoorkeurClient" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de voorkeur van de client ten aanzien van plaats en vorm van zorglevering.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="InstellingVoorkeur" type="iwlz:LDT_iWlzAgbCode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Identificerende code van de instelling die de voorkeur heeft van de client.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
 			<xs:element name="Financiering" type="iwlz:LDT_Financiering">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de regeling op basis waarvan de zorg gefinancierd wordt.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-			<xs:element name="RetourCode01" type="iwlz:LDT_RetourCode"/>
-			<xs:element name="RetourCode02" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="RetourCode03" type="iwlz:LDT_RetourCode" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io32:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
+
 			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="Commentaarregels">
-		<xs:annotation>
-			<xs:documentation>Commentaarregels</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="Commentaarregel" type="iwlz:CDT_Commentaar" maxOccurs="9999"/>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
+<!-- generated on 30-06-2016 -->

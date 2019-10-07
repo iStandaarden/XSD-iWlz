@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2009 (http://www.altova.com) by College voor Zorgverzekeringen (College voor Zorgverzekeringen) -->
-<!-- iWlz IO31 1.1 - 26-8-2015 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:io31="http://www.istandaarden.nl/iwlz/1_1/io31/schema/1_1" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_1/basisschema/schema/1_1" targetNamespace="http://www.istandaarden.nl/iwlz/1_1/io31/schema/1_1" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/1_1/basisschema/schema/1_1" schemaLocation="basisschema.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:io31="http://www.istandaarden.nl/iwlz/1_2/io31/schema/1_2" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2" targetNamespace="http://www.istandaarden.nl/iwlz/1_2/io31/schema/1_2" elementFormDefault="qualified">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2" schemaLocation="basisschema.xsd"/>
 	<xs:element name="Bericht" type="io31:Root"/>
 	<xs:complexType name="Root">
 		<xs:sequence>
@@ -15,9 +13,24 @@
 			<xs:documentation>De header bevat de identificerende gegevens van het bestand.  </xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Berichtspecificatie" type="iwlz:CDT_Berichtspecificatie">
+			<xs:element name="BerichtCode">
 				<xs:annotation>
-					<xs:documentation>Aanduiding van het soort bericht, uitgedrukt in een berichtcode, versienummer en subversienummer.</xs:documentation>
+					<xs:documentation>Code ter identificatie van een soort bericht.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="iwlz:LDT_BerichtCode">
+						<xs:pattern value="388"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BerichtVersie" type="iwlz:LDT_BerichtVersie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie) berichtstandaard.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BerichtSubversie" type="iwlz:LDT_BerichtSubversie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Ontvanger" type="iwlz:LDT_ZorgkantoorCode">
@@ -25,7 +38,7 @@
 					<xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Berichtidentificatie" type="iwlz:CDT_Berichtidentificatie">
+			<xs:element name="BerichtIdentificatie" type="iwlz:CDT_BerichtIdentificatie">
 				<xs:annotation>
 					<xs:documentation>Aanduiding ter identificatie van het bericht, bevat de datum dagtekening en een nummer.</xs:documentation>
 				</xs:annotation>
@@ -55,11 +68,13 @@
 			<xs:element name="CizCode" type="iwlz:LDT_CizCode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Identificatie van het indicatieorgaan dat de indicatiestelling heeft verricht.</xs:documentation>
+					<xs:documentation>Vanaf 1-1-2016 is Bsn de unieke sleutel voor identificatie van de client, in plaats van de combinatie CizCode + Clientnummer.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Clientnummer" type="iwlz:LDT_Persoonsid">
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van een client bij een indicatieorgaan.</xs:documentation>
+					<xs:documentation>Vanaf 1-1-2016 is Bsn de unieke sleutel voor identificatie van de client, in plaats van de combinatie CizCode + Clientnummer.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum">
@@ -79,7 +94,7 @@
 			</xs:element>
 			<xs:element name="Naam" type="iwlz:CDT_VolledigeNaam">
 				<xs:annotation>
-					<xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Leefeenheid" type="iwlz:LDT_Leefeenheid">
@@ -107,14 +122,14 @@
 					<xs:documentation>Aanduiding of Bopz van toepassing is en vanaf welke datum.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Relaties" type="io31:Relaties" minOccurs="0"/>
-			<xs:element name="Adressen" type="io31:Adressen"/>
-			<xs:element name="Indicatie" type="io31:Indicatie"/>
-			<xs:element name="Commentaarregels" type="io31:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="Relaties" type="io31:Relaties" minOccurs="0"/>
+			<xs:element name="Contactgegevens" type="io31:Contactgegevens"/>
+			<xs:element name="Indicatie" type="io31:Indicatie"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relaties">
@@ -154,18 +169,18 @@
 			</xs:element>
 			<xs:element name="Naam" type="iwlz:CDT_VolledigeNaam">
 				<xs:annotation>
-					<xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Adres" type="io31:Adres"/>
+			<xs:element name="Contact" type="io31:Contact"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Adressen">
+	<xs:complexType name="Contactgegevens">
 		<xs:sequence>
-			<xs:element name="Adres" type="io31:Adres" maxOccurs="unbounded"/>
+			<xs:element name="Contact" type="io31:Contact" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Adres">
+	<xs:complexType name="Contact">
 		<xs:annotation>
 			<xs:documentation>Gegevens voor de aanduiding van het adres van de client of relatie.</xs:documentation>
 		</xs:annotation>
@@ -180,7 +195,7 @@
 					<xs:documentation>Adres van de client of relatie.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Organisatie" type="iwlz:LDT_OrganisatieNaam" minOccurs="0">
+			<xs:element name="Organisatie" type="iwlz:LDT_Organisatienaam" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De naam van een organisatie waar de client of relatie verblijft.</xs:documentation>
 				</xs:annotation>
@@ -195,14 +210,9 @@
 					<xs:documentation>Het e-mailadres van de client of relatie.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Begindatum" type="iwlz:LDT_Datum" minOccurs="0">
+			<xs:element name="Periode" type="iwlz:CDT_OpenPeriode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De begindatum van het verblijf van de client of relatie op een tijdelijk adres.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>De einddatum van het verblijf van de client of relatie op een tijdelijk adres.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -252,16 +262,16 @@
 					<xs:documentation>Gecodeerde aanduiding waarmee het CIZ aangeeft of meerzorg van toepassing zou kunnen zijn.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="Stoornissen" type="io31:Stoornissen" minOccurs="0"/>
 			<xs:element name="Beperkingen" type="io31:Beperkingen" minOccurs="0"/>
 			<xs:element name="GeindiceerdeFuncties" type="io31:GeindiceerdeFuncties" minOccurs="0"/>
 			<xs:element name="StoornisScores" type="io31:StoornisScores" minOccurs="0"/>
 			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="io31:GeindiceerdeZorgzwaartepakketten" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io31:Commentaarregels" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornissen">
@@ -299,7 +309,7 @@
 					<xs:documentation>Aanduiding welke prognose er is inzake het ziektebeeld of de stoornis.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Commentaarregels" type="io31:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
@@ -326,12 +336,12 @@
 					<xs:documentation>Code die aangeeft wat de verwachte duur is van de categorie beperking.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="BeperkingScores" type="io31:BeperkingScores" minOccurs="0"/>
-			<xs:element name="Commentaarregels" type="io31:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="BeperkingScores" type="io31:BeperkingScores" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScores">
@@ -354,7 +364,7 @@
 					<xs:documentation>Gecodeerde aanduiding van de score op een vraag over een beperking.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Commentaarregels" type="io31:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
@@ -421,7 +431,7 @@
 					<xs:documentation>Gecodeerde aanduiding van de regeling op basis waarvan de zorg gefinancierd wordt.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Commentaarregels" type="io31:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
@@ -448,7 +458,7 @@
 					<xs:documentation>Gecodeerde aanduiding van de score op een vraag over stoornissen.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Commentaarregels" type="io31:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
@@ -500,19 +510,12 @@
 					<xs:documentation>Gecodeerde aanduiding van de regeling op basis waarvan de zorg gefinancierd wordt.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Commentaarregels" type="io31:Commentaarregels" minOccurs="0">
+			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Commentaarregels">
-		<xs:annotation>
-			<xs:documentation>Commentaarregels</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="Commentaarregel" type="iwlz:CDT_Commentaar" maxOccurs="9999"/>
-		</xs:sequence>
-	</xs:complexType>
 </xs:schema>
+<!-- generated on 30-06-2016 -->

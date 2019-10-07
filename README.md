@@ -13,6 +13,10 @@ In deze repository zijn de berichtschema's te vinden die in gebruik
 ![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/XSD-iWlz?style=flat-square)
 
 ## Versionering - mutaties
+* [iWlz1.2_v1.0] - iWlz Release 1.2 versie 1.0 - 01-07-2016
+  * Xsd's voor iWlz Release 1.2
+  * Berichten io35/io36 zijn niet meer van toepassing
+
 * [iWlz1.1_v1.0] - iWlz Release 1.1 versie 1.0 - 26-8-2015
   * Xsd's voor iWlz Release 1.1
   * Datum in productie: 1 januari 2016
