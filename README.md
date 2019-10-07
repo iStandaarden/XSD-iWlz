@@ -6,15 +6,21 @@ In deze repository zijn de berichtschema's te vinden die in gebruik
 * Portaal voor iStandaarden in de Zorg en Ondersteuning: [homepagina iStandaarden](https://www.istandaarden.nl)
 
 ## Contact of meer vragen
-* Servicedesk iStandaarden - [@serviceDesk](info@istandaarden.nl)
+* Servicedesk iStandaarden - [info@istandaarden.nl](mailto:info@istandaarden.nl)
 
 ## Laatste versie
 ![Laatste release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iStandaarden/XSD-iWlz?include_prereleases&style=flat-square)
 ![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/XSD-iWlz?style=flat-square)
 
 ## Versionering - mutaties
-* [iWlz1.0_v1.0] - iWlz Release 1.0 versie 1.0 - 2015-07-09
-  * Initiele versie xsd's voor iWlz Release 1.0. Datum in productie: 1 januari 2016
+* [iWlz1.1_v1.0] - iWlz Release 1.1 versie 1.0 - 26-8-2015
+  * Xsd's voor iWlz Release 1.1
+  * Datum in productie: 1 januari 2016
+  * wijziging Namespace van "zorgregistratie.nl" naar "iStandaarden.nl"
+  
+* [iWlz1.0_v1.0] - iWlz Release 1.0 versie 1.0 - 09-07-2015
+  * Initiele versie xsd's voor iWlz Release 1.0. 
+  * Datum in productie: niet
 
 ## Licentie
 Copyright &copy; iStandaarden 2019
