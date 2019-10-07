@@ -13,7 +13,12 @@ In deze repository zijn de berichtschema's te vinden die in gebruik
 ![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/XSD-iWlz?style=flat-square)
 
 ## Versionering - mutaties
-* [iWlz1.2_v1.1] - iWlz Release 1.2 versie 1.0 - 19-09-2016
+* [iWlz1.2_v1.1] - iWlz Release 1.2 versie 1.2 - 31-10-2016
+  * bijgewerkt basisschema
+    * LDT_Telefoonnummer pattern value aangepast en minLength
+    * LDT Commentaar pattern restrictie aangepast
+
+* [iWlz1.2_v1.1] - iWlz Release 1.2 versie 1.1 - 19-09-2016
   * bijgewerkt basisschema
     * LDT_Voorletters en LDT_Telefoonnummer zijn voorzien van restrictie
 
