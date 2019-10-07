@@ -14,11 +14,13 @@ In deze repository zijn de berichtschema's te vinden die in gebruik
 
 ## Versionering - mutaties
 * [iWlz1.1_v1.0] - iWlz Release 1.1 versie 1.0 - 26-8-2015
-  * Xsd's bij iWlz Release 1.1
+  * Xsd's voor iWlz Release 1.1
+  * Datum in productie: 1 januari 2016
   * wijziging Namespace van "zorgregistratie.nl" naar "iStandaarden.nl"
   
-* [iWlz1.0_v1.0] - iWlz Release 1.0 versie 1.0 - 2015-07-09
-  * Initiele versie xsd's voor iWlz Release 1.0. Datum in productie: 1 januari 2016
+* [iWlz1.0_v1.0] - iWlz Release 1.0 versie 1.0 - 09-07-2015
+  * Initiele versie xsd's voor iWlz Release 1.0. 
+  * Datum in productie: niet
 
 ## Licentie
 Copyright &copy; iStandaarden 2019
