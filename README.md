@@ -6,7 +6,7 @@ In deze repository zijn de berichtschema's te vinden die in gebruik
 * Portaal voor iStandaarden in de Zorg en Ondersteuning: [homepagina iStandaarden](https://www.istandaarden.nl)
 
 ## Contact of meer vragen
-* Servicedesk iStandaarden - [@serviceDesk](info@istandaarden.nl)
+* Servicedesk iStandaarden - [@serviceDesk](mailto:info@istandaarden.nl)
 
 ## Laatste versie
 ![Laatste release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iStandaarden/XSD-iWlz?include_prereleases&style=flat-square)
