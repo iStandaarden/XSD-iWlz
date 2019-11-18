@@ -9,8 +9,8 @@ In deze repository zijn de berichtschema's te vinden voor gebruik binnen de iWlz
 * Servicedesk iStandaarden - [info@istandaarden.nl](mailto:info@istandaarden.nl)
 
 ## Laatste versie
-![Laatste release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iStandaarden/XSD-iWlz?include_prereleases&style=flat-square)
-![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/XSD-iWlz?style=flat-square)
+![Laatste release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iStandaarden/iWlz-Xsd?include_prereleases&style=flat-square)
+![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/iWlz-Xsd?style=flat-square)
 
 ## Versionering - mutaties
 * [iWlz1.2_v1.1] - iWlz Release 1.2 versie 1.2 - 31-10-2016
