@@ -1,5 +1,5 @@
-# XSD-iWlz
-In deze repository zijn de berichtschema's te vinden die in gebruik
+# iWlz-Xsd
+In deze repository zijn de berichtschema's te vinden voor gebruik binnen de iWlz
 
 ## Documentatie
 * Informatiemodel iStandaarden iWlz: [Informatiemodellen](https://informatiemodellen.istandaarden.nl)
