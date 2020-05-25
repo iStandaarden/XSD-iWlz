@@ -1,6 +1,6 @@
 # Release Notes
 
-* [iWlz2.0_v1.2] - iWlz Release 1.2 versie 1.2 - 19-12-2017
+* [iWlz2.0_v1.2] - iWlz Release 2.0 versie 1.2 - 19-12-2017
   * intiele versie
   * nieuw bericht: ZK31/ZK32 - verhuisbericht
 
