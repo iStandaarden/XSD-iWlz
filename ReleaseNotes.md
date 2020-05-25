@@ -2,6 +2,10 @@
 
 ## iWlz Release 2.0.x
 
+* [iWlz2.0-v1.8] - iWlz Release 2.0.2 versie 1.9 - 22-05-2019 - iWlz 2.0.2
+  * nieuwe publicatie van ZK31/ZK32 bericht
+  * Belangrijkste wijziging, 1 client per bericht, opname van relatie- en contactgegevens.
+
 * [iWlz2.0-v1.8] - iWlz Release 2.0.2 versie 1.8 - 20-12-2018
   * basisschema: ten behoeve van TR108/TR109/TR110/TR111 (allen van toepassing op het ZK31 bericht) bijbehorende retourcodes toegevoegd aan de codelijst.
 

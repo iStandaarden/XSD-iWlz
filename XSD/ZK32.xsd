@@ -6,22 +6,22 @@
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk32</iwlz:bericht>
 			<iwlz:release>2.0</iwlz:release>
-			<iwlz:versie>1.2</iwlz:versie>
+			<iwlz:versie>1.9</iwlz:versie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="zk32:Root"/>
 	<xs:complexType name="Root">
 		<xs:annotation>
-			<xs:documentation>Bericht voor dossieroverdracht client ZK-ZK (zorgkantoor naar zorgaanbieder), bij verhuizing van de client naar een andere zorgkantoorregio.</xs:documentation>
+			<xs:documentation>Bericht voor dossieroverdracht client ZK-ZK (zorgkantoor naar zorgkantoor), bij verhuizing van de client naar een andere zorgkantoorregio.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Header" type="zk32:Header"/>
-			<xs:element name="Clienten" type="zk32:Clienten" minOccurs="0"/>
+			<xs:element name="Client" type="zk32:Client" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
 		<xs:annotation>
-			<xs:documentation>De header bevat de identificerende gegevens van het bestand.  </xs:documentation>
+			<xs:documentation>De header bevat de identificerende gegevens van het bestand.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="BerichtCode">
@@ -56,12 +56,12 @@
 			</xs:element>
 			<xs:element name="Afzender" type="iwlz:LDT_ZorgkantoorCode">
 				<xs:annotation>
-					<xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz. Code van het verzendende zorgkantoor.</xs:documentation>
+					<xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Ontvanger" type="iwlz:LDT_ZorgkantoorCode">
 				<xs:annotation>
-					<xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz. Code van het geadresseerde zorgkantoor.</xs:documentation>
+					<xs:documentation>Identificerende code van een contract in het kader van de Wlz tussen een zorgkantoor en een zorginstelling (iWlz-AGB-code).</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="BerichtIdentificatie" type="iwlz:CDT_BerichtIdentificatie">
@@ -94,11 +94,6 @@
 					<xs:documentation>Gecodeerde aanduiding in een retourbericht van het resultaat van de beoordeling van een (deel van het) ontvangen bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="Clienten">
-		<xs:sequence>
-			<xs:element name="Client" type="zk32:Client" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -177,6 +172,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Relaties" type="zk32:Relaties" minOccurs="0"/>
+			<xs:element name="Contactgegevens" type="zk32:Contactgegevens"/>
 			<xs:element name="Indicatie" type="zk32:Indicatie"/>
 			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
 		</xs:sequence>
@@ -221,7 +217,51 @@
 					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="Contact" type="zk32:Contact"/>
 			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Contact">
+		<xs:annotation>
+			<xs:documentation>Gegevens voor de aanduiding van het adres van de client of relatie.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Soort" type="iwlz:LDT_AdresSoort">
+				<xs:annotation>
+					<xs:documentation>Nadere typering van het adres.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adres" type="iwlz:CDT_Adres" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Adres van de client of relatie van de client.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Organisatie" type="iwlz:LDT_Organisatienaam" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>De naam van een organisatie waar de client of relatie van de client verblijft.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Telefoon" type="iwlz:CDT_Telefoonnummers" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>De telefoonnummers waarop de client of relatie van de client te bereiken is.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Emailadres" type="iwlz:LDT_Emailadres" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Het e-mailadres van de client of relatie van de client.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Periode" type="iwlz:CDT_OpenPeriode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Begindatum en/of een einddatum van het verblijf van de client of relatie van de client op een tijdelijk adres.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Contactgegevens">
+		<xs:sequence>
+			<xs:element name="Contact" type="zk32:Contact" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicatie">
@@ -693,7 +733,7 @@
 			</xs:element>
 			<xs:element name="CoordinatorZorgThuis" type="iwlz:LDT_iWlzAgbCode" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Aanbieder die de zorg thuis coördineert. Deze aanbieder is het aanspreekpunt voor de client en voor de andere aanbieders die bij de zorglevering van het modulair pakket thuis (MPT) aan de client betrokken zijn.</xs:documentation>
+					<xs:documentation>Aanbieder die de zorg thuis coordineert. Deze aanbieder is het aanspreekpunt voor de client en voor de andere aanbieders die bij de zorglevering van het modulair pakket thuis (MPT) aan de client betrokken zijn.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Leveringsstatus" type="iwlz:LDT_Leveringsstatus">

@@ -1,8 +1,13 @@
 Mutaties XSD's iWlz 2.0
 ===========================
+versie 1.9 - 22-05-2019 - iWlz 2.0.2
+- nieuwe publicatie van ZK31/ZK32 bericht
+- Belangrijkste wijziging, 1 client per bericht, opname van relatie- en contactgegevens.
+- zie verder mutatieoverzicht iWlz 2.0.2 t.o.v. iWlz 2.0.1
+
+
 versie 1.8 - 20-12-2018 - iWlz 2.0.2
 - basisschema: ten behoeve van TR108/TR109/TR110/TR111 (allen van toepassing op het ZK31 bericht) bijbehorende retourcodes toegevoegd aan de codelijst.
-
 
 
 versie 1.7 - 3 juli 2018
