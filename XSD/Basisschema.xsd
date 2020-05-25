@@ -5,7 +5,7 @@
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>basisschema</iwlz:bericht>
 			<iwlz:release>2.0</iwlz:release>
-			<iwlz:versie>1.4</iwlz:versie>
+			<iwlz:versie>1.6</iwlz:versie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:complexType name="CDT_Achternaam">
@@ -376,7 +376,6 @@
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="8"/>
-			<xs:pattern value=".*[^\s].*"/>
 			<xs:pattern value="[0-9]{8}"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -548,7 +547,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="0205">
 				<xs:annotation>
-					<xs:documentation>Mobiliteit - Gecoördinerede bewegingen met benen/voeten maken (bijv. fietsen)</xs:documentation>
+					<xs:documentation>Mobiliteit - Gecoordinerede bewegingen met benen/voeten maken (bijv. fietsen)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="0206">
@@ -1119,24 +1118,9 @@
 			<xs:documentation>Reden die aangeeft waarom er sprake is van extra kosten thuis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="1">
+			<xs:enumeration value="5">
 				<xs:annotation>
-					<xs:documentation>Opgroeiend, thuiswonend kind &lt; 23 jaar</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2">
-				<xs:annotation>
-					<xs:documentation>Ouder met thuiswonend kind &lt; 18 jaar</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3">
-				<xs:annotation>
-					<xs:documentation>Persoon met SOM, LG en/of ZG beperking met betaalde arbeid of die opleiding/studie volgt</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="4">
-				<xs:annotation>
-					<xs:documentation>Wlz-indiceerbaar</xs:documentation>
+					<xs:documentation>Extra kosten thuis</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:maxLength value="1"/>
@@ -1643,12 +1627,12 @@
 			</xs:enumeration>
 			<xs:enumeration value="AL">
 				<xs:annotation>
-					<xs:documentation>ALBANIË</xs:documentation>
+					<xs:documentation>ALBANIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="AM">
 				<xs:annotation>
-					<xs:documentation>ARMENIË</xs:documentation>
+					<xs:documentation>ARMENIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="AO">
@@ -1663,7 +1647,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="AR">
 				<xs:annotation>
-					<xs:documentation>ARGENTINIË</xs:documentation>
+					<xs:documentation>ARGENTINIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="AS">
@@ -1678,7 +1662,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="AU">
 				<xs:annotation>
-					<xs:documentation>AUSTRALIË</xs:documentation>
+					<xs:documentation>AUSTRALIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="AW">
@@ -1698,7 +1682,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="BA">
 				<xs:annotation>
-					<xs:documentation>BOSNIË EN HERZEGOVINA</xs:documentation>
+					<xs:documentation>BOSNIE EN HERZEGOVINA</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="BB">
@@ -1713,7 +1697,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="BE">
 				<xs:annotation>
-					<xs:documentation>BELGIË</xs:documentation>
+					<xs:documentation>BELGIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="BF">
@@ -1768,7 +1752,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="BR">
 				<xs:annotation>
-					<xs:documentation>BRAZILIË</xs:documentation>
+					<xs:documentation>BRAZILIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="BS">
@@ -1873,7 +1857,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="CV">
 				<xs:annotation>
-					<xs:documentation>KAAPVERDIË</xs:documentation>
+					<xs:documentation>KAAPVERDIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="CW">
@@ -1893,7 +1877,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="CZ">
 				<xs:annotation>
-					<xs:documentation>TSJECHIË</xs:documentation>
+					<xs:documentation>TSJECHIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="DE">
@@ -1958,7 +1942,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="ET">
 				<xs:annotation>
-					<xs:documentation>ETHIOPIË</xs:documentation>
+					<xs:documentation>ETHIOPIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="FI">
@@ -2008,7 +1992,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="GE">
 				<xs:annotation>
-					<xs:documentation>GEORGIË</xs:documentation>
+					<xs:documentation>GEORGIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="GF">
@@ -2063,7 +2047,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="GS">
 				<xs:annotation>
-					<xs:documentation>ZUID-GEORGIË EN DE ZUIDELIJKE SANDWICHEILANDEN</xs:documentation>
+					<xs:documentation>ZUID-GEORGIE EN DE ZUIDELIJKE SANDWICHEILANDEN</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="GT">
@@ -2103,7 +2087,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="HR">
 				<xs:annotation>
-					<xs:documentation>KROATIË</xs:documentation>
+					<xs:documentation>KROATIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="HT">
@@ -2118,7 +2102,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="ID">
 				<xs:annotation>
-					<xs:documentation>INDONESIË</xs:documentation>
+					<xs:documentation>INDONESIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="IE">
@@ -2128,7 +2112,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="IL">
 				<xs:annotation>
-					<xs:documentation>ISRAËL</xs:documentation>
+					<xs:documentation>ISRAEL</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="IM">
@@ -2163,7 +2147,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="IT">
 				<xs:annotation>
-					<xs:documentation>ITALIË</xs:documentation>
+					<xs:documentation>ITALIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JE">
@@ -2178,7 +2162,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="JO">
 				<xs:annotation>
-					<xs:documentation>JORDANIË</xs:documentation>
+					<xs:documentation>JORDANIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="JP">
@@ -2193,7 +2177,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="KG">
 				<xs:annotation>
-					<xs:documentation>KIRGIZIË</xs:documentation>
+					<xs:documentation>KIRGIZIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="KH">
@@ -2293,7 +2277,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="LY">
 				<xs:annotation>
-					<xs:documentation>LIBIË</xs:documentation>
+					<xs:documentation>LIBIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="MA">
@@ -2308,7 +2292,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="MD">
 				<xs:annotation>
-					<xs:documentation>MOLDAVIË</xs:documentation>
+					<xs:documentation>MOLDAVIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ME">
@@ -2333,7 +2317,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="MK">
 				<xs:annotation>
-					<xs:documentation>MACEDONIË</xs:documentation>
+					<xs:documentation>MACEDONIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ML">
@@ -2348,7 +2332,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="MN">
 				<xs:annotation>
-					<xs:documentation>MONGOLIË</xs:documentation>
+					<xs:documentation>MONGOLIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="MO">
@@ -2368,7 +2352,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="MR">
 				<xs:annotation>
-					<xs:documentation>MAURITANIË</xs:documentation>
+					<xs:documentation>MAURITANIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="MS">
@@ -2403,7 +2387,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="MY">
 				<xs:annotation>
-					<xs:documentation>MALEISIË</xs:documentation>
+					<xs:documentation>MALEISIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="MZ">
@@ -2413,12 +2397,12 @@
 			</xs:enumeration>
 			<xs:enumeration value="NA">
 				<xs:annotation>
-					<xs:documentation>NAMIBIË</xs:documentation>
+					<xs:documentation>NAMIBIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="NC">
 				<xs:annotation>
-					<xs:documentation>NIEUW-CALEDONIË</xs:documentation>
+					<xs:documentation>NIEUW-CALEDONIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="NE">
@@ -2488,7 +2472,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="PF">
 				<xs:annotation>
-					<xs:documentation>FRANS-POLYNESIË</xs:documentation>
+					<xs:documentation>FRANS-POLYNESIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="PG">
@@ -2558,12 +2542,12 @@
 			</xs:enumeration>
 			<xs:enumeration value="RO">
 				<xs:annotation>
-					<xs:documentation>ROEMENIË</xs:documentation>
+					<xs:documentation>ROEMENIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="RS">
 				<xs:annotation>
-					<xs:documentation>SERVIË</xs:documentation>
+					<xs:documentation>SERVIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="RU">
@@ -2578,7 +2562,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="SA">
 				<xs:annotation>
-					<xs:documentation>SAOEDI-ARABIË</xs:documentation>
+					<xs:documentation>SAOEDI-ARABIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="SB">
@@ -2613,7 +2597,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="SI">
 				<xs:annotation>
-					<xs:documentation>SLOVENIË</xs:documentation>
+					<xs:documentation>SLOVENIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="SJ">
@@ -2643,7 +2627,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="SO">
 				<xs:annotation>
-					<xs:documentation>SOMALIË</xs:documentation>
+					<xs:documentation>SOMALIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="SR">
@@ -2673,7 +2657,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="SY">
 				<xs:annotation>
-					<xs:documentation>SYRIË</xs:documentation>
+					<xs:documentation>SYRIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="SZ">
@@ -2728,7 +2712,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="TN">
 				<xs:annotation>
-					<xs:documentation>TUNESIË</xs:documentation>
+					<xs:documentation>TUNESIE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="TO">
@@ -2763,7 +2747,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="UA">
 				<xs:annotation>
-					<xs:documentation>OEKRAÏNE</xs:documentation>
+					<xs:documentation>OEKRAINE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="UG">

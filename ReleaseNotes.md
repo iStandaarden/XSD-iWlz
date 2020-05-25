@@ -1,5 +1,9 @@
 # Release Notes
 
+* [iWlz2.0-v1.6] - iWlz Release 2.0.1 Versie 1.6 - 5 juni 2018
+  * basisschema.xsd: enumeratie gewijzigd op LDT_ExtraKostenThuis t.b.v. revisierelease 2.0.1
+  * overige xsd's blijven ongewijzigd
+
 * [iWlz2.0-v1.4] - iWlz Release 2.0 Versie 1.4 - 18 april 2018
   * basisschema.xsd: element Huisnummertoevoeging:
     * Het pattern (&ltxs:pattern value="(\[A-Z0-9\])+"/>) dat alleen hoofdletters of cijfers zijn toegestaan is verwijderd van LDT_Huisnummertoevoeging.
