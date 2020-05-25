@@ -1,5 +1,11 @@
 # Release Notes
 
+* [iWlz2.0-v1.4] - iWlz Release 2.0 Versie 1.4 - 18 april 2018
+  * basisschema.xsd: element Huisnummertoevoeging:
+    * Het pattern (&ltxs:pattern value="(\[A-Z0-9\])+"/>) dat alleen hoofdletters of cijfers zijn toegestaan is verwijderd van LDT_Huisnummertoevoeging.
+    * Het pattern dat geen leeg element toestaat (geen whitespaces), blijft gehandhaafd
+  * overige xsd's blijven ongewijzigd
+
 * [iWlz2.0_v1.3] - iWlz Release 2.0 Versie 1.3 - 30 maart 2018
   * AW317.xsd/AW318.xsd: nieuw optioneel element &ltOpname>
     * Het element &ltOpname> is toegevoegd aan de klasse \[WachtlijstZorgzwaartepakket\].
