@@ -6,7 +6,7 @@
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>aw318</iwlz:bericht>
 			<iwlz:release>2.0</iwlz:release>
-			<iwlz:versie>1.3</iwlz:versie>
+			<iwlz:versie>1.7</iwlz:versie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="aw318:Root"/>
@@ -106,9 +106,9 @@
 			<xs:documentation>Kenmerken van een client ten bate van de uitvoeringsinformatie.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="VolgnummerClient" type="iwlz:LDT_Nummer">
+			<xs:element name="Bsn" type="iwlz:LDT_BurgerServicenummer">
 				<xs:annotation>
-					<xs:documentation>Volgnummer van de client binnen het aangeleverde bestand.</xs:documentation>
+					<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Geslacht" type="iwlz:LDT_Geslacht">

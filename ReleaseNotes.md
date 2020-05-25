@@ -1,18 +1,24 @@
 # Release Notes
 
+## iWlz Release 2.0.x
+
+* [iWlz2.0-v1.7] - iWlz Release 2.0.1 versie 1.7 - 3 juli 2018
+  * AW317 / AW318: binnen de klasse &lt;Client> is &ltVolgnummerClient> vervangen door &ltBSN>
+  * overige xsd's blijven ongewijzigd
+
 * [iWlz2.0-v1.6] - iWlz Release 2.0.1 Versie 1.6 - 5 juni 2018
   * basisschema.xsd: enumeratie gewijzigd op LDT_ExtraKostenThuis t.b.v. revisierelease 2.0.1
   * overige xsd's blijven ongewijzigd
 
 * [iWlz2.0-v1.4] - iWlz Release 2.0 Versie 1.4 - 18 april 2018
   * basisschema.xsd: element Huisnummertoevoeging:
-    * Het pattern (&ltxs:pattern value="(\[A-Z0-9\])+"/>) dat alleen hoofdletters of cijfers zijn toegestaan is verwijderd van LDT_Huisnummertoevoeging.
+    * Het pattern (<xs:pattern value="(\[A-Z0-9\])+"/>) dat alleen hoofdletters of cijfers zijn toegestaan is verwijderd van LDT_Huisnummertoevoeging.
     * Het pattern dat geen leeg element toestaat (geen whitespaces), blijft gehandhaafd
   * overige xsd's blijven ongewijzigd
 
 * [iWlz2.0_v1.3] - iWlz Release 2.0 Versie 1.3 - 30 maart 2018
-  * AW317.xsd/AW318.xsd: nieuw optioneel element &ltOpname>
-    * Het element &ltOpname> is toegevoegd aan de klasse \[WachtlijstZorgzwaartepakket\].
+  * AW317.xsd/AW318.xsd: nieuw optioneel element &lt;Opname>
+    * Het element &lt;Opname> is toegevoegd aan de klasse \[WachtlijstZorgzwaartepakket\].
   * overige xsd's blijven ongewijzigd
 
 * [iWlz2.0_v1.2] - iWlz Release 2.0 versie 1.2 - 19-12-2017
