@@ -1,5 +1,10 @@
 # Release Notes
 
+* [iWlz2.0_v1.3] - iWlz Release 2.0 Versie 1.3 - 30 maart 2018
+  * AW317.xsd/AW318.xsd: nieuw optioneel element &ltOpname>
+    * Het element &ltOpname> is toegevoegd aan de klasse \[WachtlijstZorgzwaartepakket\].
+  * overige xsd's blijven ongewijzigd
+
 * [iWlz2.0_v1.2] - iWlz Release 2.0 versie 1.2 - 19-12-2017
   * intiele versie
   * nieuw bericht: ZK31/ZK32 - verhuisbericht
