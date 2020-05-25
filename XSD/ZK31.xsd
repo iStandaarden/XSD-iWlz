@@ -6,12 +6,12 @@
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk31</iwlz:bericht>
 			<iwlz:release>2.1</iwlz:release>
-			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdVersie>1.0.1</iwlz:BerichtXsdVersie>
 			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.1</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.1.0</iwlz:BasisschemaXsdVersie>
 			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.1.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="zk31:Root"></xs:element>

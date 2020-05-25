@@ -5,9 +5,9 @@
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>basisschema</iwlz:bericht>
 			<iwlz:release>2.1</iwlz:release>
-			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdVersie>1.1.0</iwlz:BasisschemaXsdVersie>
 			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.1.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:complexType name="CDT_Achternaam">
@@ -3628,6 +3628,21 @@
 					<xs:documentation>Bericht voldoet niet aan technische regel 125</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="9126">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 126</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9127">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 127</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9128">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 128</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="D004">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan conditie CD004.</xs:documentation>
@@ -3731,6 +3746,16 @@
 			<xs:enumeration value="D072">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan conditie CD072</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D073">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD073</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D074">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD074</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="S002">
@@ -3846,11 +3871,6 @@
 			<xs:enumeration value="S123">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan constraint CS123.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="S124">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS124</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="S125">
@@ -4829,7 +4849,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="808">
 				<xs:annotation>
-					<xs:documentation>5VG: Wonen met intensieve begeleiding en zeer intensieve verzorging</xs:documentation>
+					<xs:documentation>5VG: Wonen met intensieve begeleiding en intensieve verzorging</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="810">
@@ -4955,6 +4975,31 @@
 			<xs:enumeration value="870">
 				<xs:annotation>
 					<xs:documentation>6GGZ C: Beschermd wonen met intensieve begeleiding en intensieve verpleging en verzorging</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="880">
+				<xs:annotation>
+					<xs:documentation>1GGZ W: Wonen met intensieve begeleiding</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="882">
+				<xs:annotation>
+					<xs:documentation>2GGZ W: Wonen met intensieve begeleiding en verzorging</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="884">
+				<xs:annotation>
+					<xs:documentation>3GGZ W: Wonen met intensieve begeleiding en gedragsregulering</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="886">
+				<xs:annotation>
+					<xs:documentation>4GGZ W: Wonen met intensieve begeleiding en intensieve verpleging en verzorging</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="888">
+				<xs:annotation>
+					<xs:documentation>5GGZ W: Beveiligd Wonen vanwege extreme gedragsproblematiek met zeer intensieve begeleiding</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="996">

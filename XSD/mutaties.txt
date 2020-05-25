@@ -1,5 +1,28 @@
 Mutaties XSD's iWlz Release 2.1
 ===============================
+Versie 1.2.0 - 3 oktober 2019
+- Nieuwe versie basisschema: XsdVersie 1.1.0 
+  - Retourcodes toegevoegd
+  - ZZP codes toegevoegd t.b.v. ggz
+  - BasisschemaXsdMinVersie = 1.0.0
+  - BasisschemaXsdMaxVersie = 1.1.0
+
+- Nieuwe versies van berichtschema's
+  - appInfo gewijzigd: BasisschemaXsdVersie 1.1.0
+  - Voor alle berichten m.u.v. ZK35/ZK36 en ZK39/ZK310:
+    - BerichtXsdVersie = 1.0.1 
+    - BerichtXsdMinVersie = 1.0.0
+    - BerichtXsdMaxVersie = 1.0.1
+  - Voor ZK35/ZK36:
+    - BerichtXsdVersie = 1.1.1
+    - BerichtXsdMinVersie = 1.0.0
+    - BerichtXsdMaxVersie = 1.1.1    
+  - Voor ZK39/ZK310:
+    - BerichtXsdVersie = 1.1.1
+    - BerichtXsdMinVersie = 1.1.0
+    - BerichtXsdMaxVersie = 1.1.1  
+
+
 Versie 1.1.0 - 29 augustus 2019
 - Nieuwe versie voor ZK35 en ZK39 - berichtversie 1.1.0
   - ZK35/ZK36: klasse GeleverdZorgzwaartpakket aangevuld met een optioneel element Etmalen (conform AW35:GeleverdZorgzwaartepakket) 
