@@ -2,6 +2,10 @@
 
 ## iWlz Release 2.1
 
+* [iWlz2.1-v1.2.1] - iWlz Release 2.1 Versie 1.2.1 - 31 maart 2020
+  * Nieuwe versie IO31: XsdVersie 1.0.2
+    * Achtergrond: element Besluitnummer heeft een pattern gekregen die waarde 0(nul) niet mogelijk maakt.
+
 * [iWlz2.1-v1.2] iWlz Release 2.1 Versie 1.2.0 - 3 oktober 2019
   * Nieuwe versie basisschema: XsdVersie 1.1.0
     * Retourcodes toegevoegd
