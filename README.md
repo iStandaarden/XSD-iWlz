@@ -18,7 +18,7 @@ In deze repository zijn de berichtschema's te vinden voor gebruik binnen de iWlz
 
 ## Versionering - mutaties
 
-Zie hiervoor de Release Notes: ![Klik hier](ReleaseNotes.md)
+Zie hiervoor de Release Notes: [Klik hier](ReleaseNotes.md)
 
 ## Licentie
 

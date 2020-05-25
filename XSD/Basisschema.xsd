@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2009 (http://www.altova.com) by College voor Zorgverzekeringen (College voor Zorgverzekeringen) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2" targetNamespace="http://www.istandaarden.nl/iwlz/1_2/basisschema/schema/1_2" elementFormDefault="qualified">
+<xs:schema targetNamespace="http://www.istandaarden.nl/iwlz/2_0/basisschema/schema" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_0/basisschema/schema">
+	<xs:annotation>
+		<xs:appinfo>
+			<iwlz:standaard>iwlz</iwlz:standaard>
+			<iwlz:bericht>basisschema</iwlz:bericht>
+			<iwlz:release>2.0</iwlz:release>
+			<iwlz:versie>1.2</iwlz:versie>
+		</xs:appinfo>
+	</xs:annotation>
 	<xs:complexType name="CDT_Achternaam">
 		<xs:annotation>
 			<xs:documentation>De achternaam van een natuurlijk persoon, aangeduid als Naam met Voorvoegsel.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Naam" type="iwlz:LDT_Naam">
+			<xs:element name="Achternaam" type="iwlz:LDT_Naam">
 				<xs:annotation>
 					<xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
 				</xs:annotation>
@@ -23,7 +30,11 @@
 			<xs:documentation>Gegevens voor de aanduiding van een adres.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Huis" type="iwlz:CDT_Huis" minOccurs="0"/>
+			<xs:element name="Huis" type="iwlz:CDT_Huis" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Aanduiding van een specifiek huis in een straat, onderdeel van het adres.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="Postcode" type="iwlz:LDT_Postcode" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Aanduiding van de (inter)nationale postcode. Dit veld is geschikt voor zowel de Nederlandse als niet-Nederlandse postcodes.</xs:documentation>
@@ -46,23 +57,6 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="CDT_BOPZ">
-		<xs:annotation>
-			<xs:documentation>Aanduiding of BOPZ van toepassing is en vanaf welke datum.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="Verklaring" type="iwlz:LDT_BOPZVerklaring">
-				<xs:annotation>
-					<xs:documentation>Een artikel 60-verklaring geeft aan of de gevraagde opneming noodzakelijk is.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="DatumAfgifte" type="iwlz:LDT_Datum" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Datum afgifte artikel 60-verklaring.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
 	<xs:complexType name="CDT_BerichtIdentificatie">
 		<xs:annotation>
 			<xs:documentation>Naam of nummer en dagtekening ter identificatie van een totale aanlevering.</xs:documentation>
@@ -75,7 +69,7 @@
 			</xs:element>
 			<xs:element name="Dagtekening" type="iwlz:LDT_Datum">
 				<xs:annotation>
-					<xs:documentation>Datum</xs:documentation>
+					<xs:documentation>De datum van verzending van het bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -98,6 +92,23 @@
 			<xs:element name="ToeslagOverig" type="iwlz:LDT_ToeslagOverig" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Andere reden (dan EKT en Beademingstoeslag) voor ophoging van het basisbudget voor het geindiceerde zorgprofiel.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CDT_BOPZ">
+		<xs:annotation>
+			<xs:documentation>Aanduiding of BOPZ van toepassing is en vanaf welke datum.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Verklaring" type="iwlz:LDT_BOPZVerklaring">
+				<xs:annotation>
+					<xs:documentation>Een artikel 60-verklaring geeft aan of de gevraagde opneming noodzakelijk is.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DatumAfgifte" type="iwlz:LDT_Datum" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum afgifte artikel 60-verklaring.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -126,7 +137,7 @@
 		<xs:sequence>
 			<xs:element name="Datum" type="iwlz:LDT_Datum">
 				<xs:annotation>
-					<xs:documentation>Datum</xs:documentation>
+					<xs:documentation>Datum waarop een persoon geboren is.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="DatumGebruik" type="iwlz:LDT_DatumGebruik" minOccurs="0">
@@ -143,12 +154,12 @@
 		<xs:sequence>
 			<xs:element name="Begindatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
-					<xs:documentation>Datum</xs:documentation>
+					<xs:documentation>De begindatum van de periode.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Einddatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
-					<xs:documentation>Datum</xs:documentation>
+					<xs:documentation>De einddatum van de periode.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -204,12 +215,12 @@
 		<xs:sequence>
 			<xs:element name="Begindatum" type="iwlz:LDT_Datum" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Datum</xs:documentation>
+					<xs:documentation>De begindatum van de periode.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Einddatum" type="iwlz:LDT_Datum" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Datum</xs:documentation>
+					<xs:documentation>De einddatum van de periode.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -236,8 +247,16 @@
 			<xs:documentation>De telefoonnummers waarop de client of relatie van de client te bereiken is.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Telefoon01" type="iwlz:CDT_Telefoon"/>
-			<xs:element name="Telefoon02" type="iwlz:CDT_Telefoon" minOccurs="0"/>
+			<xs:element name="Telefoon01" type="iwlz:CDT_Telefoon">
+				<xs:annotation>
+					<xs:documentation>Het telefoonnummer waarop de client of relatie van de client te bereiken is.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Telefoon02" type="iwlz:CDT_Telefoon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Het telefoonnummer waarop de client of relatie van de client te bereiken is.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="CDT_VerkorteNaam">
@@ -245,7 +264,11 @@
 			<xs:documentation>De naam van een natuurlijk persoon, aangeduid als Geslachtsnaam en eventueel Voornamen en/of Voorletters.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Geslachtsnaam" type="iwlz:CDT_Achternaam"/>
+			<xs:element name="Geslachtsnaam" type="iwlz:CDT_Achternaam">
+				<xs:annotation>
+					<xs:documentation>Wettelijk vastgelegde achternaam die iemand bij de geboorte erft van de vader of moeder.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="Voornamen" type="iwlz:LDT_Naam" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat.</xs:documentation>
@@ -263,8 +286,16 @@
 			<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Geslachtsnaam" type="iwlz:CDT_Achternaam"/>
-			<xs:element name="Partnernaam" type="iwlz:CDT_Achternaam" minOccurs="0"/>
+			<xs:element name="Geslachtsnaam" type="iwlz:CDT_Achternaam">
+				<xs:annotation>
+					<xs:documentation>Wettelijk vastgelegde achternaam die iemand bij de geboorte erft van de vader of moeder.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Partnernaam" type="iwlz:CDT_Achternaam" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Na het voltrekken van een huwelijk of na een officiele partnerregistratie van de partner aangenomen familienaam.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="Voornamen" type="iwlz:LDT_Naam" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat.</xs:documentation>
@@ -287,7 +318,11 @@
 			<xs:documentation>De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien van de gebruikelijke straatnaam en huisnummeraanduidingen.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
+			<xs:enumeration value="AB">
+				<xs:annotation>
+					<xs:documentation>Aan boord</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="BY">
 				<xs:annotation>
 					<xs:documentation>Bij</xs:documentation>
@@ -298,16 +333,12 @@
 					<xs:documentation>Tegenover</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="AB">
-				<xs:annotation>
-					<xs:documentation>Aan boord</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="WW">
 				<xs:annotation>
 					<xs:documentation>Woonwagen</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_AdresSoort">
@@ -315,10 +346,9 @@
 			<xs:documentation>Nadere typering van het adres.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
 			<xs:enumeration value="01">
 				<xs:annotation>
-					<xs:documentation>GBA adres</xs:documentation>
+					<xs:documentation>BRP-adres</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="02">
@@ -336,56 +366,25 @@
 					<xs:documentation>Tijdelijk verblijfadres</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_AgbCode">
 		<xs:annotation>
-			<xs:documentation>Identificerende code van een instelling.</xs:documentation>
+			<xs:documentation>Identificerende code van een instelling of aanbieder van zorg of ondersteuning (zie https://www.agbcode.nl)</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
 			<xs:maxLength value="8"/>
+			<xs:pattern value=".*[^\s].*"/>
 			<xs:pattern value="[0-9]{8}"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="LDT_BOPZVerklaring">
-		<xs:annotation>
-			<xs:documentation>Een artikel 60-verklaring geeft aan of de gevraagde opneming noodzakelijk is.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
-			<xs:enumeration value="1">
-				<xs:annotation>
-					<xs:documentation>Opname op basis van artikel 60 is aan de orde.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2">
-				<xs:annotation>
-					<xs:documentation>Opname op basis van artikel 60 is niet aan de orde.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3">
-				<xs:annotation>
-					<xs:documentation>Opname op basis van artikel 60 is niet aan de orde. Er is bereidheid.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="4">
-				<xs:annotation>
-					<xs:documentation>Opname op basis van artikel 60 is niet aan de orde. Er is verzet.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="9">
-				<xs:annotation>
-					<xs:documentation>Onbekend</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BeperkingCategorie">
 		<xs:annotation>
-			<xs:documentation>Gecodeerde aanduiding van de categorie van een beperking.</xs:documentation>
+			<xs:documentation>Aanduiding over de categorie van de beperking.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Sociale redzaamheid</xs:documentation>
@@ -416,6 +415,7 @@
 					<xs:documentation>Deelname aan leren, werken</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BeperkingScore">
@@ -423,7 +423,11 @@
 			<xs:documentation>Gecodeerde aanduiding van de score op een vraag over een beperking.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>Kan deze activiteit zelf, er is geen hulp van een ander nodig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Kan het zelf, maar iemand anders moet toezien of stimuleren</xs:documentation>
@@ -444,19 +448,14 @@
 					<xs:documentation>Niet beoordeeld</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="0">
-				<xs:annotation>
-					<xs:documentation>Kan deze activiteit zelf, er is geen hulp van een ander nodig</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BeperkingVraag">
 		<xs:annotation>
-			<xs:documentation>Gecodeerde aanduiding van de vraag over een beperking.</xs:documentation>
+			<xs:documentation>Gecodeerde aanduiding van de vraag over beperking.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="4"/>
 			<xs:enumeration value="0101">
 				<xs:annotation>
 					<xs:documentation>Sociale redzaamheid - Problemen oplossen, besluiten nemen en gevolgen inschatten</xs:documentation>
@@ -782,134 +781,16 @@
 					<xs:documentation>Deelname onderwijs, werk - Niet-betaald werk doen in vrijwillige verbanden</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BerichtCode">
 		<xs:annotation>
-			<xs:documentation>Code ter identificatie van een soort bericht.</xs:documentation>
+			<xs:documentation>Code ter identificatie van een soort bericht. Per bericht is gespecificeerd welke code gebruikt moet worden. De volledige codelijst is te vinden op het portaal van Vektis (http://ei.vektis.nl/WespCodelijstenDetail.aspx?Co_Ge_Code=COD002&amp;Co_Or_Code=VEKT).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
 			<xs:maxLength value="3"/>
-			<xs:enumeration value="187">
-				<xs:annotation>
-					<xs:documentation>Declaratie Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="188">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie declaratie Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="352">
-				<xs:annotation>
-					<xs:documentation>Zorgtoewijzing Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="353">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie zorgtoewijzing Wlz</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="354">
-				<xs:annotation>
-					<xs:documentation>Melding aanvang Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="355">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie melding aanvang Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="358">
-				<xs:annotation>
-					<xs:documentation>Beeindiging/mutatie Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="359">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie beeindiging/mutatie Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="388">
-				<xs:annotation>
-					<xs:documentation>Indicatiebesluit Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="389">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie indicatiebesluit Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="393">
-				<xs:annotation>
-					<xs:documentation>Melding aanvang Wlz-zorg ZK-ZK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="394">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie melding aanvang Wlz-zorg ZK-ZK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="395">
-				<xs:annotation>
-					<xs:documentation>Beeindiging/mutatie Wlz-zorg ZK-ZK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="396">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie beeindiging/mutatie Wlz-zorg ZK-ZK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="397">
-				<xs:annotation>
-					<xs:documentation>Zorgtoewijzing Wlz ZK-ZK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="398">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie zorgtoewijzing Wlz ZK-ZK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="404">
-				<xs:annotation>
-					<xs:documentation>Landelijke aanlevering uitvoeringsinformatie Wlz</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="405">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie Landelijke aanlevering uitvoeringsinformatie Wlz</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="406">
-				<xs:annotation>
-					<xs:documentation>Melding aanvang Wlz-zorg ZK-CAK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="407">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie melding aanvang Wlz-zorg ZK-CAK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="410">
-				<xs:annotation>
-					<xs:documentation>Beeindiging/mutatie Wlz-zorg ZK-CAK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="411">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie beeindiging/mutatie Wlz-zorg ZK-CAK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="412">
-				<xs:annotation>
-					<xs:documentation>Aanvraag indicatiebesluit Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="413">
-				<xs:annotation>
-					<xs:documentation>Retourinformatie aanvraag indicatiebesluit Wlz-zorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BerichtSubversie">
@@ -917,9 +798,8 @@
 			<xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:integer">
-			<xs:maxInclusive value="99"/>
 			<xs:minInclusive value="0"/>
-			<xs:pattern value="2"/>
+			<xs:maxInclusive value="99"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BerichtVersie">
@@ -927,18 +807,41 @@
 			<xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie) berichtstandaard.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:integer">
-			<xs:maxInclusive value="99"/>
 			<xs:minInclusive value="0"/>
-			<xs:pattern value="4"/>
+			<xs:maxInclusive value="99"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="LDT_BurgerServicenummer">
+	<xs:simpleType name="LDT_BOPZVerklaring">
 		<xs:annotation>
-			<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
+			<xs:documentation>Een artikel 60-verklaring geeft aan of de gevraagde opneming noodzakelijk is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="9"/>
-			<xs:pattern value="[0-9]{9}"/>
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Opname op basis van artikel 60 is aan de orde.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Opname op basis van artikel 60 is niet aan de orde.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Opname op basis van artikel 60 is niet aan de orde. Er is bereidheid.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Opname op basis van artikel 60 is niet aan de orde. Er is verzet.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9">
+				<xs:annotation>
+					<xs:documentation>Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BurgerlijkeStaat">
@@ -946,7 +849,6 @@
 			<xs:documentation>Unieke aanduiding die de rechtspositie van een client al dan niet in relatie tot een of meer personen beschrijft.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Ongehuwd en geen geregistreerd partner en nooit gehuwd of geregistreerd partner geweest</xs:documentation>
@@ -987,614 +889,17 @@
 					<xs:documentation>Ongehuwd en geen geregistreerd partner, eventueel wel gehuwd of geregistreerd partner geweest</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="LDT_CizCode">
+	<xs:simpleType name="LDT_BurgerServicenummer">
 		<xs:annotation>
-			<xs:documentation>Identificatie van het indicatieorgaan dat de indicatiestelling heeft verricht.</xs:documentation>
+			<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="4"/>
-			<xs:enumeration value="0100">
-				<xs:annotation>
-					<xs:documentation>CIZ Groningen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0110">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Sellingen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0120">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Nieuwe Pekela</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0130">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Bedum</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0140">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Groningen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0141">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Hoogezand</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0142">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Leek</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0200">
-				<xs:annotation>
-					<xs:documentation>CIZ Regiobureau Leeuwarden</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0210">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Leeuwarden</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0220">
-				<xs:annotation>
-					<xs:documentation>CIZ Locatie Sneek</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0230">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Drachten</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0300">
-				<xs:annotation>
-					<xs:documentation>CIZ Drenthe</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0310">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Norg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0320">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Emmen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0330">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Dwingelo</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0400">
-				<xs:annotation>
-					<xs:documentation>CIZ Zwolle</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0410">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Zwolle</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0420">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Harderwijk</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0500">
-				<xs:annotation>
-					<xs:documentation>CIZ Twente</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0510">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Almelo</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0520">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Hengelo</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0530">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Enschede</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0600">
-				<xs:annotation>
-					<xs:documentation>CIZ Deventer Apeldoorn</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0610">
-				<xs:annotation>
-					<xs:documentation>Regionaal indicatieorgaan Zutphen e.o.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0620">
-				<xs:annotation>
-					<xs:documentation>Stichting Het Scharfshuis</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0630">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Apeldoorn</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0700">
-				<xs:annotation>
-					<xs:documentation>CIZ Gelderland</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0710">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Doetinchem</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0720">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Groenlo</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0730">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Arnhem</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0740">
-				<xs:annotation>
-					<xs:documentation>St. indicatieorgaan Renkum</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0750">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Rheden</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0760">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Duiven</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0770">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Huissen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0780">
-				<xs:annotation>
-					<xs:documentation>RIO Gelderse Vallei</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0790">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Ede</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0800">
-				<xs:annotation>
-					<xs:documentation>CIZ Nijmegen Tiel</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0810">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Nijmegen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0820">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Tiel</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0900">
-				<xs:annotation>
-					<xs:documentation>CIZ Utrecht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0910">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Amersfoort</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0920">
-				<xs:annotation>
-					<xs:documentation>RIO De Bilt Zeist</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0930">
-				<xs:annotation>
-					<xs:documentation>RIO Zuidoost Utrecht oost</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0940">
-				<xs:annotation>
-					<xs:documentation>RIO Zuidoost Utrecht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0950">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Utrecht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0960">
-				<xs:annotation>
-					<xs:documentation>Stichting RIO ZWU</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0970">
-				<xs:annotation>
-					<xs:documentation>RIO West Utrecht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0980">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Heuvelrug</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0981">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Zeist</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0982">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Maarn</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0983">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Veenendaal</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0990">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie IJsselstein</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1000">
-				<xs:annotation>
-					<xs:documentation>CIZ Flevoland Almere</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1010">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Lelystad</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1020">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Almere</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1100">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Hilversum</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1200">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Noord-Holland Noord</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1210">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Hoorn</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1220">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Alkmaar</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1230">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Den Helder</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1240">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Den Helder (Texel Wieringen)</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1300">
-				<xs:annotation>
-					<xs:documentation>CIZ Haarlem Beverwijk</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1310">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Beverwijk</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1320">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Haarlem</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1400">
-				<xs:annotation>
-					<xs:documentation>CIZ Purmerend Zaandam</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1410">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Purmerend</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1420">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Zaandam</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1500">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Amsterdam</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1600">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Amstelveen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1700">
-				<xs:annotation>
-					<xs:documentation>CIZ Zuid-Holland Zuid</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1710">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Noordwijk</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1720">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Alphen aan den Rijn</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1730">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Leiderdorp</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1800">
-				<xs:annotation>
-					<xs:documentation>CIZ regio Den Haag</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1810">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Voorburg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1820">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Den Haag</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1830">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Zoetermeer</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1840">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Holland West</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1900">
-				<xs:annotation>
-					<xs:documentation>CIZ Delft</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1910">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Delft</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1920">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Bergschenhoek</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2000">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Gouda</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2100">
-				<xs:annotation>
-					<xs:documentation>CIZ regio Rotterdam</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2110">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Rotterdam</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2120">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Capelle aan den IJssel</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2200">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Schiedam</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2300">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Ridderkerk</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2310">
-				<xs:annotation>
-					<xs:documentation>RIOBAR</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2320">
-				<xs:annotation>
-					<xs:documentation>RIO Voorne, Putten en Rozenburg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2330">
-				<xs:annotation>
-					<xs:documentation>RIO Hoekse Waard</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2340">
-				<xs:annotation>
-					<xs:documentation>RIO Goeree-Overflakkee</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2400">
-				<xs:annotation>
-					<xs:documentation>CIZ Gorinchem Dordrecht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2410">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Gorinchem</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2420">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Dordrecht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2500">
-				<xs:annotation>
-					<xs:documentation>CIZ Zeeland</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2510">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Goes</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2520">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Vlissingen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2530">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Terneuzen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2540">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Sint Maartensdijk</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2600">
-				<xs:annotation>
-					<xs:documentation>CIZ Noord-Brabant West</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2610">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Wouw</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2620">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Breda</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2630">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Almkerk</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2700">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Tilburg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2800">
-				<xs:annotation>
-					<xs:documentation>CIZ Noord-Brabant Noord</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2810">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Den Bosch</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2820">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Oss</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2900">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Veldhoven</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2910">
-				<xs:annotation>
-					<xs:documentation>RIO Eindhoven</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2920">
-				<xs:annotation>
-					<xs:documentation>RIO Groot Kemperland</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2930">
-				<xs:annotation>
-					<xs:documentation>RIO Helmond e.o.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3000">
-				<xs:annotation>
-					<xs:documentation>CIZ Limburg Midden Noord</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3010">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Horst</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3020">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Roermond</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3100">
-				<xs:annotation>
-					<xs:documentation>CIZ Limburg Zuid</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3110">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Geleen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3120">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Heerlen</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3130">
-				<xs:annotation>
-					<xs:documentation>LIO Landgraaf</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3140">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Maastricht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="3200">
-				<xs:annotation>
-					<xs:documentation>CIZ locatie Deventer</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+			<xs:minLength value="1"/>
+			<xs:maxLength value="9"/>
+			<xs:pattern value="[0-9]{9}"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Commentaar">
@@ -1611,7 +916,6 @@
 			<xs:documentation>Gecodeerde aanduiding van de bijzondere vorm van communicatie die gebruikt dient te worden.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Tolk taal</xs:documentation>
@@ -1627,6 +931,7 @@
 					<xs:documentation>Doofblindentolk</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Datum">
@@ -1642,7 +947,6 @@
 			<xs:documentation>Indicator die aangeeft welk deel van de voorafgaande datum gebruikt mag worden.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>dag onbekend; alleen maand en jaar gebruiken</xs:documentation>
@@ -1658,6 +962,7 @@
 					<xs:documentation>dag, maand en jaar onbekend; onbekende datum</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_DiagnoseCodelijst">
@@ -1665,7 +970,6 @@
 			<xs:documentation>Code die aangeeft welke diagnosecodelijst gebruikt is, met aanduiding van de oorsprong van de codes en/of de beheerder ervan.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="3"/>
 			<xs:enumeration value="014">
 				<xs:annotation>
 					<xs:documentation>Classificatie van ziekten (ZIN/ICD-10)</xs:documentation>
@@ -1696,6 +1000,7 @@
 					<xs:documentation>Auditief</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_DiagnoseSubcodelijst">
@@ -1703,7 +1008,6 @@
 			<xs:documentation>Code die aangeeft welke subcode van een diagnosecodelijst gebruikt is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
 			<xs:enumeration value="01">
 				<xs:annotation>
 					<xs:documentation>Mentaal</xs:documentation>
@@ -1769,6 +1073,7 @@
 					<xs:documentation>Auditief</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Duur">
@@ -1776,7 +1081,6 @@
 			<xs:documentation>Code die aangeeft wat de verwachte duur is van de categorie beperking.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Korter dan drie maanden</xs:documentation>
@@ -1797,15 +1101,16 @@
 					<xs:documentation>Langer dan een jaar</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Emailadres">
 		<xs:annotation>
-			<xs:documentation>Het adres waaronder de client/relatie client via het internet per elektronische post te bereiken is.</xs:documentation>
+			<xs:documentation>Emailadres van een client of relatie.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="80"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="80"/>
 			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -1814,7 +1119,6 @@
 			<xs:documentation>Reden die aangeeft waarom er sprake is van extra kosten thuis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Opgroeiend, thuiswonend kind &lt; 23 jaar</xs:documentation>
@@ -1835,6 +1139,7 @@
 					<xs:documentation>Wlz-indiceerbaar</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Financiering">
@@ -1842,7 +1147,6 @@
 			<xs:documentation>Gecodeerde aanduiding van het CIZ van de wijze waarop de zorg binnen het indicatiebesluit gefinancierd wordt.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Wlz</xs:documentation>
@@ -1863,6 +1167,7 @@
 					<xs:documentation>Anders</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_FunctieCode">
@@ -1870,7 +1175,11 @@
 			<xs:documentation>Gecodeerde aanduiding van een zorgfunctie.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
+			<xs:enumeration value="21">
+				<xs:annotation>
+					<xs:documentation>HV: Huishoudelijke Hulp</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="31">
 				<xs:annotation>
 					<xs:documentation>PV: Persoonlijke verzorging</xs:documentation>
@@ -1921,11 +1230,7 @@
 					<xs:documentation>ADL: ADL-assistentie</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="21">
-				<xs:annotation>
-					<xs:documentation>HV: Huishoudelijke verzorging</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Geslacht">
@@ -1933,22 +1238,22 @@
 			<xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="1">
 				<xs:annotation>
-					<xs:documentation>MANNELIJK</xs:documentation>
+					<xs:documentation>Mannelijk</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="2">
 				<xs:annotation>
-					<xs:documentation>VROUWELIJK</xs:documentation>
+					<xs:documentation>Vrouwelijk</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="0">
-				<xs:annotation>
-					<xs:documentation>ONBEKEND</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Grondslag">
@@ -1956,7 +1261,6 @@
 			<xs:documentation>Gecodeerde aanduiding die aangeeft wat ten grondslag ligt aan het indicatiebesluit.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
 			<xs:enumeration value="01">
 				<xs:annotation>
 					<xs:documentation>SOMATISCHE ZIEKTE/AANDOENING</xs:documentation>
@@ -1992,6 +1296,7 @@
 					<xs:documentation>PSYCHOSOCIALE PROBLEMEN</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Huisletter">
@@ -1999,8 +1304,8 @@
 			<xs:documentation>Een alfabetisch teken achter het huisnummer zoals dit door het gemeentebestuur is toegekend.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="1"/>
 			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -2009,8 +1314,8 @@
 			<xs:documentation>De numerieke aanduiding zoals de gemeente die aan het object heeft toegekend.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:integer">
-			<xs:maxInclusive value="99999"/>
 			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_HuisnummerToevoeging">
@@ -2018,9 +1323,10 @@
 			<xs:documentation>Die letters of tekens die noodzakelijk zijn om, naast huisnummer en -letter, de brievenbus te vinden.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="4"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
 			<xs:pattern value=".*[^\s].*"/>
+			<xs:pattern value="([A-Z0-9])+"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_IdentificatieBericht">
@@ -2028,7 +1334,28 @@
 			<xs:documentation>Naam of nummer, die ter identificatie aan een totale aanlevering kan worden meegegeven.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
 			<xs:maxLength value="12"/>
+			<xs:pattern value=".*[^\s].*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LDT_iWlzAgbCode">
+		<xs:annotation>
+			<xs:documentation>Identificerende code van een contract in het kader van de Wlz tussen een zorgkantoor en een zorginstelling</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="8"/>
+			<xs:pattern value="[0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LDT_Jaar">
+		<xs:annotation>
+			<xs:documentation>Geboortejaar van een persoon.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_JaNee">
@@ -2036,7 +1363,6 @@
 			<xs:documentation>Codering voor ja of nee.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Ja</xs:documentation>
@@ -2047,15 +1373,7 @@
 					<xs:documentation>Nee</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="LDT_Jaar">
-		<xs:annotation>
-			<xs:documentation>Geboortejaar van een persoon.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:integer">
-			<xs:maxInclusive value="9999"/>
-			<xs:minInclusive value="0"/>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_JuridischeStatus">
@@ -2063,7 +1381,6 @@
 			<xs:documentation>Juridische situatie die voor de client van toepassing is op het moment van indicatiestelling.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
 			<xs:enumeration value="01">
 				<xs:annotation>
 					<xs:documentation>Rechterlijke machtiging (rm) voorlopig / voortgezette machtiging</xs:documentation>
@@ -2124,6 +1441,7 @@
 					<xs:documentation>Strafrechterlijke justitiele contacten: overig</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Klasse">
@@ -2131,7 +1449,6 @@
 			<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een zorgeenheid, uitgedrukt in een klasse.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="4"/>
 			<xs:enumeration value="99">
 				<xs:annotation>
 					<xs:documentation>niet van toepassing</xs:documentation>
@@ -2292,6 +1609,7 @@
 					<xs:documentation>Zeven etmalen per week</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_LandCode">
@@ -2299,7 +1617,6 @@
 			<xs:documentation>Identificatie van een (historisch/actueel) land of gebiedsdeel.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
 			<xs:enumeration value="AD">
 				<xs:annotation>
 					<xs:documentation>ANDORRA</xs:documentation>
@@ -3335,6 +2652,11 @@
 					<xs:documentation>SURINAME</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="SS">
+				<xs:annotation>
+					<xs:documentation>ZUID SOEDAN</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="ST">
 				<xs:annotation>
 					<xs:documentation>SAO TOMÉ EN PRINCIPE</xs:documentation>
@@ -3540,11 +2862,7 @@
 					<xs:documentation>ZIMBABWE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="SS">
-				<xs:annotation>
-					<xs:documentation>ZUID SOEDAN</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Landnummer">
@@ -3552,7 +2870,9 @@
 			<xs:documentation>Het telefoonnummer van een land, vanuit Nederland benaderd.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
 			<xs:maxLength value="4"/>
+			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Leefeenheid">
@@ -3560,7 +2880,6 @@
 			<xs:documentation>Gecodeerde aanduiding van de leefsituatie van een client.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>WOONT ALLEEN EN ZELFSTANDIG (EENPERSOONSHUISHOUDEN)</xs:documentation>
@@ -3601,6 +2920,7 @@
 					<xs:documentation>ONBEKEND</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Leveringsstatus">
@@ -3608,7 +2928,6 @@
 			<xs:documentation>De leveringsstatus waarmee wordt aangegeven wat de status van de geleverde zorg is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Actief wachtend</xs:documentation>
@@ -3616,12 +2935,12 @@
 			</xs:enumeration>
 			<xs:enumeration value="2">
 				<xs:annotation>
-					<xs:documentation>Wens wachtend</xs:documentation>
+					<xs:documentation>Niet actief wachtend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="3">
 				<xs:annotation>
-					<xs:documentation>Slapend wachtend</xs:documentation>
+					<xs:documentation>Niet wachtend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="4">
@@ -3634,6 +2953,7 @@
 					<xs:documentation>Einde zorgvraag</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Leveringsvoorwaarde">
@@ -3641,7 +2961,6 @@
 			<xs:documentation>Codering die aangeeft welke leveringsvoorwaarde van toepassing is op de zorg.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Volgens afspraak op geplande tijden</xs:documentation>
@@ -3667,14 +2986,14 @@
 					<xs:documentation>Onbekend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Leveringsvorm">
 		<xs:annotation>
-			<xs:documentation>Gecodeerde aanduiding van de vorm waarin de client de zorg wenst te ontvangen/ontvangt.</xs:documentation>
+			<xs:documentation>Gecodeerde aanduiding van de vorm waarin zorg binnen de Wlz geleverd kan worden.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="2">
 				<xs:annotation>
 					<xs:documentation>Persoonsgebonden budget (PGB)</xs:documentation>
@@ -3682,7 +3001,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="4">
 				<xs:annotation>
-					<xs:documentation>Zorg in natura (ZIN)</xs:documentation>
+					<xs:documentation>Verblijf</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="5">
@@ -3690,6 +3009,12 @@
 					<xs:documentation>Volledig pakket thuis (VPT)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="7">
+				<xs:annotation>
+					<xs:documentation>Modulair Pakket Thuis (MPT)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_MutatieCode">
@@ -3697,7 +3022,6 @@
 			<xs:documentation>De reden van een mutatie/beeindiging van de Wlz-zorg bij client.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
 			<xs:enumeration value="02">
 				<xs:annotation>
 					<xs:documentation>Overlijden</xs:documentation>
@@ -3733,14 +3057,17 @@
 					<xs:documentation>Overdracht toewijzing (er is geen melding aanvang zorg of ondersteuning)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Naam">
 		<xs:annotation>
-			<xs:documentation>De achternaam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
+			<xs:documentation>De naam van een persoon, indien nodig verkort weergegeven.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
 			<xs:maxLength value="200"/>
+			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_NaamGebruik">
@@ -3748,7 +3075,6 @@
 			<xs:documentation>Aanduiding naamgebruik (gecodeerd).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Eigen naam</xs:documentation>
@@ -3779,6 +3105,7 @@
 					<xs:documentation>Niet-natuurlijk persoon</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Nummer">
@@ -3786,8 +3113,8 @@
 			<xs:documentation>Nummer</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:integer">
-			<xs:maxInclusive value="999999999"/>
 			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999999999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Opslag">
@@ -3795,8 +3122,8 @@
 			<xs:documentation>De omvang van de opslag op de klasse van de functie.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:integer">
-			<xs:maxInclusive value="99"/>
 			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Organisatienaam">
@@ -3804,9 +3131,18 @@
 			<xs:documentation>De naam van een organisatie waar de client of relatie client verblijft.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="35"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
 			<xs:pattern value=".*[^\s].*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LDT_Percentage">
+		<xs:annotation>
+			<xs:documentation>Percentage in honderdste procenten. Bijvoorbeeld 9000 is negenduizend honderste procent, is 90%.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Persoonsid">
@@ -3814,7 +3150,9 @@
 			<xs:documentation>Indentificerend nummer van een natuurlijk persoon.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
 			<xs:maxLength value="20"/>
+			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Plaatsnaam">
@@ -3822,8 +3160,8 @@
 			<xs:documentation>De door de gemeente vastgestelde naam van een woonplaats.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="80"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="80"/>
 			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -3832,8 +3170,8 @@
 			<xs:documentation>Aanduiding van de (inter)nationale postcode. Dit veld is geschikt voor zowel de Nederlandse als niet-Nederlandse postcodes.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="8"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="8"/>
 			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -3842,7 +3180,6 @@
 			<xs:documentation>Aanduiding welke prognose er is inzake het ziektebeeld of de stoornis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Uitzicht op volledig herstel binnen 1 jaar</xs:documentation>
@@ -3868,6 +3205,7 @@
 					<xs:documentation>Onbekend; prognose niet beschikbaar of niet mogelijk</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_RedenIntrekking">
@@ -3875,7 +3213,6 @@
 			<xs:documentation>De reden waarom een toewijzing wordt ingetrokken.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Client overleden</xs:documentation>
@@ -3906,6 +3243,17 @@
 					<xs:documentation>Uitstroom</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="7">
+				<xs:annotation>
+					<xs:documentation>Andere aanbieder heeft de client in zorg genomen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="8">
+				<xs:annotation>
+					<xs:documentation>Verhuizing</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_RelatieVolgorde">
@@ -3913,16 +3261,20 @@
 			<xs:documentation>Aanduiding van de prioriteit van de contactpersoon.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:integer">
-			<xs:maxInclusive value="99"/>
 			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_RetourCode">
 		<xs:annotation>
-			<xs:documentation>Melding in een iWlz-retourbericht. Het betreft een code die in een retourbericht het resultaat van de beoordeling van een (deel van een) ontvangen bericht weergeeft.</xs:documentation>
+			<xs:documentation>Melding in een iStandaarden-retourbericht. Het betreft een code die in een retourbericht het resultaat van de beoordeling van een (deel van een) ontvangen bericht weergeeft.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="4"/>
+			<xs:enumeration value="0001">
+				<xs:annotation>
+					<xs:documentation>Bericht is afgekeurd om technische redenen.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="0200">
 				<xs:annotation>
 					<xs:documentation>Geen opmerking over deze berichtklasse.</xs:documentation>
@@ -3933,9 +3285,24 @@
 					<xs:documentation>Berichtklasse is niet beoordeeld.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="9101">
+			<xs:enumeration value="0328">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel TR101.</xs:documentation>
+					<xs:documentation>Client is uitgeschreven wegens overlijden.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="0448">
+				<xs:annotation>
+					<xs:documentation>Client kan niet geidentificeerd worden.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="0699">
+				<xs:annotation>
+					<xs:documentation>STARTDATUM levering ontbreekt of is onjuist.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="1156">
+				<xs:annotation>
+					<xs:documentation>MUTATIEDATUM ontbreekt of is onjuist.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="9002">
@@ -3966,11 +3333,6 @@
 			<xs:enumeration value="9010">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 10</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="9011">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 11</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="9014">
@@ -4023,6 +3385,11 @@
 					<xs:documentation>Bericht voldoet niet aan technische regel 35</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="9037">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 37</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="9039">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 39</xs:documentation>
@@ -4031,11 +3398,6 @@
 			<xs:enumeration value="9040">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 40</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="9041">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 41</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="9042">
@@ -4061,11 +3423,6 @@
 			<xs:enumeration value="9057">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 57</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="9058">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 58</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="9061">
@@ -4130,7 +3487,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="9077">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 77</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 77.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="9078">
@@ -4158,29 +3515,9 @@
 					<xs:documentation>Bericht voldoet niet aan technische regel 84</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="9085">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 85</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="9086">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 86</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="9091">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 91</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="9037">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 37</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="9092">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 92</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="9097">
@@ -4191,6 +3528,36 @@
 			<xs:enumeration value="9100">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 100</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9101">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 101.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9102">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 102</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9103">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 103</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9104">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 104</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9106">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 106</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9107">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 107</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="D004">
@@ -4221,11 +3588,6 @@
 			<xs:enumeration value="D017">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan conditie CD017.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="D018">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD018.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="D020">
@@ -4268,29 +3630,44 @@
 					<xs:documentation>Bericht voldoet niet aan conditie CD040.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="D041">
+			<xs:enumeration value="D047">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD041.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD047.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="D042">
+			<xs:enumeration value="D048">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD042.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD048.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="D043">
+			<xs:enumeration value="D049">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD043.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD049</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="D044">
+			<xs:enumeration value="D050">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD044.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD050</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="D045">
+			<xs:enumeration value="D051">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD045.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD051</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D052">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD052</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D053">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD053</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D054">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD054</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="S002">
@@ -4323,11 +3700,6 @@
 					<xs:documentation>Bericht voldoet niet aan constraint CS035.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="S049">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS049.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="S050">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan constraint CS050.</xs:documentation>
@@ -4353,11 +3725,6 @@
 					<xs:documentation>Bericht voldoet niet aan constraint CS064.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="S065">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS065.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="S067">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan constraint CS067.</xs:documentation>
@@ -4368,29 +3735,14 @@
 					<xs:documentation>Bericht voldoet niet aan constraint CS069.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="S071">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS071.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="S072">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan constraint CS072.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="S073">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS073.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="S074">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan constraint CS074.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="S086">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS086.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="S088">
@@ -4428,34 +3780,9 @@
 					<xs:documentation>Bericht voldoet niet aan constraint CS113.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="S114">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS114.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="S115">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS115.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="S118">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan constraint CS118.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="S119">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS119.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="S120">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS120.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="S121">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS121.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="S122">
@@ -4468,566 +3795,27 @@
 					<xs:documentation>Bericht voldoet niet aan constraint CS123.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="S300">
+			<xs:enumeration value="S124">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS300.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan constraint CS124</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="S317">
+			<xs:enumeration value="S125">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS317.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan constraint CS125</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="S318">
+			<xs:enumeration value="S127">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan constraint CS318.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan constraint CS127</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="D046">
+			<xs:enumeration value="S130">
 				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD046.</xs:documentation>
+					<xs:documentation>Bericht voldoet niet aan constraint CS130</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="D047">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD047.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="D048">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan conditie CD048.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0001">
-				<xs:annotation>
-					<xs:documentation>Bericht is afgekeurd om technische redenen.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0383">
-				<xs:annotation>
-					<xs:documentation>Jeugdhulpaanbieder ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0010">
-				<xs:annotation>
-					<xs:documentation>BERICHT ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0011">
-				<xs:annotation>
-					<xs:documentation>VERSIE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0025">
-				<xs:annotation>
-					<xs:documentation>DAGTEKENING HEENBERICHT ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0026">
-				<xs:annotation>
-					<xs:documentation>IDENTIFICATIE AANLEVERING ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0309">
-				<xs:annotation>
-					<xs:documentation>GEHEIME CLIENT ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0310">
-				<xs:annotation>
-					<xs:documentation>VOORLETTERS ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0311">
-				<xs:annotation>
-					<xs:documentation>VOORVOEGSEL (01) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0312">
-				<xs:annotation>
-					<xs:documentation>NAAM (01) ontbreekt of is onjuist..</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0328">
-				<xs:annotation>
-					<xs:documentation>Client is uitgeschreven wegens overlijden.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0350">
-				<xs:annotation>
-					<xs:documentation>GEBOORTEDATUM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0351">
-				<xs:annotation>
-					<xs:documentation>GESLACHT ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0354">
-				<xs:annotation>
-					<xs:documentation>BURGERLIJKE STAAT client ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0387">
-				<xs:annotation>
-					<xs:documentation>VOORVOEGSEL (02) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0388">
-				<xs:annotation>
-					<xs:documentation>NAAM (02) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0397">
-				<xs:annotation>
-					<xs:documentation>NAAMCODE (03) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0398">
-				<xs:annotation>
-					<xs:documentation>DATUMGEBRUIK ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0399">
-				<xs:annotation>
-					<xs:documentation>BSN ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0402">
-				<xs:annotation>
-					<xs:documentation>COMMUNICATIEVORM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0403">
-				<xs:annotation>
-					<xs:documentation>COMMUNICATIETAAL ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0404">
-				<xs:annotation>
-					<xs:documentation>JURIDISCHE STATUS ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0406">
-				<xs:annotation>
-					<xs:documentation>HUISNUMMER ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0407">
-				<xs:annotation>
-					<xs:documentation>HUISNUMMERTOEVOEGING ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0409">
-				<xs:annotation>
-					<xs:documentation>STRAATNAAM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0410">
-				<xs:annotation>
-					<xs:documentation>PLAATSNAAM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0411">
-				<xs:annotation>
-					<xs:documentation>ORGANISATIE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0415">
-				<xs:annotation>
-					<xs:documentation>EMAILADRES ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0426">
-				<xs:annotation>
-					<xs:documentation>LANDCODE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0427">
-				<xs:annotation>
-					<xs:documentation>TELEFOON (01) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0428">
-				<xs:annotation>
-					<xs:documentation>LANDNUMMER (01) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0429">
-				<xs:annotation>
-					<xs:documentation>TELEFOON (02) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0430">
-				<xs:annotation>
-					<xs:documentation>LANDNUMMER (02) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0431">
-				<xs:annotation>
-					<xs:documentation>POSTCODE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0448">
-				<xs:annotation>
-					<xs:documentation>Client kan niet geidentificeerd worden.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0451">
-				<xs:annotation>
-					<xs:documentation>HUISLETTER ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0452">
-				<xs:annotation>
-					<xs:documentation>AANDUIDING WOONADRES ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0540">
-				<xs:annotation>
-					<xs:documentation>DIAGNOSECODELIJST ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0546">
-				<xs:annotation>
-					<xs:documentation>SUBCODE DIAGNOSECODELIJST ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0565">
-				<xs:annotation>
-					<xs:documentation>HUISARTS ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0659">
-				<xs:annotation>
-					<xs:documentation>SOORT relatie ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0677">
-				<xs:annotation>
-					<xs:documentation>RELATIENUMMER ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0682">
-				<xs:annotation>
-					<xs:documentation>SOORT adres ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0699">
-				<xs:annotation>
-					<xs:documentation>BEGINDATUM levering ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0802">
-				<xs:annotation>
-					<xs:documentation>Fysieke plaats record onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0803">
-				<xs:annotation>
-					<xs:documentation>Record is dubbel opgenomen.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="0806">
-				<xs:annotation>
-					<xs:documentation>STATUS AANLEVERING RECORD ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1000">
-				<xs:annotation>
-					<xs:documentation>INDICATIEORGAAN ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1002">
-				<xs:annotation>
-					<xs:documentation>ZORGKANTOOR ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1040">
-				<xs:annotation>
-					<xs:documentation>SOORT aanvraag  ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1054">
-				<xs:annotation>
-					<xs:documentation>LEEFEENHEID ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1060">
-				<xs:annotation>
-					<xs:documentation>CLIENTNUMMER ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1061">
-				<xs:annotation>
-					<xs:documentation>AANVRAAGNUMMER ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1062">
-				<xs:annotation>
-					<xs:documentation>BESLUITNUMMER ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1064">
-				<xs:annotation>
-					<xs:documentation>BEGINDATUM adres ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1065">
-				<xs:annotation>
-					<xs:documentation>EINDDATUM adres ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1074">
-				<xs:annotation>
-					<xs:documentation>GRONDSLAG ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1075">
-				<xs:annotation>
-					<xs:documentation>ZIEKTEBEELD/STOORNIS ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1076">
-				<xs:annotation>
-					<xs:documentation>PROGNOSE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1079">
-				<xs:annotation>
-					<xs:documentation>BEPERKING ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1081">
-				<xs:annotation>
-					<xs:documentation>DUUR ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1089">
-				<xs:annotation>
-					<xs:documentation>ZORGKANTOOR (02) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1092">
-				<xs:annotation>
-					<xs:documentation>VOLGORDE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1113">
-				<xs:annotation>
-					<xs:documentation>FUNCTIECODE of ZZPCODE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1114">
-				<xs:annotation>
-					<xs:documentation>KLASSE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1115">
-				<xs:annotation>
-					<xs:documentation>GRONDSLAG (01) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1116">
-				<xs:annotation>
-					<xs:documentation>LEVERINGSVOORWAARDE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1117">
-				<xs:annotation>
-					<xs:documentation>VERVOER ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1119">
-				<xs:annotation>
-					<xs:documentation>INGANGSDATUM geindiceerde zorgeenheid ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1120">
-				<xs:annotation>
-					<xs:documentation>EINDDATUM geindiceerde zorgeenheid ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1123">
-				<xs:annotation>
-					<xs:documentation>LEVERINGSVORM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1124">
-				<xs:annotation>
-					<xs:documentation>INSTELLING VOORKEUR ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1143">
-				<xs:annotation>
-					<xs:documentation>GRONDSLAG (02) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1145">
-				<xs:annotation>
-					<xs:documentation>OPSLAG ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1154">
-				<xs:annotation>
-					<xs:documentation>MUTATIECODE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1156">
-				<xs:annotation>
-					<xs:documentation>MUTATIEDATUM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1158">
-				<xs:annotation>
-					<xs:documentation>INSTELLING BESTEMMING ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1173">
-				<xs:annotation>
-					<xs:documentation>TOEWIJZINGSDATUM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1174">
-				<xs:annotation>
-					<xs:documentation>INGANGSDATUM zorgtoewijzing ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1175">
-				<xs:annotation>
-					<xs:documentation>EINDDATUM zorgtoewijzing ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1187">
-				<xs:annotation>
-					<xs:documentation>BOPZ ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1188">
-				<xs:annotation>
-					<xs:documentation>DATUM BOPZ ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1190">
-				<xs:annotation>
-					<xs:documentation>VRAAG STOORNIS ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1191">
-				<xs:annotation>
-					<xs:documentation>SCORE STOORNIS ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1192">
-				<xs:annotation>
-					<xs:documentation>VRAAG BEPERKING ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1193">
-				<xs:annotation>
-					<xs:documentation>SCORE BEPERKING ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1201">
-				<xs:annotation>
-					<xs:documentation>TOEWIJZINGSTIJD ontbreekt of onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1206">
-				<xs:annotation>
-					<xs:documentation>SOORT indicatie ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1207">
-				<xs:annotation>
-					<xs:documentation>SOORT toewijzing ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1208">
-				<xs:annotation>
-					<xs:documentation>REDEN INTREKKING ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1210">
-				<xs:annotation>
-					<xs:documentation>LEVERINGSSTATUS ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1211">
-				<xs:annotation>
-					<xs:documentation>SLEUTELDATUM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1213">
-				<xs:annotation>
-					<xs:documentation>GEBOORTEJAAR ontbreekt of is onjuist</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1214">
-				<xs:annotation>
-					<xs:documentation>VOLGNUMMER CLIENT ontbreekt of is onjuist</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1215">
-				<xs:annotation>
-					<xs:documentation>VOLGNUMMER INDICATIE ontbreekt of is onjuist</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1216">
-				<xs:annotation>
-					<xs:documentation>INGANGSDATUM STATUS ontbreekt of is onjuist</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="1300">
-				<xs:annotation>
-					<xs:documentation>ZORGKANTOOR (01) ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="4702">
-				<xs:annotation>
-					<xs:documentation>INGANGSDATUM indicatiebesluit ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="4703">
-				<xs:annotation>
-					<xs:documentation>EINDDATUM indicatiebesluit ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="4761">
-				<xs:annotation>
-					<xs:documentation>AFGIFTEDATUM ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="8027">
-				<xs:annotation>
-					<xs:documentation>SUBVERSIE ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="8901">
-				<xs:annotation>
-					<xs:documentation>BEGINDATUM PERIODE ontbreekt of is onjuist</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="8902">
-				<xs:annotation>
-					<xs:documentation>EINDDATUM PERIODE ontbreekt of is onjuist</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="8904">
-				<xs:annotation>
-					<xs:documentation>Voorkeur client ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="8905">
-				<xs:annotation>
-					<xs:documentation>Financiering ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="8906">
-				<xs:annotation>
-					<xs:documentation>Meerzorg ontbreekt of is onjuist.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_SoortIndicatie">
@@ -5035,7 +3823,6 @@
 			<xs:documentation>Code voor de soort indicatie.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>CIZ indicatie</xs:documentation>
@@ -5056,6 +3843,7 @@
 					<xs:documentation>Experimenten</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_SoortRelatie">
@@ -5063,7 +3851,6 @@
 			<xs:documentation>De soort relatie die een persoon ten opzichte van de client heeft.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="2"/>
 			<xs:enumeration value="03">
 				<xs:annotation>
 					<xs:documentation>Curator (juridisch)</xs:documentation>
@@ -5179,6 +3966,7 @@
 					<xs:documentation>Wijkcoach</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_SoortToewijzing">
@@ -5186,15 +3974,9 @@
 			<xs:documentation>Gecodeerde aanduiding van de soort toewijzing.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Regulier</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="2">
-				<xs:annotation>
-					<xs:documentation>Alternatief</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="3">
@@ -5202,16 +3984,12 @@
 					<xs:documentation>Overbrugging</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="4">
-				<xs:annotation>
-					<xs:documentation>Transfer</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="5">
 				<xs:annotation>
 					<xs:documentation>Administratief</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_StatusAanlevering">
@@ -5219,7 +3997,6 @@
 			<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Eerste aanlevering</xs:documentation>
@@ -5240,6 +4017,7 @@
 					<xs:documentation>Niet van toepassing (ongewijzigd)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_StoornisCode">
@@ -5247,6 +4025,7 @@
 			<xs:documentation>Code die het ziektebeeld of de stoornis van een client identificeert.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
 			<xs:maxLength value="8"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -5255,7 +4034,11 @@
 			<xs:documentation>Gecodeerde aanduiding van de score op een vraag over een stoornis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>Geen probleem/geen hulp van anderen nodig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Wel probleem: af en toe hulp, toezicht of sturing nodig</xs:documentation>
@@ -5276,11 +4059,7 @@
 					<xs:documentation>Niet beoordeeld</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="0">
-				<xs:annotation>
-					<xs:documentation>Geen probleem/geen hulp van anderen nodig</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_StoornisVraag">
@@ -5288,7 +4067,6 @@
 			<xs:documentation>Gecodeerde aanduiding van de vraag over een stoornis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="4"/>
 			<xs:enumeration value="0101">
 				<xs:annotation>
 					<xs:documentation>Orientatiestoornis - Orientatie in tijd: weten welke dag het is, etc.</xs:documentation>
@@ -5439,6 +4217,7 @@
 					<xs:documentation>Psychosociaal welbevinden - Gemis van gewaardeerde sociale rollen</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Straatnaam">
@@ -5446,8 +4225,8 @@
 			<xs:documentation>De officiele door de gemeente vastgestelde naam van een straat.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="24"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="24"/>
 			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -5456,8 +4235,8 @@
 			<xs:documentation>De taal van de client waarin met de client wordt gecommuniceerd.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="25"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="25"/>
 			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -5466,8 +4245,8 @@
 			<xs:documentation>Het telefoonnummer waarop de client of relatie van de client te bereiken is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="15"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="15"/>
 			<xs:pattern value="[0-9]*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -5476,7 +4255,7 @@
 			<xs:documentation>Tijd</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:time">
-			<xs:pattern value="[^Z+-]+"/>
+			<xs:pattern value ="[^Z+-]+"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_ToeslagBeademing">
@@ -5484,7 +4263,6 @@
 			<xs:documentation>De soort beademing waarop de toeslag van toepassing is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Non-invasieve beademing</xs:documentation>
@@ -5495,6 +4273,7 @@
 					<xs:documentation>Invasieve beademing</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_ToeslagOverig">
@@ -5502,7 +4281,6 @@
 			<xs:documentation>Andere reden (dan EKT en Beademingstoeslag) voor ophoging van het basisbudget voor het geindiceerde zorgprofiel.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Extra overbruggingszorg (Actief wachtend)</xs:documentation>
@@ -5528,6 +4306,28 @@
 					<xs:documentation>Overig</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="6">
+				<xs:annotation>
+					<xs:documentation>Gespecialiseerd Verpleegkundig Handelen (GVP)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:maxLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LDT_UUID">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="36"/>
+			<xs:pattern value="[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LDT_Versie">
+		<xs:annotation>
+			<xs:documentation>Volgnummer van de formele uitgifte van een versie.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:pattern value="(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Vervoer">
@@ -5535,7 +4335,6 @@
 			<xs:documentation>Gecodeerde aanduiding die aangeeft of vervoer van toepassing is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Vervoer nodig</xs:documentation>
@@ -5551,6 +4350,7 @@
 					<xs:documentation>Onbekend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_VoorkeurClient">
@@ -5558,12 +4358,6 @@
 			<xs:documentation>Gecodeerde aanduiding van de voorkeur van de client ten aanzien van plaats en vorm van zorglevering.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="1"/>
-			<xs:enumeration value="1">
-				<xs:annotation>
-					<xs:documentation>Functie in natura</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="2">
 				<xs:annotation>
 					<xs:documentation>Persoonsgebonden budget (PGB)</xs:documentation>
@@ -5576,7 +4370,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="4">
 				<xs:annotation>
-					<xs:documentation>Opname</xs:documentation>
+					<xs:documentation>Verblijf</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="5">
@@ -5594,6 +4388,7 @@
 					<xs:documentation>Modulair pakket thuis (MPT)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Voorletters">
@@ -5601,8 +4396,9 @@
 			<xs:documentation>De verzameling van letters die wordt gevormd door de eerste letter van alle in volgorde voorkomende voornamen van een persoon.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
 			<xs:maxLength value="6"/>
-			<xs:pattern value="[^\s][a-zA-Z]*"/>
+			<xs:pattern value="([a-zA-ZÀ-ỳ])+"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Voorvoegsel">
@@ -5610,8 +4406,8 @@
 			<xs:documentation>Verzameling van een of meer voorzetsels/lidwoorden, die aan het significante deel van de achternaam van een persoon vooraf gaat en daar een onderdeel van is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="10"/>
 			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
 			<xs:pattern value=".*[^\s].*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -5620,7 +4416,6 @@
 			<xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="4"/>
 			<xs:enumeration value="5501">
 				<xs:annotation>
 					<xs:documentation>Zorgkantoor Groningen</xs:documentation>
@@ -5781,6 +4576,7 @@
 					<xs:documentation>Zorgkantoor Midden-IJssel</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_ZzpCode">
@@ -5788,7 +4584,16 @@
 			<xs:documentation>Gecodeerde aanduiding van een zorgzwaartepakket.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:maxLength value="3"/>
+			<xs:enumeration value="190">
+				<xs:annotation>
+					<xs:documentation>9VV A: Geriatrische revalidatiezorg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="191">
+				<xs:annotation>
+					<xs:documentation>9VV B: Herstelgerichte behandeling met verpleging en verzorging</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="750">
 				<xs:annotation>
 					<xs:documentation>1VV: Beschut wonen met enige begeleiding</xs:documentation>
@@ -5827,6 +4632,11 @@
 			<xs:enumeration value="757">
 				<xs:annotation>
 					<xs:documentation>8VV: Beschermd wonen met zeer intensieve zorg, vanwege specifieke aandoeningen, met de nadruk op verzorging/verpleging</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="758">
+				<xs:annotation>
+					<xs:documentation>9VV: Herstelgerichte behandeling met verpleging en verzorging</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="759">
@@ -6049,6 +4859,16 @@
 					<xs:documentation>6GGZ C: Beschermd wonen met intensieve begeleiding en intensieve verpleging en verzorging</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="996">
+				<xs:annotation>
+					<xs:documentation>Wlz Indiceerbaar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="997">
+				<xs:annotation>
+					<xs:documentation>PGB: ZZP-code uitsluitend te gebruiken voor start en stop PGB Wlz-indiceerbaren aan CAK</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="998">
 				<xs:annotation>
 					<xs:documentation>ZZPX: Onbepaald zorgzwaartepakket</xs:documentation>
@@ -6059,35 +4879,7 @@
 					<xs:documentation>ZZP0: Partnerverblijf</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="191">
-				<xs:annotation>
-					<xs:documentation>9VV B: Herstelgerichte behandeling met verpleging en verzorging</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="190">
-				<xs:annotation>
-					<xs:documentation>9VV A: Geriatrische revalidatiezorg</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="758">
-				<xs:annotation>
-					<xs:documentation>9VV: Herstelgerichte behandeling met verpleging en verzorging</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="997">
-				<xs:annotation>
-					<xs:documentation>PGB: ZZP-code uitsluitend te gebruiken voor start en stop PGB Wlz-indiceerbaren aan CAK</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="LDT_iWlzAgbCode">
-		<xs:annotation>
-			<xs:documentation>Identificerende code van een contract in het kader van de Wlz tussen een zorgkantoor en een zorginstelling</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:maxLength value="8"/>
-			<xs:pattern value="[0-9]{8}"/>
+			<xs:maxLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
