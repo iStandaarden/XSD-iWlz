@@ -2,7 +2,7 @@
 
 ## iWlz Release 2.0.x
 
-* [iWlz2.0-v1.8] - iWlz Release 2.0.2 versie 1.9 - 22-05-2019 - iWlz 2.0.2
+* [iWlz2.0-v1.9] - iWlz Release 2.0.2 versie 1.9 - 22-05-2019 - iWlz 2.0.2
   * nieuwe publicatie van ZK31/ZK32 bericht
   * Belangrijkste wijziging, 1 client per bericht, opname van relatie- en contactgegevens.
 
