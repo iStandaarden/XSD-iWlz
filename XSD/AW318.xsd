@@ -6,7 +6,7 @@
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>aw318</iwlz:bericht>
 			<iwlz:release>2.0</iwlz:release>
-			<iwlz:versie>1.7</iwlz:versie>
+			<iwlz:versie>1.4</iwlz:versie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="aw318:Root"/>

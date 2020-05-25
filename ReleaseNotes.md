@@ -2,8 +2,11 @@
 
 ## iWlz Release 2.0.x
 
+* [iWlz2.0-v1.8] - iWlz Release 2.0.2 versie 1.8 - 20-12-2018
+  * basisschema: ten behoeve van TR108/TR109/TR110/TR111 (allen van toepassing op het ZK31 bericht) bijbehorende retourcodes toegevoegd aan de codelijst.
+
 * [iWlz2.0-v1.7] - iWlz Release 2.0.1 versie 1.7 - 3 juli 2018
-  * AW317 / AW318: binnen de klasse &lt;Client> is &ltVolgnummerClient> vervangen door &ltBSN>
+  * AW317 / AW318: binnen de klasse &lt;Client> is &lt;VolgnummerClient> vervangen door &ltBSN>
   * overige xsd's blijven ongewijzigd
 
 * [iWlz2.0-v1.6] - iWlz Release 2.0.1 Versie 1.6 - 5 juni 2018
