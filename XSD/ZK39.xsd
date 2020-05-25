@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" xmlns:zk39="http://www.istandaarden.nl/iwlz/2_1/zk39/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_1/zk39/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" schemaLocation="basisschema.xsd"/>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk39</iwlz:bericht>
 			<iwlz:release>2.1</iwlz:release>
-			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdVersie>1.1.0</iwlz:BerichtXsdVersie>
 			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BerichtXsdMaxVersie>1.1.0</iwlz:BerichtXsdMaxVersie>
 			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
 			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
 			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
-	<xs:element name="Bericht" type="zk39:Root"></xs:element>
+	<xs:element name="Bericht" type="zk39:Root"/>
 	<xs:complexType name="Root">
 		<xs:annotation>
 			<xs:documentation>Bericht voor de bovenregionale melding van een mutatie in de zorglevering (zorgkantoor bovenregionaal naar zorgkantoor regionaal).</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Header" type="zk39:Header"></xs:element>
-			<xs:element name="Clienten" type="zk39:Clienten"></xs:element>
+			<xs:element name="Header" type="zk39:Header"/>
+			<xs:element name="Clienten" type="zk39:Clienten"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -83,7 +83,7 @@
 	</xs:complexType>
 	<xs:complexType name="Clienten">
 		<xs:sequence>
-			<xs:element name="Client" type="zk39:Client"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Client" type="zk39:Client" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -96,23 +96,21 @@
 					<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum">
-			</xs:element>
+			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum"/>
 			<xs:element name="Geslacht" type="iwlz:LDT_Geslacht">
 				<xs:annotation>
 					<xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Naam" type="iwlz:CDT_VerkorteNaam">
-			</xs:element>
-			<xs:element name="MutatieFuncties" type="zk39:MutatieFuncties" minOccurs="0"></xs:element>
-			<xs:element name="MutatieZorgzwaartepakketten" type="zk39:MutatieZorgzwaartepakketten" minOccurs="0"></xs:element>
-			<xs:element name="Aanvragen" type="zk39:Aanvragen" minOccurs="0"></xs:element>
+			<xs:element name="Naam" type="iwlz:CDT_VerkorteNaam"/>
+			<xs:element name="MutatieFuncties" type="zk39:MutatieFuncties" minOccurs="0"/>
+			<xs:element name="MutatieZorgzwaartepakketten" type="zk39:MutatieZorgzwaartepakketten" minOccurs="0"/>
+			<xs:element name="Aanvragen" type="zk39:Aanvragen" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatieFuncties">
 		<xs:sequence>
-			<xs:element name="MutatieFunctie" type="zk39:MutatieFunctie"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="MutatieFunctie" type="zk39:MutatieFunctie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatieFunctie">
@@ -174,7 +172,7 @@
 	</xs:complexType>
 	<xs:complexType name="MutatieZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="MutatieZorgzwaartepakket" type="zk39:MutatieZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="MutatieZorgzwaartepakket" type="zk39:MutatieZorgzwaartepakket" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatieZorgzwaartepakket">
@@ -241,7 +239,7 @@
 	</xs:complexType>
 	<xs:complexType name="Aanvragen">
 		<xs:sequence>
-			<xs:element name="Aanvraag" type="zk39:Aanvraag"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Aanvraag" type="zk39:Aanvraag" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Aanvraag">
@@ -254,11 +252,17 @@
 					<xs:documentation>Identificerend nummer van een indicatiebesluit.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="Afgiftedatum" type="iwlz:LDT_Datum">
+				<xs:annotation>
+					<xs:documentation>De datum waarop het indicatiebesluit is afgegeven.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="ZzpCode" type="iwlz:LDT_ZzpCode">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van een zorgzwaartepakket.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0"/>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een functie, uitgedrukt in een klasse.</xs:documentation>
@@ -294,12 +298,12 @@
 					<xs:documentation>Gecodeerde aanduiding die aangeeft of de zorg verantwoord geleverd kan worden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="AanvraagInstellingen" type="zk39:AanvraagInstellingen"></xs:element>
+			<xs:element name="AanvraagInstellingen" type="zk39:AanvraagInstellingen"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AanvraagInstellingen">
 		<xs:sequence>
-			<xs:element name="AanvraagInstelling" type="zk39:AanvraagInstelling"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="AanvraagInstelling" type="zk39:AanvraagInstelling" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AanvraagInstelling">

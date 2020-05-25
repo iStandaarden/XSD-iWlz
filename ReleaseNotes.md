@@ -2,6 +2,11 @@
 
 ## iWlz Release 2.1
 
+* [iWlz2.1-v1.1] - iWlz Release 2.1 Versie 1.1.0 - 29 augustus 2019
+  * Nieuwe versie voor ZK35 en ZK39 - berichtversie 1.1.0
+    * ZK35/ZK36: klasse GeleverdZorgzwaartpakket aangevuld met een optioneel element Etmalen (conform AW35:GeleverdZorgzwaartepakket)
+    * ZK39/ZK310: klasse Aanvraag aangevuld met een optioneel element Etmalen + optioneel element Afgiftedatum (conform AW39:Aanvraag)
+
 * [iWlz2.1-v1.0] - iWlz Release 2.1 Versie 1.0.0 - 3 juli 2019
   * Alle xsd's nieuw gepubliceerd met wijzigingen voor iWlz 2.1
   * AW33/AW34
