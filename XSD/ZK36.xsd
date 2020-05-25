@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_0/basisschema/schema" xmlns:zk36="http://www.istandaarden.nl/iwlz/2_0/zk36/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_0/zk36/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_0/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" xmlns:zk36="http://www.istandaarden.nl/iwlz/2_1/zk36/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_1/zk36/schema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk36</iwlz:bericht>
-			<iwlz:release>2.0</iwlz:release>
-			<iwlz:versie>1.2</iwlz:versie>
+			<iwlz:release>2.1</iwlz:release>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="zk36:Root"></xs:element>
@@ -36,7 +41,7 @@
 			</xs:element>
 			<xs:element name="BerichtVersie">
 				<xs:annotation>
-					<xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie) berichtstandaard.</xs:documentation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een major release van een iStandaard.</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtVersie">
@@ -46,11 +51,11 @@
 			</xs:element>
 			<xs:element name="BerichtSubversie">
 				<xs:annotation>
-					<xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard.</xs:documentation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een minor release van een iStandaard.</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtSubversie">
-						<xs:pattern value="0"/>
+						<xs:pattern value="1"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -69,6 +74,11 @@
 					<xs:documentation>Aanduiding ter identificatie van het bericht, bevat de datum dagtekening en een nummer.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="XsdVersie" type="iwlz:CDT_XsdVersie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een versie van de XSD's die zijn ingezet voor het opstellen van het heenbericht.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="IdentificatieRetour" type="iwlz:LDT_IdentificatieBericht">
 				<xs:annotation>
 					<xs:documentation>Naam of nummer ter identificatie van een retourbericht.</xs:documentation>
@@ -82,6 +92,11 @@
 			<xs:element name="XsltVersie" type="iwlz:LDT_Versie" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Volgnummer van de formele uitgifte van een versie van de XSLT's die zijn ingezet voor de controle van het heenbericht.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="XsdVersieRetour" type="iwlz:CDT_XsdVersie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een versie van de XSD's die zijn ingezet voor het opstellen van het retourbericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="RetourCodes" type="zk36:RetourCodes" minOccurs="0"></xs:element>
@@ -119,11 +134,6 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Naam" type="iwlz:CDT_VerkorteNaam">
-			</xs:element>
-			<xs:element name="StatusAanlevering" type="iwlz:LDT_StatusAanlevering">
-				<xs:annotation>
-					<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
-				</xs:annotation>
 			</xs:element>
 			<xs:element name="GeleverdeFuncties" type="zk36:GeleverdeFuncties" minOccurs="0"></xs:element>
 			<xs:element name="GeleverdeZorgzwaartepakketten" type="zk36:GeleverdeZorgzwaartepakketten" minOccurs="0"></xs:element>

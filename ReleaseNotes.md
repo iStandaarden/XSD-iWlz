@@ -1,5 +1,22 @@
 # Release Notes
 
+## iWlz Release 2.1
+
+* [iWlz2.1-v1.0] - iWlz Release 2.1 Versie 1.0.0 - 3 juli 2019
+  * Alle xsd's nieuw gepubliceerd met wijzigingen voor iWlz 2.1
+  * AW33/AW34
+  * AW35/AW36
+  * AW39/AW310
+  * AW317/AW318
+  * IO31/IO32
+  * ZK31/ZK32
+  * ZK33/ZK34
+  * ZK35/ZK36
+  * ZK39/ZK310
+  * CA317/CA318
+  * CA319/CA320
+  * basisschema.xsd
+
 ## iWlz Release 2.0.x
 
 * [iWlz2.0-v1.9] - iWlz Release 2.0.2 versie 1.9 - 22-05-2019 - iWlz 2.0.2

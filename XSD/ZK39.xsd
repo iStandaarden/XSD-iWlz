@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_0/basisschema/schema" xmlns:zk39="http://www.istandaarden.nl/iwlz/2_0/zk39/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_0/zk39/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_0/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" xmlns:zk39="http://www.istandaarden.nl/iwlz/2_1/zk39/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_1/zk39/schema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk39</iwlz:bericht>
-			<iwlz:release>2.0</iwlz:release>
-			<iwlz:versie>1.2</iwlz:versie>
+			<iwlz:release>2.1</iwlz:release>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="zk39:Root"></xs:element>
@@ -36,7 +41,7 @@
 			</xs:element>
 			<xs:element name="BerichtVersie">
 				<xs:annotation>
-					<xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie) berichtstandaard.</xs:documentation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een major release van een iStandaard.</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtVersie">
@@ -46,11 +51,11 @@
 			</xs:element>
 			<xs:element name="BerichtSubversie">
 				<xs:annotation>
-					<xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard.</xs:documentation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een minor release van een iStandaard.</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtSubversie">
-						<xs:pattern value="0"/>
+						<xs:pattern value="1"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -67,6 +72,11 @@
 			<xs:element name="BerichtIdentificatie" type="iwlz:CDT_BerichtIdentificatie">
 				<xs:annotation>
 					<xs:documentation>Aanduiding ter identificatie van het bericht, bevat de datum dagtekening en een nummer.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="XsdVersie" type="iwlz:CDT_XsdVersie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een versie van de XSD's die zijn ingezet voor het opstellen van het heenbericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -94,11 +104,6 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Naam" type="iwlz:CDT_VerkorteNaam">
-			</xs:element>
-			<xs:element name="StatusAanlevering" type="iwlz:LDT_StatusAanlevering">
-				<xs:annotation>
-					<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
-				</xs:annotation>
 			</xs:element>
 			<xs:element name="MutatieFuncties" type="zk39:MutatieFuncties" minOccurs="0"></xs:element>
 			<xs:element name="MutatieZorgzwaartepakketten" type="zk39:MutatieZorgzwaartepakketten" minOccurs="0"></xs:element>
@@ -271,7 +276,7 @@
 			</xs:element>
 			<xs:element name="CoordinatorZorgThuis" type="iwlz:LDT_iWlzAgbCode" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Aanbieder die de zorg thuis coördineert. Deze aanbieder is het aanspreekpunt voor de client en voor de andere aanbieders die bij de zorglevering van het modulair pakket thuis (MPT) aan de client betrokken zijn.</xs:documentation>
+					<xs:documentation>Aanbieder die de zorg thuis coordineert. Deze aanbieder is het aanspreekpunt voor de client en voor de andere aanbieders die bij de zorglevering van het modulair pakket thuis (MPT) aan de client betrokken zijn.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Doelmatig" type="iwlz:LDT_JaNee" minOccurs="0">

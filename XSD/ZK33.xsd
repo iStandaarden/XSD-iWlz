@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_0/basisschema/schema" xmlns:zk33="http://www.istandaarden.nl/iwlz/2_0/zk33/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_0/zk33/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_0/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" xmlns:zk33="http://www.istandaarden.nl/iwlz/2_1/zk33/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_1/zk33/schema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk33</iwlz:bericht>
-			<iwlz:release>2.0</iwlz:release>
-			<iwlz:versie>1.2</iwlz:versie>
+			<iwlz:release>2.1</iwlz:release>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="zk33:Root"></xs:element>
@@ -36,7 +41,7 @@
 			</xs:element>
 			<xs:element name="BerichtVersie">
 				<xs:annotation>
-					<xs:documentation>Volgnummer van de formele uitgifte van een versie van een (externe-integratie) berichtstandaard.</xs:documentation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een major release van een iStandaard.</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtVersie">
@@ -46,11 +51,11 @@
 			</xs:element>
 			<xs:element name="BerichtSubversie">
 				<xs:annotation>
-					<xs:documentation>Volgnummer binnen het versienummer van een (externe-integratie) berichtstandaard.</xs:documentation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een minor release van een iStandaard.</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtSubversie">
-						<xs:pattern value="0"/>
+						<xs:pattern value="1"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -67,6 +72,11 @@
 			<xs:element name="BerichtIdentificatie" type="iwlz:CDT_BerichtIdentificatie">
 				<xs:annotation>
 					<xs:documentation>Aanduiding ter identificatie van het bericht, bevat de datum dagtekening en een nummer.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="XsdVersie" type="iwlz:CDT_XsdVersie">
+				<xs:annotation>
+					<xs:documentation>Volgnummer van de formele uitgifte van een versie van de XSD's die zijn ingezet voor het opstellen van het heenbericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -131,14 +141,9 @@
 					<xs:documentation>Juridische situatie die voor de client van toepassing is op het moment van indicatiestelling.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Bopz" type="iwlz:CDT_BOPZ" minOccurs="0">
+			<xs:element name="Wzd" type="iwlz:CDT_Wzd" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Aanduiding of Bopz van toepassing is en vanaf welke datum.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="BsnPartner" type="iwlz:LDT_BurgerServicenummer" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Bsn van de partner van de client.</xs:documentation>
+					<xs:documentation>Aanduiding of Wet zorg en dwang van toepassing is en voor welke periode. </xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Commentaar" type="iwlz:LDT_Commentaar" minOccurs="0">
@@ -148,7 +153,7 @@
 			</xs:element>
 			<xs:element name="Relaties" type="zk33:Relaties" minOccurs="0"></xs:element>
 			<xs:element name="Contactgegevens" type="zk33:Contactgegevens"></xs:element>
-			<xs:element name="Indicatie" type="zk33:Indicatie" minOccurs="0"></xs:element>
+			<xs:element name="Indicatie" type="zk33:Indicatie"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relaties">
@@ -650,6 +655,8 @@
 					<xs:documentation>De reden waarom een toewijzing wordt ingetrokken.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0">
+			</xs:element>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een zorgeenheid, uitgedrukt in een klasse.</xs:documentation>
@@ -672,7 +679,7 @@
 			</xs:element>
 			<xs:element name="CoordinatorZorgThuis" type="iwlz:LDT_iWlzAgbCode" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Aanbieder die de zorg thuis coördineert. Deze aanbieder is het aanspreekpunt voor de client en voor de andere aanbieders die bij de zorglevering van het modulair pakket thuis (MPT) aan de client betrokken zijn.</xs:documentation>
+					<xs:documentation>Aanbieder die de zorg thuis coordineert. Deze aanbieder is het aanspreekpunt voor de client en voor de andere aanbieders die bij de zorglevering van het modulair pakket thuis (MPT) aan de client betrokken zijn.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Opname" type="iwlz:LDT_JaNee" minOccurs="0">
