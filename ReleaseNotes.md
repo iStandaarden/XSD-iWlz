@@ -4,7 +4,7 @@
 
 * [iWlz2.2-v0.1](https://github.com/iStandaarden/iWlz-Xsd/releases) - iWlz Release 2.2 Versie 0.1 - concept
   * nieuwe (concept) xsd's voor iWlz Release 2.2 - voor een volledig overzicht van de wijzigingen zie informatiemodel
-  * overzicht xsd wijzigingen in: [mutaties.md](https://github.com/iStandaarden/iWlz-Xsd/../../../../XSD/mutaties.md)
+  * overzicht xsd wijzigingen in: [mutaties.md](XSD/mutaties.md)
 
 ## iWlz Release 2.1
 
