@@ -18,7 +18,7 @@ In deze repository zijn de berichtschema's te vinden voor gebruik binnen de iWlz
 
 * Overzicht Releases: [https://github.com/iStandaarden/iWlz-Xsd/releases](https://github.com/iStandaarden/iWlz-Xsd/releases)
 
-## Versionering - mutaties
+## Releasenotes - mutaties
 
 * Zie hiervoor de Release Notes: [Klik hier](ReleaseNotes.md)
 
