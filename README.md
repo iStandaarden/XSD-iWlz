@@ -11,16 +11,12 @@ In deze repository zijn de berichtschema's te vinden voor gebruik binnen de iWlz
 
 * Servicedesk iStandaarden - [info@istandaarden.nl](mailto:info@istandaarden.nl)
 
-## Laatste versie
+## Laatste versie & releases
 
-![Laatste release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iStandaarden/iWlz-Xsd?include_prereleases&style=flat-square)
-![LaatseGitHub tag (latest by date)](https://img.shields.io/github/v/tag/iStandaarden/iWlz-Xsd?style=flat-square)
-
-* Overzicht Releases: [https://github.com/iStandaarden/iWlz-Xsd/releases](https://github.com/iStandaarden/iWlz-Xsd/releases)
-
-## Releasenotes - mutaties
-
-* Zie hiervoor de Release Notes: [Klik hier](ReleaseNotes.md)
+ &nbsp;| versie | &nbsp; |&nbsp;
+---|---|---|---
+Laatste versie | ![Laatste release](https://img.shields.io/github/v/release/iStandaarden/iWlz-Xsd?style=flat-square)|[releases](https://github.com/iStandaarden/iWlz-Xsd/releases) | [Releasenotes](ReleaseNotes.md)
+Laatste versie (inclusief pre-release) | ![Laatste release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iStandaarden/iWlz-Xsd?include_prereleases&style=flat-square)|[releases](https://github.com/iStandaarden/iWlz-Xsd/releases) | [Releasenotes](ReleaseNotes.md)
 
 ## Licentie
 
