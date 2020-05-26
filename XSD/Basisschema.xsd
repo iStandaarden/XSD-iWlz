@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema">
+<xs:schema targetNamespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema">
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>basisschema</iwlz:bericht>
-			<iwlz:release>2.1</iwlz:release>
-			<iwlz:BasisschemaXsdVersie>1.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>1.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:release>2.2</iwlz:release>
+			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:complexType name="CDT_Achternaam">
@@ -825,6 +825,15 @@
 			<xs:maxInclusive value="99"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="LDT_Besluitnummer">
+		<xs:annotation>
+			<xs:documentation>Besluitnummer Indicatie</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="LDT_BurgerlijkeStaat">
 		<xs:annotation>
 			<xs:documentation>Unieke aanduiding die de rechtspositie van een client al dan niet in relatie tot een of meer personen beschrijft.</xs:documentation>
@@ -1362,74 +1371,6 @@
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:maxLength value="1"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="LDT_JuridischeStatus">
-		<xs:annotation>
-			<xs:documentation>Juridische situatie die voor de client van toepassing is op het moment van indicatiestelling.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="01">
-				<xs:annotation>
-					<xs:documentation>Rechterlijke machtiging (rm) voorlopig / voortgezette machtiging</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="02">
-				<xs:annotation>
-					<xs:documentation>RM op eigen verzoek</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="03">
-				<xs:annotation>
-					<xs:documentation>RM met voorwaardelijk ontslag</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="04">
-				<xs:annotation>
-					<xs:documentation>Onder toezichtstelling (ots)</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="05">
-				<xs:annotation>
-					<xs:documentation>In bewaring stelling (ibs)</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="06">
-				<xs:annotation>
-					<xs:documentation>Voogdij</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="07">
-				<xs:annotation>
-					<xs:documentation>Bewindvoering</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="08">
-				<xs:annotation>
-					<xs:documentation>Mentorschap</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="09">
-				<xs:annotation>
-					<xs:documentation>Onder curatele stelling</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="10">
-				<xs:annotation>
-					<xs:documentation>Zaakwaarneming</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="11">
-				<xs:annotation>
-					<xs:documentation>Strafrechterlijke justitiele contacten: tbs</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="12">
-				<xs:annotation>
-					<xs:documentation>Strafrechterlijke justitiele contacten: overig</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Klasse">
@@ -2923,12 +2864,12 @@
 			</xs:enumeration>
 			<xs:enumeration value="2">
 				<xs:annotation>
-					<xs:documentation>Niet actief wachtend</xs:documentation>
+					<xs:documentation>Wacht op voorkeur</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="3">
 				<xs:annotation>
-					<xs:documentation>Niet wachtend</xs:documentation>
+					<xs:documentation>Wacht uit voorzorg</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="4">
@@ -2941,7 +2882,120 @@
 					<xs:documentation>Einde zorgvraag</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="6">
+				<xs:annotation>
+					<xs:documentation>Urgent plaatsen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="7">
+				<xs:annotation>
+					<xs:documentation>Actief plaatsen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:maxLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LDT_LeveringsstatusClassificatie">
+		<xs:annotation>
+			<xs:documentation>Documentatie: Nadere classificatie van een leveringsstatus</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>Geen passend crisisbed beschikbaar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>Doorstroom crisisbed</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="03">
+				<xs:annotation>
+					<xs:documentation>Doorstroom ziekenhuis (ZH)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="04">
+				<xs:annotation>
+					<xs:documentation>Doorstroom eerstelijnsverblijf (ELV)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="05">
+				<xs:annotation>
+					<xs:documentation>Doorstroom geriatrische revalidatiezorg (GRZ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="06">
+				<xs:annotation>
+					<xs:documentation>Palliatief terminale zorg (PTZ)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="07">
+				<xs:annotation>
+					<xs:documentation>Wet zorg en dwang (WZD)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="08">
+				<xs:annotation>
+					<xs:documentation>Rechterlijke machtiging (RM)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="09">
+				<xs:annotation>
+					<xs:documentation>Dreigende crisis (thuis)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="10">
+				<xs:annotation>
+					<xs:documentation>Niet passende zorg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="11">
+				<xs:annotation>
+					<xs:documentation>(Tijdelijk) andere aanbieder bespreekbaar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="12">
+				<xs:annotation>
+					<xs:documentation>Voorkeuraanbieder leidend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="13">
+				<xs:annotation>
+					<xs:documentation>Specifieke locatie/woonwens</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="14">
+				<xs:annotation>
+					<xs:documentation>Specifieke locatie/gespecialiseerde zorg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="15">
+				<xs:annotation>
+					<xs:documentation>Partneropname</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="16">
+				<xs:annotation>
+					<xs:documentation>Logeren</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="17">
+				<xs:annotation>
+					<xs:documentation>Specifieke geografische redenen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="18">
+				<xs:annotation>
+					<xs:documentation>Doorstroom naar geclusterd wonen VPT</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="19">
+				<xs:annotation>
+					<xs:documentation>Geen aanvullende wens(en)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Leveringsvoorwaarde">
@@ -3005,6 +3059,11 @@
 			<xs:enumeration value="8">
 				<xs:annotation>
 					<xs:documentation>Deeltijdverblijf (DTV)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9">
+				<xs:annotation>
+					<xs:documentation>Verkeerde bed (VKB)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:maxLength value="1"/>
@@ -3126,7 +3185,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Percentage">
 		<xs:annotation>
-			<xs:documentation>Percentage in honderdste procenten. Bijvoorbeeld 9000 is negenduizend honderste procent, is 90%.</xs:documentation>
+			<xs:documentation>Percentage in honderdste procenten. Bijvoorbeeld 9000 is negenduizend honderdste procent, is 90%.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:integer">
 			<xs:minInclusive value="0"/>
@@ -3135,7 +3194,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Persoonsid">
 		<xs:annotation>
-			<xs:documentation>Indentificerend nummer van een natuurlijk persoon.</xs:documentation>
+			<xs:documentation>Identificerend nummer van een natuurlijk persoon.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
@@ -3523,11 +3582,6 @@
 					<xs:documentation>Bericht voldoet niet aan technische regel 82</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="9084">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 84</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="9091">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 91</xs:documentation>
@@ -3608,16 +3662,6 @@
 					<xs:documentation>Bericht voldoet niet aan technische regel 121</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="9122">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 122</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="9123">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 123</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="9124">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 124</xs:documentation>
@@ -3628,11 +3672,6 @@
 					<xs:documentation>Bericht voldoet niet aan technische regel 125</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="9126">
-				<xs:annotation>
-					<xs:documentation>Bericht voldoet niet aan technische regel 126</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="9127">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 127</xs:documentation>
@@ -3641,6 +3680,11 @@
 			<xs:enumeration value="9128">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan technische regel 128</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9129">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan technische regel 129</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="D004">
@@ -3756,6 +3800,11 @@
 			<xs:enumeration value="D074">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan conditie CD074</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="D090">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD090</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="S002">
@@ -3886,6 +3935,21 @@
 			<xs:enumeration value="S130">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan constraint CS130</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S131">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan constraint CS131</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S132">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan constraint CS132</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S133">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan constraint CS132</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:maxLength value="4"/>
@@ -4389,6 +4453,16 @@
 					<xs:documentation>Combinatie van EKT en extra behandeling</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="8">
+				<xs:annotation>
+					<xs:documentation>Thuiswonend kind met ontwikkelperspectief &lt; 18 jaar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9">
+				<xs:annotation>
+					<xs:documentation>Maatwerk (volwassenen) in verband met dure dagbesteding, dagbehandeling en/of individuele behandeling</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -4436,6 +4510,11 @@
 			<xs:documentation>Gecodeerde aanduiding van de voorkeur van de client ten aanzien van plaats en vorm van zorglevering.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:enumeration value="10">
+				<xs:annotation>
+					<xs:documentation>Deeltijdverblijf (DTV)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="2">
 				<xs:annotation>
 					<xs:documentation>Persoonsgebonden budget (PGB)</xs:documentation>
@@ -4476,7 +4555,7 @@
 					<xs:documentation>combinatie Verblijf/PGB</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
+			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Voorletters">

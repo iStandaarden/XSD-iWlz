@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" xmlns:zk31="http://www.istandaarden.nl/iwlz/2_1/zk31/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_1/zk31/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:zk31="http://www.istandaarden.nl/iwlz/2_2/zk31/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/zk31/schema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk31</iwlz:bericht>
-			<iwlz:release>2.1</iwlz:release>
-			<iwlz:BerichtXsdVersie>1.0.1</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>1.0.1</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>1.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>1.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:release>2.2</iwlz:release>
+			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="zk31:Root"></xs:element>
@@ -55,7 +55,7 @@
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtSubversie">
-						<xs:pattern value="1"/>
+						<xs:pattern value="2"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -129,11 +129,6 @@
 			<xs:element name="Communicatie" type="iwlz:CDT_Communicatie" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de bijzondere vorm van communicatie die gebruikt dient te worden.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="JuridischeStatus" type="iwlz:LDT_JuridischeStatus" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Juridische situatie die voor de client van toepassing is op het moment van indicatiestelling.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Wzd" type="iwlz:CDT_Wzd" minOccurs="0">
@@ -246,7 +241,7 @@
 			<xs:documentation>De indicatie bevat de indicatiebesluitgegevens van de client.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Besluitnummer" type="iwlz:LDT_Nummer">
+			<xs:element name="Besluitnummer" type="iwlz:LDT_Besluitnummer">
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van een indicatiebesluit.</xs:documentation>
 				</xs:annotation>
@@ -551,11 +546,6 @@
 					<xs:documentation>Gecodeerde aanduiding die aangeeft of vervoer van toepassing is.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Leveringsstatus" type="iwlz:LDT_Leveringsstatus">
-				<xs:annotation>
-					<xs:documentation>De leveringsstatus waarmee wordt aangegeven wat de actuele status van de geleverde zorg is.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeZorgzwaartepakketten">
@@ -691,6 +681,8 @@
 				<xs:annotation>
 					<xs:documentation>De leveringsstatus waarmee wordt aangegeven wat de actuele status van de geleverde zorg is.</xs:documentation>
 				</xs:annotation>
+			</xs:element>
+			<xs:element name="LeveringsstatusClassificatie" type="iwlz:LDT_LeveringsstatusClassificatie" minOccurs="0">
 			</xs:element>
 			<xs:element name="Opname" type="iwlz:LDT_JaNee" minOccurs="0">
 				<xs:annotation>

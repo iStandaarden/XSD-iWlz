@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" xmlns:zk32="http://www.istandaarden.nl/iwlz/2_1/zk32/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_1/zk32/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" schemaLocation="basisschema.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:zk32="http://www.istandaarden.nl/iwlz/2_2/zk32/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/zk32/schema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk32</iwlz:bericht>
-			<iwlz:release>2.1</iwlz:release>
-			<iwlz:BerichtXsdVersie>1.0.1</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>1.0.1</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>1.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>1.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:release>2.2</iwlz:release>
+			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
-	<xs:element name="Bericht" type="zk32:Root"/>
+	<xs:element name="Bericht" type="zk32:Root"></xs:element>
 	<xs:complexType name="Root">
 		<xs:annotation>
 			<xs:documentation>Bericht voor dossieroverdracht client ZK-ZK (zorgkantoor naar zorgkantoor), bij verhuizing van de client naar een andere zorgkantoorregio.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Header" type="zk32:Header"/>
-			<xs:element name="Client" type="zk32:Client" minOccurs="0"/>
+			<xs:element name="Header" type="zk32:Header"></xs:element>
+			<xs:element name="Clienten" type="zk32:Clienten" minOccurs="0"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -55,7 +55,7 @@
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtSubversie">
-						<xs:pattern value="1"/>
+						<xs:pattern value="2"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -99,7 +99,7 @@
 					<xs:documentation>Volgnummer van de formele uitgifte van een versie van de XSD's die zijn ingezet voor het opstellen van het retourbericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes" minOccurs="0"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes" minOccurs="0"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RetourCodes">
@@ -109,6 +109,11 @@
 					<xs:documentation>Gecodeerde aanduiding in een retourbericht van het resultaat van de beoordeling van een (deel van het) ontvangen bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Clienten">
+		<xs:sequence>
+			<xs:element name="Client" type="zk32:Client"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -161,11 +166,6 @@
 					<xs:documentation>Gecodeerde aanduiding van de bijzondere vorm van communicatie die gebruikt dient te worden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="JuridischeStatus" type="iwlz:LDT_JuridischeStatus" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Juridische situatie die voor de client van toepassing is op het moment van indicatiestelling.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element name="Wzd" type="iwlz:CDT_Wzd" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Aanduiding of Wet zorg en dwang van toepassing is en voor welke periode. </xs:documentation>
@@ -181,15 +181,15 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Relaties" type="zk32:Relaties" minOccurs="0"/>
-			<xs:element name="Contactgegevens" type="zk32:Contactgegevens"/>
-			<xs:element name="Indicatie" type="zk32:Indicatie"/>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="Relaties" type="zk32:Relaties" minOccurs="0"></xs:element>
+			<xs:element name="Contactgegevens" type="zk32:Contactgegevens"></xs:element>
+			<xs:element name="Indicatie" type="zk32:Indicatie"></xs:element>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relaties">
 		<xs:sequence>
-			<xs:element name="Relatie" type="zk32:Relatie" maxOccurs="unbounded"/>
+			<xs:element name="Relatie" type="zk32:Relatie"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relatie">
@@ -227,8 +227,8 @@
 					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Contact" type="zk32:Contact"/>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="Contact" type="zk32:Contact"></xs:element>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Contact">
@@ -266,12 +266,12 @@
 					<xs:documentation>Begindatum en/of een einddatum van het verblijf van de client of relatie van de client op een tijdelijk adres.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Contactgegevens">
 		<xs:sequence>
-			<xs:element name="Contact" type="zk32:Contact" maxOccurs="unbounded"/>
+			<xs:element name="Contact" type="zk32:Contact"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicatie">
@@ -279,7 +279,7 @@
 			<xs:documentation>De indicatie bevat de indicatiebesluitgegevens van de client.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Besluitnummer" type="iwlz:LDT_Nummer">
+			<xs:element name="Besluitnummer" type="iwlz:LDT_Besluitnummer">
 				<xs:annotation>
 					<xs:documentation>Identificerend nummer van een indicatiebesluit.</xs:documentation>
 				</xs:annotation>
@@ -324,19 +324,19 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Stoornissen" type="zk32:Stoornissen" minOccurs="0"/>
-			<xs:element name="Beperkingen" type="zk32:Beperkingen" minOccurs="0"/>
-			<xs:element name="GeindiceerdeFuncties" type="zk32:GeindiceerdeFuncties" minOccurs="0"/>
-			<xs:element name="StoornisScores" type="zk32:StoornisScores" minOccurs="0"/>
-			<xs:element name="ToegewezenFuncties" type="zk32:ToegewezenFuncties" minOccurs="0"/>
-			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="zk32:GeindiceerdeZorgzwaartepakketten" minOccurs="0"/>
-			<xs:element name="ToegewezenZorgzwaartepakketten" type="zk32:ToegewezenZorgzwaartepakketten" minOccurs="0"/>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="Stoornissen" type="zk32:Stoornissen" minOccurs="0"></xs:element>
+			<xs:element name="Beperkingen" type="zk32:Beperkingen" minOccurs="0"></xs:element>
+			<xs:element name="GeindiceerdeFuncties" type="zk32:GeindiceerdeFuncties" minOccurs="0"></xs:element>
+			<xs:element name="StoornisScores" type="zk32:StoornisScores" minOccurs="0"></xs:element>
+			<xs:element name="ToegewezenFuncties" type="zk32:ToegewezenFuncties" minOccurs="0"></xs:element>
+			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="zk32:GeindiceerdeZorgzwaartepakketten" minOccurs="0"></xs:element>
+			<xs:element name="ToegewezenZorgzwaartepakketten" type="zk32:ToegewezenZorgzwaartepakketten" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornissen">
 		<xs:sequence>
-			<xs:element name="Stoornis" type="zk32:Stoornis" maxOccurs="unbounded"/>
+			<xs:element name="Stoornis" type="zk32:Stoornis"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornis">
@@ -374,12 +374,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperkingen">
 		<xs:sequence>
-			<xs:element name="Beperking" type="zk32:Beperking" maxOccurs="unbounded"/>
+			<xs:element name="Beperking" type="zk32:Beperking"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperking">
@@ -402,13 +402,13 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="BeperkingScores" type="zk32:BeperkingScores" minOccurs="0"/>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="BeperkingScores" type="zk32:BeperkingScores" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScores">
 		<xs:sequence>
-			<xs:element name="BeperkingScore" type="zk32:BeperkingScore" maxOccurs="unbounded"/>
+			<xs:element name="BeperkingScore" type="zk32:BeperkingScore"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScore">
@@ -431,12 +431,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFuncties">
 		<xs:sequence>
-			<xs:element name="GeindiceerdeFunctie" type="zk32:GeindiceerdeFunctie" maxOccurs="unbounded"/>
+			<xs:element name="GeindiceerdeFunctie" type="zk32:GeindiceerdeFunctie"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFunctie">
@@ -494,12 +494,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StoornisScores">
 		<xs:sequence>
-			<xs:element name="StoornisScore" type="zk32:StoornisScore" maxOccurs="unbounded"/>
+			<xs:element name="StoornisScore" type="zk32:StoornisScore"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StoornisScore">
@@ -522,12 +522,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ToegewezenFuncties">
 		<xs:sequence>
-			<xs:element name="ToegewezenFunctie" type="zk32:ToegewezenFunctie" maxOccurs="unbounded"/>
+			<xs:element name="ToegewezenFunctie" type="zk32:ToegewezenFunctie"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ToegewezenFunctie">
@@ -590,17 +590,12 @@
 					<xs:documentation>Gecodeerde aanduiding die aangeeft of vervoer van toepassing is.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Leveringsstatus" type="iwlz:LDT_Leveringsstatus">
-				<xs:annotation>
-					<xs:documentation>De leveringsstatus waarmee wordt aangegeven wat de actuele status van de geleverde zorg is.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="GeindiceerdZorgzwaartepakket" type="zk32:GeindiceerdZorgzwaartepakket" maxOccurs="unbounded"/>
+			<xs:element name="GeindiceerdZorgzwaartepakket" type="zk32:GeindiceerdZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdZorgzwaartepakket">
@@ -648,12 +643,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ToegewezenZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="ToegewezenZorgzwaartepakket" type="zk32:ToegewezenZorgzwaartepakket" maxOccurs="unbounded"/>
+			<xs:element name="ToegewezenZorgzwaartepakket" type="zk32:ToegewezenZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ToegewezenZorgzwaartepakket">
@@ -706,7 +701,8 @@
 					<xs:documentation>De datum waarop de toegewezen zorgeenheid voor de laatste keer geleverd dient te worden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0"/>
+			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0">
+			</xs:element>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een zorgeenheid, uitgedrukt in een klasse.</xs:documentation>
@@ -732,12 +728,14 @@
 					<xs:documentation>De leveringsstatus waarmee wordt aangegeven wat de actuele status van de geleverde zorg is.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="LeveringsstatusClassificatie" type="iwlz:LDT_LeveringsstatusClassificatie" minOccurs="0">
+			</xs:element>
 			<xs:element name="Opname" type="iwlz:LDT_JaNee" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Indicatie of de client bij deze aanbieder opgenomen wordt.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="zk32:RetourCodes"/>
+			<xs:element name="RetourCodes" type="zk32:RetourCodes"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

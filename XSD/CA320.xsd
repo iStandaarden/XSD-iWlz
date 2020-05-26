@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" xmlns:ca320="http://www.istandaarden.nl/iwlz/2_1/ca320/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_1/ca320/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_1/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:ca320="http://www.istandaarden.nl/iwlz/2_2/ca320/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/ca320/schema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>ca320</iwlz:bericht>
-			<iwlz:release>2.1</iwlz:release>
-			<iwlz:BerichtXsdVersie>1.0.1</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>1.0.1</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>1.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>1.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:release>2.2</iwlz:release>
+			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="ca320:Root"></xs:element>
@@ -55,7 +55,7 @@
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="iwlz:LDT_BerichtSubversie">
-						<xs:pattern value="1"/>
+						<xs:pattern value="2"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
@@ -120,8 +120,6 @@
 				<xs:annotation>
 					<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
 				</xs:annotation>
-			</xs:element>
-			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum">
 			</xs:element>
 			<xs:element name="MutatiesZorg" type="ca320:MutatiesZorg"></xs:element>
 			<xs:element name="RetourCodes" type="ca320:RetourCodes"></xs:element>
