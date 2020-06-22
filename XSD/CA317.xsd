@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:ca317="http://www.istandaarden.nl/iwlz/2_2/ca317/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/ca317/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"/>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>ca317</iwlz:bericht>
 			<iwlz:release>2.2</iwlz:release>
-			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
-	<xs:element name="Bericht" type="ca317:Root"></xs:element>
+	<xs:element name="Bericht" type="ca317:Root"/>
 	<xs:complexType name="Root">
 		<xs:annotation>
 			<xs:documentation>Bericht voor het melden van de aanvang van zorglevering aan het CAK i.v.m. het starten van de eigen bijdrage (zorgkantoor naar CAK)</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Header" type="ca317:Header"></xs:element>
-			<xs:element name="Clienten" type="ca317:Clienten"></xs:element>
+			<xs:element name="Header" type="ca317:Header"/>
+			<xs:element name="Clienten" type="ca317:Clienten"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -78,7 +78,7 @@
 	</xs:complexType>
 	<xs:complexType name="Clienten">
 		<xs:sequence>
-			<xs:element name="Client" type="ca317:Client"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Client" type="ca317:Client" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -91,12 +91,12 @@
 					<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="ZorgLeveringen" type="ca317:ZorgLeveringen"></xs:element>
+			<xs:element name="ZorgLeveringen" type="ca317:ZorgLeveringen"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ZorgLeveringen">
 		<xs:sequence>
-			<xs:element name="GeleverdeZorg" type="ca317:GeleverdeZorg"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="GeleverdeZorg" type="ca317:GeleverdeZorg" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeleverdeZorg">
@@ -104,8 +104,7 @@
 			<xs:documentation>Bevat gegevens over de geleverde zorg.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="GeleverdeZorgID" type="iwlz:LDT_UUID">
-			</xs:element>
+			<xs:element name="GeleverdeZorgID" type="iwlz:LDT_UUID"/>
 			<xs:element name="Startdatum" type="iwlz:LDT_Datum">
 				<xs:annotation>
 					<xs:documentation>Datum vanaf wanneer een zorgeenheid wordt geleverd of de datum vanaf wanneer het verblijf voor de client beschikbaar is.</xs:documentation>
@@ -121,8 +120,7 @@
 					<xs:documentation>Identificerende code van een instelling.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0">
-			</xs:element>
+			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0"/>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een zorgeenheid, uitgedrukt in een klasse.</xs:documentation>

@@ -6,12 +6,12 @@
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk32</iwlz:bericht>
 			<iwlz:release>2.2</iwlz:release>
-			<iwlz:BerichtXsdVersie>0.2.0</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>0.2.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>0.2.0</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:element name="Bericht" type="zk32:Root"/>
@@ -21,7 +21,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Header" type="zk32:Header"/>
-			<xs:element name="Client" type="zk32:Client"/>
+			<xs:element name="Client" type="zk32:Client" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">

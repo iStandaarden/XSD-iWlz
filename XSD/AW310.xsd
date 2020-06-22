@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:aw310="http://www.istandaarden.nl/iwlz/2_2/aw310/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/aw310/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"/>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>aw310</iwlz:bericht>
 			<iwlz:release>2.2</iwlz:release>
-			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
-	<xs:element name="Bericht" type="aw310:Root"></xs:element>
+	<xs:element name="Bericht" type="aw310:Root"/>
 	<xs:complexType name="Root">
 		<xs:annotation>
 			<xs:documentation>Bericht voor het melden van mutaties in de  zorglevering (zorgaanbieder naar zorgkantoor).</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Header" type="aw310:Header"></xs:element>
-			<xs:element name="Clienten" type="aw310:Clienten" minOccurs="0"></xs:element>
+			<xs:element name="Header" type="aw310:Header"/>
+			<xs:element name="Clienten" type="aw310:Clienten" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -99,7 +99,7 @@
 					<xs:documentation>Volgnummer van de formele uitgifte van een versie van de XSD's die zijn ingezet voor het opstellen van het retourbericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="aw310:RetourCodes" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="aw310:RetourCodes" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RetourCodes">
@@ -113,7 +113,7 @@
 	</xs:complexType>
 	<xs:complexType name="Clienten">
 		<xs:sequence>
-			<xs:element name="Client" type="aw310:Client"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Client" type="aw310:Client" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -126,24 +126,22 @@
 					<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum">
-			</xs:element>
+			<xs:element name="Geboortedatum" type="iwlz:CDT_Geboortedatum"/>
 			<xs:element name="Geslacht" type="iwlz:LDT_Geslacht">
 				<xs:annotation>
 					<xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Naam" type="iwlz:CDT_VerkorteNaam">
-			</xs:element>
-			<xs:element name="MutatieFuncties" type="aw310:MutatieFuncties" minOccurs="0"></xs:element>
-			<xs:element name="MutatieZorgzwaartepakketten" type="aw310:MutatieZorgzwaartepakketten" minOccurs="0"></xs:element>
-			<xs:element name="Aanvragen" type="aw310:Aanvragen" minOccurs="0"></xs:element>
-			<xs:element name="RetourCodes" type="aw310:RetourCodes"></xs:element>
+			<xs:element name="Naam" type="iwlz:CDT_VerkorteNaam"/>
+			<xs:element name="MutatieFuncties" type="aw310:MutatieFuncties" minOccurs="0"/>
+			<xs:element name="MutatieZorgzwaartepakketten" type="aw310:MutatieZorgzwaartepakketten" minOccurs="0"/>
+			<xs:element name="Aanvragen" type="aw310:Aanvragen" minOccurs="0"/>
+			<xs:element name="RetourCodes" type="aw310:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatieFuncties">
 		<xs:sequence>
-			<xs:element name="MutatieFunctie" type="aw310:MutatieFunctie"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="MutatieFunctie" type="aw310:MutatieFunctie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatieFunctie">
@@ -196,12 +194,12 @@
 					<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="aw310:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="aw310:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatieZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="MutatieZorgzwaartepakket" type="aw310:MutatieZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="MutatieZorgzwaartepakket" type="aw310:MutatieZorgzwaartepakket" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatieZorgzwaartepakket">
@@ -269,12 +267,12 @@
 					<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="aw310:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="aw310:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Aanvragen">
 		<xs:sequence>
-			<xs:element name="Aanvraag" type="aw310:Aanvraag"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Aanvraag" type="aw310:Aanvraag" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Aanvraag">
@@ -342,13 +340,13 @@
 					<xs:documentation>Gecodeerde aanduiding die aangeeft of de zorg verantwoord geleverd kan worden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="AanvraagInstellingen" type="aw310:AanvraagInstellingen"></xs:element>
-			<xs:element name="RetourCodes" type="aw310:RetourCodes"></xs:element>
+			<xs:element name="AanvraagInstellingen" type="aw310:AanvraagInstellingen"/>
+			<xs:element name="RetourCodes" type="aw310:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AanvraagInstellingen">
 		<xs:sequence>
-			<xs:element name="AanvraagInstelling" type="aw310:AanvraagInstelling"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="AanvraagInstelling" type="aw310:AanvraagInstelling" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AanvraagInstelling">
@@ -391,7 +389,7 @@
 					<xs:documentation>Indicatie of de client bij deze aanbieder opgenomen wordt.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="aw310:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="aw310:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

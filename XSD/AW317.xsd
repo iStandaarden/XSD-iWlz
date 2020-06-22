@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:aw317="http://www.istandaarden.nl/iwlz/2_2/aw317/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/aw317/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"/>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>aw317</iwlz:bericht>
 			<iwlz:release>2.2</iwlz:release>
-			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
-	<xs:element name="Bericht" type="aw317:Root"></xs:element>
+	<xs:element name="Bericht" type="aw317:Root"/>
 	<xs:complexType name="Root">
 		<xs:annotation>
 			<xs:documentation>Bericht voor verzenden van uitvoeringsgegevens over Wlz-zorg (zorgkantoor naar Zorginstituut Nederland). Het bericht is onderdeel van de iWlz-standaard.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Header" type="aw317:Header"></xs:element>
-			<xs:element name="Clienten" type="aw317:Clienten"></xs:element>
+			<xs:element name="Header" type="aw317:Header"/>
+			<xs:element name="Clienten" type="aw317:Clienten"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -83,7 +83,7 @@
 	</xs:complexType>
 	<xs:complexType name="Clienten">
 		<xs:sequence>
-			<xs:element name="Client" type="aw317:Client"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Client" type="aw317:Client" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -116,12 +116,12 @@
 					<xs:documentation>Identificatie van een (historisch/actueel) land of gebiedsdeel.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Indicaties" type="aw317:Indicaties"></xs:element>
+			<xs:element name="Indicaties" type="aw317:Indicaties"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicaties">
 		<xs:sequence>
-			<xs:element name="Indicatie" type="aw317:Indicatie"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Indicatie" type="aw317:Indicatie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicatie">
@@ -159,15 +159,15 @@
 					<xs:documentation>Datum die aangeeft tot en met welke datum het indicatiebesluit rechtsgeldig is.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Stoornissen" type="aw317:Stoornissen" minOccurs="0"></xs:element>
-			<xs:element name="Beperkingen" type="aw317:Beperkingen" minOccurs="0"></xs:element>
-			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="aw317:GeindiceerdeZorgzwaartepakketten" minOccurs="0"></xs:element>
-			<xs:element name="WachtlijstZorgzwaartepakketten" type="aw317:WachtlijstZorgzwaartepakketten" minOccurs="0"></xs:element>
+			<xs:element name="Stoornissen" type="aw317:Stoornissen" minOccurs="0"/>
+			<xs:element name="Beperkingen" type="aw317:Beperkingen" minOccurs="0"/>
+			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="aw317:GeindiceerdeZorgzwaartepakketten" minOccurs="0"/>
+			<xs:element name="WachtlijstZorgzwaartepakketten" type="aw317:WachtlijstZorgzwaartepakketten" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornissen">
 		<xs:sequence>
-			<xs:element name="Stoornis" type="aw317:Stoornis"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Stoornis" type="aw317:Stoornis" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornis">
@@ -199,7 +199,7 @@
 	</xs:complexType>
 	<xs:complexType name="Beperkingen">
 		<xs:sequence>
-			<xs:element name="Beperking" type="aw317:Beperking"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Beperking" type="aw317:Beperking" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperking">
@@ -216,7 +216,7 @@
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="GeindiceerdZorgzwaartepakket" type="aw317:GeindiceerdZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="GeindiceerdZorgzwaartepakket" type="aw317:GeindiceerdZorgzwaartepakket" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdZorgzwaartepakket">
@@ -263,7 +263,7 @@
 	</xs:complexType>
 	<xs:complexType name="WachtlijstZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="WachtlijstZorgzwaartepakket" type="aw317:WachtlijstZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="WachtlijstZorgzwaartepakket" type="aw317:WachtlijstZorgzwaartepakket" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="WachtlijstZorgzwaartepakket">
@@ -311,19 +311,18 @@
 					<xs:documentation>Gecodeerde aanduiding van de vorm waarin zorg binnen de Wlz geleverd kan worden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0">
-			</xs:element>
+			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0"/>
 			<xs:element name="Opname" type="iwlz:LDT_JaNee" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Indicatie of de client bij deze aanbieder opgenomen wordt.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Leveringsstatussen" type="aw317:Leveringsstatussen" minOccurs="0"></xs:element>
+			<xs:element name="Leveringsstatussen" type="aw317:Leveringsstatussen" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Leveringsstatussen">
 		<xs:sequence>
-			<xs:element name="Leveringsstatus" type="aw317:Leveringsstatus"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Leveringsstatus" type="aw317:Leveringsstatus" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Leveringsstatus">
@@ -341,8 +340,7 @@
 					<xs:documentation>De leveringsstatus waarmee wordt aangegeven wat de status van de geleverde zorg is.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="LeveringsstatusClassificatie" type="iwlz:LDT_LeveringsstatusClassificatie" minOccurs="0">
-			</xs:element>
+			<xs:element name="LeveringsstatusClassificatie" type="iwlz:LDT_LeveringsstatusClassificatie" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

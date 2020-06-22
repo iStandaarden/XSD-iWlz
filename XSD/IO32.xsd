@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:io32="http://www.istandaarden.nl/iwlz/2_2/io32/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/io32/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"/>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>io32</iwlz:bericht>
 			<iwlz:release>2.2</iwlz:release>
-			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
-	<xs:element name="Bericht" type="io32:Root"></xs:element>
+	<xs:element name="Bericht" type="io32:Root"/>
 	<xs:complexType name="Root">
 		<xs:annotation>
 			<xs:documentation>Bericht met informatie over de geindiceerde Wlz-zorg (CIZ naar zorgkantoor).</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Header" type="io32:Header"></xs:element>
-			<xs:element name="Clienten" type="io32:Clienten" minOccurs="0"></xs:element>
+			<xs:element name="Header" type="io32:Header"/>
+			<xs:element name="Clienten" type="io32:Clienten" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -94,7 +94,7 @@
 					<xs:documentation>Volgnummer van de formele uitgifte van een versie van de XSD's die zijn ingezet voor het opstellen van het retourbericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes" minOccurs="0"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="RetourCodes">
@@ -108,7 +108,7 @@
 	</xs:complexType>
 	<xs:complexType name="Clienten">
 		<xs:sequence>
-			<xs:element name="Client" type="io32:Client"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Client" type="io32:Client" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -171,15 +171,15 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Relaties" type="io32:Relaties" minOccurs="0"></xs:element>
-			<xs:element name="Contactgegevens" type="io32:Contactgegevens"></xs:element>
-			<xs:element name="Indicatie" type="io32:Indicatie"></xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="Relaties" type="io32:Relaties" minOccurs="0"/>
+			<xs:element name="Contactgegevens" type="io32:Contactgegevens"/>
+			<xs:element name="Indicatie" type="io32:Indicatie"/>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relaties">
 		<xs:sequence>
-			<xs:element name="Relatie" type="io32:Relatie"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Relatie" type="io32:Relatie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relatie">
@@ -217,8 +217,8 @@
 					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Contact" type="io32:Contact"></xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="Contact" type="io32:Contact"/>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Contact">
@@ -256,12 +256,12 @@
 					<xs:documentation>Begindatum en/of een einddatum van het verblijf van de client of relatie van de client op een tijdelijk adres.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Contactgegevens">
 		<xs:sequence>
-			<xs:element name="Contact" type="io32:Contact"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Contact" type="io32:Contact" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicatie">
@@ -309,17 +309,17 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Stoornissen" type="io32:Stoornissen" minOccurs="0"></xs:element>
-			<xs:element name="Beperkingen" type="io32:Beperkingen" minOccurs="0"></xs:element>
-			<xs:element name="GeindiceerdeFuncties" type="io32:GeindiceerdeFuncties" minOccurs="0"></xs:element>
-			<xs:element name="StoornisScores" type="io32:StoornisScores" minOccurs="0"></xs:element>
-			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="io32:GeindiceerdeZorgzwaartepakketten" minOccurs="0"></xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="Stoornissen" type="io32:Stoornissen" minOccurs="0"/>
+			<xs:element name="Beperkingen" type="io32:Beperkingen" minOccurs="0"/>
+			<xs:element name="GeindiceerdeFuncties" type="io32:GeindiceerdeFuncties" minOccurs="0"/>
+			<xs:element name="StoornisScores" type="io32:StoornisScores" minOccurs="0"/>
+			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="io32:GeindiceerdeZorgzwaartepakketten" minOccurs="0"/>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornissen">
 		<xs:sequence>
-			<xs:element name="Stoornis" type="io32:Stoornis"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Stoornis" type="io32:Stoornis" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornis">
@@ -357,12 +357,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperkingen">
 		<xs:sequence>
-			<xs:element name="Beperking" type="io32:Beperking"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Beperking" type="io32:Beperking" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperking">
@@ -385,13 +385,13 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="BeperkingScores" type="io32:BeperkingScores" minOccurs="0"></xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="BeperkingScores" type="io32:BeperkingScores" minOccurs="0"/>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScores">
 		<xs:sequence>
-			<xs:element name="BeperkingScore" type="io32:BeperkingScore"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="BeperkingScore" type="io32:BeperkingScore" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScore">
@@ -414,12 +414,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFuncties">
 		<xs:sequence>
-			<xs:element name="GeindiceerdeFunctie" type="io32:GeindiceerdeFunctie"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="GeindiceerdeFunctie" type="io32:GeindiceerdeFunctie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFunctie">
@@ -477,12 +477,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StoornisScores">
 		<xs:sequence>
-			<xs:element name="StoornisScore" type="io32:StoornisScore"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="StoornisScore" type="io32:StoornisScore" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StoornisScore">
@@ -505,12 +505,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="GeindiceerdZorgzwaartepakket" type="io32:GeindiceerdZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="GeindiceerdZorgzwaartepakket" type="io32:GeindiceerdZorgzwaartepakket" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdZorgzwaartepakket">
@@ -558,7 +558,7 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="RetourCodes" type="io32:RetourCodes"></xs:element>
+			<xs:element name="RetourCodes" type="io32:RetourCodes"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

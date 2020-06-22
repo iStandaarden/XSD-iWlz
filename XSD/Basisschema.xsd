@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" elementFormDefault="qualified">
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>basisschema</iwlz:bericht>
 			<iwlz:release>2.2</iwlz:release>
-			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
 	<xs:complexType name="CDT_Achternaam">
@@ -322,10 +322,8 @@
 	</xs:complexType>
 	<xs:complexType name="CDT_XsdVersie">
 		<xs:sequence>
-			<xs:element name="BasisschemaXsdVersie" type="iwlz:LDT_Versie">
-			</xs:element>
-			<xs:element name="BerichtXsdVersie" type="iwlz:LDT_Versie">
-			</xs:element>
+			<xs:element name="BasisschemaXsdVersie" type="iwlz:LDT_Versie"/>
+			<xs:element name="BerichtXsdVersie" type="iwlz:LDT_Versie"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="LDT_AanduidingWoonadres">
@@ -333,6 +331,7 @@
 			<xs:documentation>De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien van de gebruikelijke straatnaam en huisnummeraanduidingen.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="AB">
 				<xs:annotation>
 					<xs:documentation>Aan boord</xs:documentation>
@@ -353,7 +352,6 @@
 					<xs:documentation>Woonwagen</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_AdresSoort">
@@ -361,6 +359,7 @@
 			<xs:documentation>Nadere typering van het adres.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="01">
 				<xs:annotation>
 					<xs:documentation>BRP-adres</xs:documentation>
@@ -381,7 +380,6 @@
 					<xs:documentation>Tijdelijk verblijfadres</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_AgbCode">
@@ -399,6 +397,7 @@
 			<xs:documentation>Aanduiding over de categorie van de beperking.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Sociale redzaamheid</xs:documentation>
@@ -429,7 +428,6 @@
 					<xs:documentation>Deelname aan leren, werken</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BeperkingScore">
@@ -437,6 +435,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de score op een vraag over een beperking.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="0">
 				<xs:annotation>
 					<xs:documentation>Kan deze activiteit zelf, er is geen hulp van een ander nodig</xs:documentation>
@@ -462,7 +461,6 @@
 					<xs:documentation>Niet beoordeeld</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BeperkingVraag">
@@ -470,6 +468,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de vraag over beperking.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
 			<xs:enumeration value="0101">
 				<xs:annotation>
 					<xs:documentation>Sociale redzaamheid - Problemen oplossen, besluiten nemen en gevolgen inschatten</xs:documentation>
@@ -795,7 +794,6 @@
 					<xs:documentation>Deelname onderwijs, werk - Niet-betaald werk doen in vrijwillige verbanden</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BerichtCode">
@@ -839,6 +837,7 @@
 			<xs:documentation>Unieke aanduiding die de rechtspositie van een client al dan niet in relatie tot een of meer personen beschrijft.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Ongehuwd en geen geregistreerd partner en nooit gehuwd of geregistreerd partner geweest</xs:documentation>
@@ -879,7 +878,6 @@
 					<xs:documentation>Ongehuwd en geen geregistreerd partner, eventueel wel gehuwd of geregistreerd partner geweest</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_BurgerServicenummer">
@@ -906,6 +904,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de bijzondere vorm van communicatie die gebruikt dient te worden.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Tolk taal</xs:documentation>
@@ -921,7 +920,6 @@
 					<xs:documentation>Doofblindentolk</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Datum">
@@ -937,6 +935,7 @@
 			<xs:documentation>Indicator die aangeeft welk deel van de voorafgaande datum gebruikt mag worden.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>dag onbekend; alleen maand en jaar gebruiken</xs:documentation>
@@ -952,7 +951,6 @@
 					<xs:documentation>dag, maand en jaar onbekend; onbekende datum</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_DiagnoseCodelijst">
@@ -960,6 +958,7 @@
 			<xs:documentation>Code die aangeeft welke diagnosecodelijst gebruikt is, met aanduiding van de oorsprong van de codes en/of de beheerder ervan.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
 			<xs:enumeration value="014">
 				<xs:annotation>
 					<xs:documentation>Classificatie van ziekten (ZIN/ICD-10)</xs:documentation>
@@ -990,7 +989,6 @@
 					<xs:documentation>Auditief</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_DiagnoseSubcodelijst">
@@ -998,6 +996,7 @@
 			<xs:documentation>Code die aangeeft welke subcode van een diagnosecodelijst gebruikt is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="01">
 				<xs:annotation>
 					<xs:documentation>Mentaal</xs:documentation>
@@ -1063,7 +1062,6 @@
 					<xs:documentation>Auditief</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Duur">
@@ -1071,6 +1069,7 @@
 			<xs:documentation>Code die aangeeft wat de verwachte duur is van de categorie beperking.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Korter dan drie maanden</xs:documentation>
@@ -1091,7 +1090,6 @@
 					<xs:documentation>Langer dan een jaar</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Emailadres">
@@ -1109,6 +1107,7 @@
 			<xs:documentation>Gecodeerde aanduiding van het aantal etmalen verblijf per week.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
 			<xs:enumeration value="3,5">
 				<xs:annotation>
 					<xs:documentation>3,5 Etmalen</xs:documentation>
@@ -1124,7 +1123,6 @@
 					<xs:documentation>4,5 Etmalen</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_ExtraKostenThuis">
@@ -1132,12 +1130,12 @@
 			<xs:documentation>Reden die aangeeft waarom er sprake is van extra kosten thuis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="5">
 				<xs:annotation>
 					<xs:documentation>Extra kosten thuis</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Financiering">
@@ -1145,6 +1143,7 @@
 			<xs:documentation>Gecodeerde aanduiding van het CIZ van de wijze waarop de zorg binnen het indicatiebesluit gefinancierd wordt.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Wlz</xs:documentation>
@@ -1165,7 +1164,6 @@
 					<xs:documentation>Anders</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_FunctieCode">
@@ -1173,6 +1171,7 @@
 			<xs:documentation>Gecodeerde aanduiding van een zorgfunctie.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="21">
 				<xs:annotation>
 					<xs:documentation>HV: Huishoudelijke Hulp</xs:documentation>
@@ -1228,7 +1227,6 @@
 					<xs:documentation>ADL: ADL-assistentie</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Geslacht">
@@ -1236,6 +1234,7 @@
 			<xs:documentation>De sekse van een persoon, zoals bij geboorte formeel vastgesteld of nadien formeel gewijzigd.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="0">
 				<xs:annotation>
 					<xs:documentation>Onbekend</xs:documentation>
@@ -1251,7 +1250,6 @@
 					<xs:documentation>Vrouwelijk</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Grondslag">
@@ -1259,6 +1257,7 @@
 			<xs:documentation>Gecodeerde aanduiding die aangeeft wat ten grondslag ligt aan het indicatiebesluit.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="01">
 				<xs:annotation>
 					<xs:documentation>SOMATISCHE ZIEKTE/AANDOENING</xs:documentation>
@@ -1294,7 +1293,6 @@
 					<xs:documentation>PSYCHOSOCIALE PROBLEMEN</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Huisletter">
@@ -1360,6 +1358,7 @@
 			<xs:documentation>Codering voor ja of nee.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Ja</xs:documentation>
@@ -1370,7 +1369,6 @@
 					<xs:documentation>Nee</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Klasse">
@@ -1378,6 +1376,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een zorgeenheid, uitgedrukt in een klasse.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
 			<xs:enumeration value="99">
 				<xs:annotation>
 					<xs:documentation>niet van toepassing</xs:documentation>
@@ -1538,7 +1537,6 @@
 					<xs:documentation>Zeven etmalen per week</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_LandCode">
@@ -1546,6 +1544,7 @@
 			<xs:documentation>Identificatie van een (historisch/actueel) land of gebiedsdeel.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="AD">
 				<xs:annotation>
 					<xs:documentation>ANDORRA</xs:documentation>
@@ -2791,7 +2790,6 @@
 					<xs:documentation>ZIMBABWE</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Landnummer">
@@ -2809,6 +2807,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de leefsituatie van een client.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>WOONT ALLEEN EN ZELFSTANDIG (EENPERSOONSHUISHOUDEN)</xs:documentation>
@@ -2849,7 +2848,6 @@
 					<xs:documentation>ONBEKEND</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Leveringsstatus">
@@ -2857,6 +2855,7 @@
 			<xs:documentation>De leveringsstatus waarmee wordt aangegeven wat de status van de geleverde zorg is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Actief wachtend</xs:documentation>
@@ -2892,7 +2891,6 @@
 					<xs:documentation>Actief plaatsen</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_LeveringsstatusClassificatie">
@@ -2900,6 +2898,7 @@
 			<xs:documentation>Documentatie: Nadere classificatie van een leveringsstatus</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="01">
 				<xs:annotation>
 					<xs:documentation>Geen passend crisisbed beschikbaar</xs:documentation>
@@ -2932,7 +2931,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="07">
 				<xs:annotation>
-					<xs:documentation>Wet zorg en dwang (WZD)</xs:documentation>
+					<xs:documentation>Art. 28a (WZD)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="08">
@@ -2995,7 +2994,6 @@
 					<xs:documentation>Geen aanvullende wens(en)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Leveringsvoorwaarde">
@@ -3003,6 +3001,7 @@
 			<xs:documentation>Codering die aangeeft welke leveringsvoorwaarde van toepassing is op de zorg.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Volgens afspraak op geplande tijden</xs:documentation>
@@ -3028,7 +3027,6 @@
 					<xs:documentation>Onbekend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Leveringsvorm">
@@ -3036,6 +3034,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de vorm waarin zorg binnen de Wlz geleverd kan worden.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="2">
 				<xs:annotation>
 					<xs:documentation>Persoonsgebonden budget (PGB)</xs:documentation>
@@ -3066,7 +3065,6 @@
 					<xs:documentation>Verkeerde bed (VKB)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_MutatieCode">
@@ -3074,6 +3072,7 @@
 			<xs:documentation>De reden van een mutatie/beeindiging van de Wlz-zorg bij client.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="12">
 				<xs:annotation>
 					<xs:documentation>Client wil nu de zorg of ondersteuning (nog) niet</xs:documentation>
@@ -3104,7 +3103,6 @@
 					<xs:documentation>Overdracht toewijzing (er is geen melding aanvang zorg of ondersteuning)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Naam">
@@ -3122,6 +3120,7 @@
 			<xs:documentation>Aanduiding naamgebruik (gecodeerd).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Eigen naam</xs:documentation>
@@ -3152,7 +3151,6 @@
 					<xs:documentation>Niet-natuurlijk persoon</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Nummer">
@@ -3227,6 +3225,7 @@
 			<xs:documentation>Aanduiding welke prognose er is inzake het ziektebeeld of de stoornis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Uitzicht op volledig herstel binnen 1 jaar</xs:documentation>
@@ -3252,7 +3251,6 @@
 					<xs:documentation>Onbekend; prognose niet beschikbaar of niet mogelijk</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_RedenIntrekking">
@@ -3260,6 +3258,7 @@
 			<xs:documentation>De reden waarom een toewijzing wordt ingetrokken.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Client overleden</xs:documentation>
@@ -3300,7 +3299,6 @@
 					<xs:documentation>Verhuizing</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_RelatieVolgorde">
@@ -3317,6 +3315,7 @@
 			<xs:documentation>Melding in een iStandaarden-retourbericht. Het betreft een code die in een retourbericht het resultaat van de beoordeling van een (deel van een) ontvangen bericht weergeeft.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
 			<xs:enumeration value="0001">
 				<xs:annotation>
 					<xs:documentation>Bericht is afgekeurd om technische redenen.</xs:documentation>
@@ -3807,6 +3806,11 @@
 					<xs:documentation>Bericht voldoet niet aan conditie CD090</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="D091">
+				<xs:annotation>
+					<xs:documentation>Bericht voldoet niet aan conditie CD091</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="S002">
 				<xs:annotation>
 					<xs:documentation>Bericht voldoet niet aan constraint CS002.</xs:documentation>
@@ -3952,7 +3956,6 @@
 					<xs:documentation>Bericht voldoet niet aan constraint CS132</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_SoortIndicatie">
@@ -3960,6 +3963,7 @@
 			<xs:documentation>Code voor de soort indicatie.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>CIZ indicatie</xs:documentation>
@@ -3980,7 +3984,6 @@
 					<xs:documentation>Experimenten</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_SoortRelatie">
@@ -3988,6 +3991,7 @@
 			<xs:documentation>De soort relatie die een persoon ten opzichte van de client heeft.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="03">
 				<xs:annotation>
 					<xs:documentation>Curator (juridisch)</xs:documentation>
@@ -4103,7 +4107,6 @@
 					<xs:documentation>Wijkcoach</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_SoortToewijzing">
@@ -4111,6 +4114,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de soort toewijzing.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Regulier</xs:documentation>
@@ -4126,7 +4130,6 @@
 					<xs:documentation>Administratief</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_StatusAanlevering">
@@ -4134,6 +4137,7 @@
 			<xs:documentation>Indicatie over de status van de informatie in de berichtklasse.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Eerste aanlevering</xs:documentation>
@@ -4154,7 +4158,6 @@
 					<xs:documentation>Niet van toepassing (ongewijzigd)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_StoornisCode">
@@ -4171,6 +4174,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de score op een vraag over een stoornis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="0">
 				<xs:annotation>
 					<xs:documentation>Geen probleem/geen hulp van anderen nodig</xs:documentation>
@@ -4196,7 +4200,6 @@
 					<xs:documentation>Niet beoordeeld</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_StoornisVraag">
@@ -4204,6 +4207,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de vraag over een stoornis.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
 			<xs:enumeration value="0101">
 				<xs:annotation>
 					<xs:documentation>Orientatiestoornis - Orientatie in tijd: weten welke dag het is, etc.</xs:documentation>
@@ -4354,7 +4358,6 @@
 					<xs:documentation>Psychosociaal welbevinden - Gemis van gewaardeerde sociale rollen</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Straatnaam">
@@ -4392,7 +4395,7 @@
 			<xs:documentation>Tijd</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:time">
-			<xs:pattern value ="[^Z+-]+"/>
+			<xs:pattern value="[^Z+-]+"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_ToeslagBeademing">
@@ -4400,6 +4403,7 @@
 			<xs:documentation>De soort beademing waarop de toeslag van toepassing is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Non-invasieve beademing</xs:documentation>
@@ -4410,7 +4414,6 @@
 					<xs:documentation>Invasieve beademing</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_ToeslagOverig">
@@ -4418,6 +4421,7 @@
 			<xs:documentation>Andere reden (dan EKT en Beademingstoeslag) voor ophoging van het basisbudget voor het geindiceerde zorgprofiel.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Extra overbruggingszorg (Actief wachtend)</xs:documentation>
@@ -4463,7 +4467,6 @@
 					<xs:documentation>Maatwerk (volwassenen) in verband met dure dagbesteding, dagbehandeling en/of individuele behandeling</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_UUID">
@@ -4487,6 +4490,7 @@
 			<xs:documentation>Gecodeerde aanduiding die aangeeft of vervoer van toepassing is.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Vervoer nodig</xs:documentation>
@@ -4502,7 +4506,6 @@
 					<xs:documentation>Onbekend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_VoorkeurClient">
@@ -4510,6 +4513,7 @@
 			<xs:documentation>Gecodeerde aanduiding van de voorkeur van de client ten aanzien van plaats en vorm van zorglevering.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
 			<xs:enumeration value="10">
 				<xs:annotation>
 					<xs:documentation>Deeltijdverblijf (DTV)</xs:documentation>
@@ -4555,7 +4559,6 @@
 					<xs:documentation>combinatie Verblijf/PGB</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_Voorletters">
@@ -4580,6 +4583,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="LDT_WzdVerklaring">
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
 			<xs:enumeration value="1">
 				<xs:annotation>
 					<xs:documentation>Opname op basis van artikel 21 is aan de orde</xs:documentation>
@@ -4605,7 +4609,6 @@
 					<xs:documentation>Onbekend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="1"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_ZorgkantoorCode">
@@ -4613,6 +4616,7 @@
 			<xs:documentation>Identificatie van het Zorgkantoor, verantwoordelijk voor het uitvoeren van de Wlz.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
 			<xs:enumeration value="5501">
 				<xs:annotation>
 					<xs:documentation>Zorgkantoor Groningen</xs:documentation>
@@ -4773,7 +4777,6 @@
 					<xs:documentation>Zorgkantoor Friesland</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LDT_ZzpCode">
@@ -4781,6 +4784,7 @@
 			<xs:documentation>Gecodeerde aanduiding van een zorgzwaartepakket.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
 			<xs:enumeration value="190">
 				<xs:annotation>
 					<xs:documentation>9VV A: Geriatrische revalidatiezorg</xs:documentation>
@@ -5101,7 +5105,6 @@
 					<xs:documentation>ZZP0: Partnerverblijf</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:maxLength value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

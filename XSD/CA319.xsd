@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:ca319="http://www.istandaarden.nl/iwlz/2_2/ca319/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/ca319/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"/>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>ca319</iwlz:bericht>
 			<iwlz:release>2.2</iwlz:release>
-			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
-	<xs:element name="Bericht" type="ca319:Root"></xs:element>
+	<xs:element name="Bericht" type="ca319:Root"/>
 	<xs:complexType name="Root">
 		<xs:annotation>
 			<xs:documentation>Bericht voor het doorgeven van wijzigingen op de zorglevering aan het CAK i.v.m. de eigen bijdrage (zorgkantoor naar CAK).</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Header" type="ca319:Header"></xs:element>
-			<xs:element name="Clienten" type="ca319:Clienten"></xs:element>
+			<xs:element name="Header" type="ca319:Header"/>
+			<xs:element name="Clienten" type="ca319:Clienten"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -78,7 +78,7 @@
 	</xs:complexType>
 	<xs:complexType name="Clienten">
 		<xs:sequence>
-			<xs:element name="Client" type="ca319:Client"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Client" type="ca319:Client" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Client">
@@ -91,12 +91,12 @@
 					<xs:documentation>Een door de overheid toegekend identificerend nummer in het kader van het vereenvoudigen van het contact tussen overheid en burgers en het verminderen van de administratieve lasten.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="MutatiesZorg" type="ca319:MutatiesZorg"></xs:element>
+			<xs:element name="MutatiesZorg" type="ca319:MutatiesZorg"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatiesZorg">
 		<xs:sequence>
-			<xs:element name="MutatieZorg" type="ca319:MutatieZorg"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="MutatieZorg" type="ca319:MutatieZorg" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MutatieZorg">
@@ -104,8 +104,7 @@
 			<xs:documentation>Gegevens over een mutatie in de levering van zorg.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="MutatieZorgID" type="iwlz:LDT_UUID">
-			</xs:element>
+			<xs:element name="MutatieZorgID" type="iwlz:LDT_UUID"/>
 			<xs:element name="Mutatiecode" type="iwlz:LDT_MutatieCode">
 				<xs:annotation>
 					<xs:documentation>De reden van een mutatie/beeindiging van de Wlz-zorg bij client.</xs:documentation>

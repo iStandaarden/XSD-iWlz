@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iwlz="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" xmlns:zk31="http://www.istandaarden.nl/iwlz/2_2/zk31/schema" targetNamespace="http://www.istandaarden.nl/iwlz/2_2/zk31/schema" elementFormDefault="qualified">
-	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"></xs:import>
+	<xs:import namespace="http://www.istandaarden.nl/iwlz/2_2/basisschema/schema" schemaLocation="basisschema.xsd"/>
 	<xs:annotation>
 		<xs:appinfo>
 			<iwlz:standaard>iwlz</iwlz:standaard>
 			<iwlz:bericht>zk31</iwlz:bericht>
 			<iwlz:release>2.2</iwlz:release>
-			<iwlz:BerichtXsdVersie>0.1.0</iwlz:BerichtXsdVersie>
-			<iwlz:BerichtXsdMinVersie>0.1.0</iwlz:BerichtXsdMinVersie>
-			<iwlz:BerichtXsdMaxVersie>0.1.0</iwlz:BerichtXsdMaxVersie>
-			<iwlz:BasisschemaXsdVersie>0.1.0</iwlz:BasisschemaXsdVersie>
-			<iwlz:BasisschemaXsdMinVersie>0.1.0</iwlz:BasisschemaXsdMinVersie>
-			<iwlz:BasisschemaXsdMaxVersie>0.1.0</iwlz:BasisschemaXsdMaxVersie>
+			<iwlz:BerichtXsdVersie>1.0.0</iwlz:BerichtXsdVersie>
+			<iwlz:BerichtXsdMinVersie>1.0.0</iwlz:BerichtXsdMinVersie>
+			<iwlz:BerichtXsdMaxVersie>1.0.0</iwlz:BerichtXsdMaxVersie>
+			<iwlz:BasisschemaXsdVersie>1.0.0</iwlz:BasisschemaXsdVersie>
+			<iwlz:BasisschemaXsdMinVersie>1.0.0</iwlz:BasisschemaXsdMinVersie>
+			<iwlz:BasisschemaXsdMaxVersie>1.0.0</iwlz:BasisschemaXsdMaxVersie>
 		</xs:appinfo>
 	</xs:annotation>
-	<xs:element name="Bericht" type="zk31:Root"></xs:element>
+	<xs:element name="Bericht" type="zk31:Root"/>
 	<xs:complexType name="Root">
 		<xs:annotation>
 			<xs:documentation>Bericht voor dossieroverdracht client ZK-ZK (zorgkantoor naar zorgkantoor), bij verhuizing van de client naar een andere zorgkantoorregio.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Header" type="zk31:Header"></xs:element>
-			<xs:element name="Client" type="zk31:Client"></xs:element>
+			<xs:element name="Header" type="zk31:Header"/>
+			<xs:element name="Client" type="zk31:Client"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Header">
@@ -146,14 +146,14 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Relaties" type="zk31:Relaties" minOccurs="0"></xs:element>
-			<xs:element name="Contactgegevens" type="zk31:Contactgegevens"></xs:element>
-			<xs:element name="Indicatie" type="zk31:Indicatie"></xs:element>
+			<xs:element name="Relaties" type="zk31:Relaties" minOccurs="0"/>
+			<xs:element name="Contactgegevens" type="zk31:Contactgegevens"/>
+			<xs:element name="Indicatie" type="zk31:Indicatie"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relaties">
 		<xs:sequence>
-			<xs:element name="Relatie" type="zk31:Relatie"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Relatie" type="zk31:Relatie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Relatie">
@@ -191,7 +191,7 @@
 					<xs:documentation>Volledige naam van een natuurlijk persoon, aangeduid als Geslachtsnaam, eventueel Partnernaam, Voornamen en/of Voorletters en NaamGebruik.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Contact" type="zk31:Contact"></xs:element>
+			<xs:element name="Contact" type="zk31:Contact"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Contact">
@@ -233,7 +233,7 @@
 	</xs:complexType>
 	<xs:complexType name="Contactgegevens">
 		<xs:sequence>
-			<xs:element name="Contact" type="zk31:Contact"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Contact" type="zk31:Contact" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Indicatie">
@@ -286,18 +286,18 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Stoornissen" type="zk31:Stoornissen" minOccurs="0"></xs:element>
-			<xs:element name="Beperkingen" type="zk31:Beperkingen" minOccurs="0"></xs:element>
-			<xs:element name="GeindiceerdeFuncties" type="zk31:GeindiceerdeFuncties" minOccurs="0"></xs:element>
-			<xs:element name="StoornisScores" type="zk31:StoornisScores" minOccurs="0"></xs:element>
-			<xs:element name="ToegewezenFuncties" type="zk31:ToegewezenFuncties" minOccurs="0"></xs:element>
-			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="zk31:GeindiceerdeZorgzwaartepakketten" minOccurs="0"></xs:element>
-			<xs:element name="ToegewezenZorgzwaartepakketten" type="zk31:ToegewezenZorgzwaartepakketten" minOccurs="0"></xs:element>
+			<xs:element name="Stoornissen" type="zk31:Stoornissen" minOccurs="0"/>
+			<xs:element name="Beperkingen" type="zk31:Beperkingen" minOccurs="0"/>
+			<xs:element name="GeindiceerdeFuncties" type="zk31:GeindiceerdeFuncties" minOccurs="0"/>
+			<xs:element name="StoornisScores" type="zk31:StoornisScores" minOccurs="0"/>
+			<xs:element name="ToegewezenFuncties" type="zk31:ToegewezenFuncties" minOccurs="0"/>
+			<xs:element name="GeindiceerdeZorgzwaartepakketten" type="zk31:GeindiceerdeZorgzwaartepakketten" minOccurs="0"/>
+			<xs:element name="ToegewezenZorgzwaartepakketten" type="zk31:ToegewezenZorgzwaartepakketten" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornissen">
 		<xs:sequence>
-			<xs:element name="Stoornis" type="zk31:Stoornis"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Stoornis" type="zk31:Stoornis" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Stoornis">
@@ -339,7 +339,7 @@
 	</xs:complexType>
 	<xs:complexType name="Beperkingen">
 		<xs:sequence>
-			<xs:element name="Beperking" type="zk31:Beperking"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="Beperking" type="zk31:Beperking" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Beperking">
@@ -362,12 +362,12 @@
 					<xs:documentation>Vrije tekst (bijvoorbeeld toelichting) in een bericht.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="BeperkingScores" type="zk31:BeperkingScores" minOccurs="0"></xs:element>
+			<xs:element name="BeperkingScores" type="zk31:BeperkingScores" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScores">
 		<xs:sequence>
-			<xs:element name="BeperkingScore" type="zk31:BeperkingScore"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="BeperkingScore" type="zk31:BeperkingScore" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BeperkingScore">
@@ -394,7 +394,7 @@
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFuncties">
 		<xs:sequence>
-			<xs:element name="GeindiceerdeFunctie" type="zk31:GeindiceerdeFunctie"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="GeindiceerdeFunctie" type="zk31:GeindiceerdeFunctie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeFunctie">
@@ -456,7 +456,7 @@
 	</xs:complexType>
 	<xs:complexType name="StoornisScores">
 		<xs:sequence>
-			<xs:element name="StoornisScore" type="zk31:StoornisScore"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="StoornisScore" type="zk31:StoornisScore" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StoornisScore">
@@ -483,7 +483,7 @@
 	</xs:complexType>
 	<xs:complexType name="ToegewezenFuncties">
 		<xs:sequence>
-			<xs:element name="ToegewezenFunctie" type="zk31:ToegewezenFunctie"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="ToegewezenFunctie" type="zk31:ToegewezenFunctie" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ToegewezenFunctie">
@@ -550,7 +550,7 @@
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdeZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="GeindiceerdZorgzwaartepakket" type="zk31:GeindiceerdZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="GeindiceerdZorgzwaartepakket" type="zk31:GeindiceerdZorgzwaartepakket" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GeindiceerdZorgzwaartepakket">
@@ -602,7 +602,7 @@
 	</xs:complexType>
 	<xs:complexType name="ToegewezenZorgzwaartepakketten">
 		<xs:sequence>
-			<xs:element name="ToegewezenZorgzwaartepakket" type="zk31:ToegewezenZorgzwaartepakket"  maxOccurs="unbounded"></xs:element>
+			<xs:element name="ToegewezenZorgzwaartepakket" type="zk31:ToegewezenZorgzwaartepakket" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ToegewezenZorgzwaartepakket">
@@ -655,8 +655,7 @@
 					<xs:documentation>De datum waarop de toegewezen zorgeenheid voor de laatste keer geleverd dient te worden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0">
-			</xs:element>
+			<xs:element name="Etmalen" type="iwlz:LDT_Etmalen" minOccurs="0"/>
 			<xs:element name="Klasse" type="iwlz:LDT_Klasse" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gecodeerde aanduiding van de mate van zorg betreffende een zorgeenheid, uitgedrukt in een klasse.</xs:documentation>
@@ -682,8 +681,7 @@
 					<xs:documentation>De leveringsstatus waarmee wordt aangegeven wat de actuele status van de geleverde zorg is.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="LeveringsstatusClassificatie" type="iwlz:LDT_LeveringsstatusClassificatie" minOccurs="0">
-			</xs:element>
+			<xs:element name="LeveringsstatusClassificatie" type="iwlz:LDT_LeveringsstatusClassificatie" minOccurs="0"/>
 			<xs:element name="Opname" type="iwlz:LDT_JaNee" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Indicatie of de client bij deze aanbieder opgenomen wordt.</xs:documentation>
