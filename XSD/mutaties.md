@@ -1,5 +1,9 @@
 # iWlz Release 2.2 - xsd
 
+* [iWlz2.2-v0.2](https://github.com/iStandaarden/iWlz-Xsd/releases) - iWlz Release 2.2 Versie 0.2 - concept
+  * ZK32
+    * correctie op berichtstructuur. ZK31 bevat 1 client per bericht, ZK32 staat meer clienten toe. Dit is gecorrigeerd. De multiple klasse \<Clienten> is erwijderd
+
 * [iWlz2.2-v0.1](https://github.com/iStandaarden/iWlz-Xsd/releases) - iWlz Release 2.2 Versie 0.1 - concept
   * nieuwe (concept) xsd's voor iWlz Release 2.2 - voor een volledig overzicht van de wijzigingen zie informatiemodel
 
